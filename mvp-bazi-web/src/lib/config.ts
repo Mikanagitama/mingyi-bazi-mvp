@@ -1,23 +1,27 @@
 export const config = {
   get siteUrl() {
-    return process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+    return cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000";
   },
   get stripePriceId() {
-    return process.env.STRIPE_PRICE_ID || "";
+    return cleanEnv(process.env.STRIPE_PRICE_ID);
   },
   get stripeSecretKey() {
-    return process.env.STRIPE_SECRET_KEY || "";
+    return cleanEnv(process.env.STRIPE_SECRET_KEY);
   },
   get stripeWebhookSecret() {
-    return process.env.STRIPE_WEBHOOK_SECRET || "";
+    return cleanEnv(process.env.STRIPE_WEBHOOK_SECRET);
   },
   get databaseUrl() {
-    return process.env.DATABASE_URL || "";
+    return cleanEnv(process.env.DATABASE_URL);
   },
   get openAiKey() {
-    return process.env.OPENAI_API_KEY || "";
+    return cleanEnv(process.env.OPENAI_API_KEY);
   }
 };
+
+function cleanEnv(value: string | undefined) {
+  return (value || "").trim();
+}
 
 export function requiredServerConfig(name: keyof typeof config) {
   const value = config[name];
