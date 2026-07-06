@@ -46,6 +46,7 @@ npm run verify
 - 桌面和 390px 移动端无横向溢出
 - `/api/health` 在缺少部署配置时返回 `ok: false` 和明确 blocker
 - `npm run preflight` 在缺少生产环境变量时会失败并列出缺失项
+- GitHub 仓库已绑定并推送到 `Mikanagitama/mingyi-bazi-mvp` 的 `main` 分支
 
 ## 上线前必须准备
 
@@ -152,7 +153,6 @@ npm run preflight
 
 外部上线需要用户提供或完成：
 
-- GitHub 仓库授权
 - Vercel 账号/项目授权
 - Stripe test key、price id、webhook secret
 
@@ -166,7 +166,7 @@ npm run preflight
 
 已检查本机上线依赖：
 
-- GitHub CLI：未安装
+- GitHub remote：已绑定并成功推送
 - `STRIPE_SECRET_KEY`：未配置
 - `STRIPE_WEBHOOK_SECRET`：未配置
 - `STRIPE_PRICE_ID`：未配置
