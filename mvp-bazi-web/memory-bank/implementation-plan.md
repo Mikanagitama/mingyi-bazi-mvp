@@ -263,6 +263,25 @@ Strengthen the current-energy section so it can later become a repeat-purchase p
 - Copy avoids guaranteed predictions.
 - Build and P0 smoke pass.
 
+### Steps
+
+- [x] Extract current-energy fallback logic into a focused helper.
+- [x] Strengthen the English and Chinese fallback Current 30-Day Energy section.
+- [x] Update the AI prompt to require emotional energy, career/work momentum, money opportunities, relationship atmosphere, what to push, what to avoid, stronger/weaker days if available, and one practical suggestion.
+- [x] Keep current timing language non-absolute and reflective.
+- [x] Avoid building a separate payment flow.
+- [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
+- [ ] Commit, push, and verify deployment.
+
+### Verification
+
+- `npm test -- src/tests/p13-current-energy.test.ts` passed.
+- `npm test` passed: 12 files, 38 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+
 ## Stage P1.4: Future Product Entry Points
 
 ### Objective

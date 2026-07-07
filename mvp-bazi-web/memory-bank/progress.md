@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.2 Report Visualization is implemented, pushed, deployed, and smoke-checked.
+P1.3 Current 30-Day Energy Productization is implemented locally and verified. Commit, push, deployment, and post-deploy paid-report smoke are next.
 
 ### Next Required Action
 
-Start P1.3 Current 30-Day Energy Productization. The manual Stripe test-card flow remains a final P1 verification item.
+Commit and push P1.3, then verify a production paid report contains the strengthened current-energy structure. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -109,8 +109,6 @@ Start P1.3 Current 30-Day Energy Productization. The manual Stripe test-card flo
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
-- Post-deploy paid-report visualization smoke passed for a production test reading.
-- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - `npm run db:setup` completed successfully after loading local environment variables.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy signed Stripe webhook smoke passed for a production test reading: payment status became paid, report state was `ready`, generation mode was `ai`, and the full report contained 8 sections.
@@ -127,6 +125,24 @@ Start P1.3 Current 30-Day Energy Productization. The manual Stripe test-card flo
 - `npm test -- src/tests/p11-sample-report.test.ts` passed: 2 tests.
 - `npm test` passed: 10 files, 35 tests.
 - `npm run build` passed and generated `/sample-report`.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy paid-report visualization smoke passed for a production test reading.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+
+### P1.3 Implementation Notes
+
+- Added `src/lib/reports/current-energy.ts` as a focused helper so the 30-day energy section can later become its own report product.
+- Strengthened fallback Current 30-Day Energy copy with emotional energy, career/work momentum, money opportunities, relationship atmosphere, what to push forward, what to avoid, stronger/weaker days, and one practical suggestion.
+- Updated the AI prompt to require the same current-energy structure and avoid absolute predictions.
+- Did not add any separate payment flow, credits, subscription, or new product checkout.
+
+### P1.3 Verification
+
+- `npm test -- src/tests/p13-current-energy.test.ts` passed: 2 tests.
+- `npm test` passed: 12 files, 38 tests.
+- `npm run build` passed.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.

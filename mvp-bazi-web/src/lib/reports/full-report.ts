@@ -1,5 +1,6 @@
 import { elementLabel } from "../bazi/chart";
 import type { BaziChart, ElementBalance, FullReport, Language, ReportSection } from "../bazi/types";
+import { currentEnergySection } from "./current-energy";
 import { assertSafeReportText, disclaimer } from "./safety";
 
 function dominant(elements: ElementBalance) {
@@ -35,10 +36,7 @@ function english(chart: BaziChart): FullReport {
       title: "Love & Relationships",
       body: `In relationships, the chart points toward the importance of consistency and emotional pacing. You may benefit from partners, friends, and collaborators who respect your tempo and communicate expectations directly.`
     },
-    {
-      title: "Current 30-Day Energy",
-      body: `For the next 30 days, use this reading as a planning lens: choose fewer priorities, create better containers for work, and notice when pressure is asking for structure rather than speed.`
-    },
+    currentEnergySection(chart, "en"),
     {
       title: "2026 Yearly Timing",
       body: `The 2026 annual pillar is ${chart.annual_transits[0]?.pillar || "available in the chart data"}. Use it as a timing reference for self-reflection, planning, and tradeoff awareness rather than fixed prediction.`
@@ -85,10 +83,7 @@ function chinese(chart: BaziChart): FullReport {
       title: "感情关系",
       body: "关系里，稳定沟通和节奏感很重要。你更适合与能尊重你步调、愿意直接表达期待的人建立长期连接。"
     },
-    {
-      title: "未来30天能量",
-      body: "接下来30天，可以把这份报告当作规划工具：减少同时推进的重点，建立更好的工作容器，并分辨压力背后真正需要的是秩序还是速度。"
-    },
+    currentEnergySection(chart, "zh"),
     {
       title: "2026年度节奏",
       body: `2026年的流年柱为${chart.annual_transits[0]?.pillar || "已写入命盘数据"}。它适合作为自我观察、规划和取舍提醒，不代表确定结果。`
