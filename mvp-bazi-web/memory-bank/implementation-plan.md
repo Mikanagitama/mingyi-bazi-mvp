@@ -369,17 +369,23 @@ Make the site more shareable and search-ready.
 
 ## Final P1 Verification
 
-- [ ] Run `npm run build`.
-- [ ] Run `npm run smoke:p0`.
-- [ ] Run signed Stripe webhook smoke.
+- [x] Run `npm run build`.
+- [x] Run `npm run smoke:p0`.
+- [x] Run signed Stripe webhook smoke.
 - [ ] Run manual Stripe test-card flow.
-- [ ] Confirm preview does not leak full report.
-- [ ] Confirm unpaid full-report access is blocked.
-- [ ] Confirm paid access works.
-- [ ] Confirm paid report recovery after refresh works.
-- [ ] Confirm true solar time still works.
-- [ ] Confirm DeepSeek default provider still works.
-- [ ] Confirm 8 fixed report sections still exist.
-- [ ] Confirm trust pages are accessible.
-- [ ] Confirm sample report is accessible.
+- [x] Confirm preview does not leak full report.
+- [x] Confirm unpaid full-report access is blocked.
+- [x] Confirm paid access works.
+- [x] Confirm paid report recovery after refresh works.
+- [x] Confirm true solar time still works.
+- [x] Confirm DeepSeek default provider still works.
+- [x] Confirm 8 fixed report sections still exist.
+- [x] Confirm trust pages are accessible.
+- [x] Confirm sample report is accessible.
 - [ ] Check mobile layout manually.
+
+### Final Verification Notes
+
+- Automated production verification passed for preview access, unpaid lock, signed webhook unlock, paid recovery, true solar time, AI generation, 8-section full-report contract, trust pages, sample report, SEO pages, sitemap, and robots.
+- Strict manual Stripe test-card checkout remains open because it requires completing Stripe Checkout in a browser.
+- Strict mobile visual review remains open because Playwright browser binaries are not installed locally, and installing them would write outside the allowed project folder.

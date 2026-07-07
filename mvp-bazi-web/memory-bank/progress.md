@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.5 Basic SEO + Contact + Social Links is implemented, pushed, deployed, and smoke-checked.
+Final P1 automated verification is complete. Two strict manual checks remain: Stripe test-card browser checkout and mobile visual layout review.
 
 ### Next Required Action
 
-Run final P1 verification. The manual Stripe test-card flow remains a final P1 verification item.
+Have the user run the manual Stripe test-card flow and inspect the site on a mobile viewport/device. Do not mark the goal complete until those manual checks pass.
 
 ### P0.5 Implementation Notes
 
@@ -130,6 +130,25 @@ Run final P1 verification. The manual Stripe test-card flow remains a final P1 v
 - `npm run smoke:p0` passed against the current production baseline.
 - Post-deploy SEO smoke passed for the three SEO pages, sitemap, robots, homepage metadata, and footer links.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+
+### Final P1 Automated Verification
+
+- `npm run build` passed.
+- `npm run smoke:p0` passed.
+- Signed production webhook smoke passed.
+- Preview did not leak `fullReport`.
+- Unpaid full-report access was locked.
+- Paid access worked after signed webhook unlock.
+- Paid report recovery after refresh worked.
+- True solar time remained applied for Tokyo test input.
+- DeepSeek AI generation worked in the final production probe.
+- Full report still returned 8 sections.
+- Trust pages, sample report, SEO pages, sitemap, and robots were accessible.
+
+### Remaining Manual Checks
+
+- Manual Stripe test-card flow in Stripe Checkout.
+- Mobile visual layout inspection.
 - Post-deploy homepage smoke passed for the future product cards.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy current-energy smoke passed for a production paid test reading.
