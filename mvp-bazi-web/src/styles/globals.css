@@ -640,6 +640,7 @@ meter {
   display: grid;
   gap: 18px;
   margin: 24px 0;
+  min-width: 0;
 }
 
 .visualBlock,
@@ -648,6 +649,7 @@ meter {
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.45);
   padding: 22px;
+  min-width: 0;
 }
 
 .visualBlockHeader h2,
@@ -664,6 +666,8 @@ meter {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--line);
+  max-width: 100%;
+  min-width: 0;
 }
 
 .pillarRow {
@@ -680,6 +684,8 @@ meter {
   min-height: 48px;
   display: flex;
   align-items: center;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .pillarRow span {
@@ -1103,6 +1109,29 @@ meter {
 
   .elementGrid div {
     grid-template-columns: 72px 1fr 24px;
+  }
+
+  .visualBlock,
+  .currentEnergyCard {
+    padding: 16px;
+  }
+
+  .visualBlockHeader h2,
+  .visualBlock h2,
+  .currentEnergyCard h2 {
+    font-size: 24px;
+  }
+
+  .pillarRow {
+    grid-template-columns: minmax(74px, 0.9fr) repeat(4, minmax(0, 1fr));
+  }
+
+  .pillarRow span,
+  .pillarRow strong,
+  .pillarRow b {
+    padding: 10px 5px;
+    font-size: 13px;
+    line-height: 1.25;
   }
 }
 
