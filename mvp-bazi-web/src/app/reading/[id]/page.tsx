@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { FreeReport } from "@/components/FreeReport";
 import { FullReport } from "@/components/FullReport";
+import { logEvent } from "@/lib/db/events";
 import { getReading } from "@/lib/db/readings";
 import { en } from "@/lib/i18n/en";
 import { zh } from "@/lib/i18n/zh";
@@ -18,6 +19,9 @@ export default async function ReadingPage({ params }: { params: Promise<{ id: st
   }
 
   const copy = reading.language === "zh" ? zh : en;
+  if (reading.paymentStatus === "paid" && reading.fullReport) {
+    await logEvent({ name: "full_report_viewed", readingId: reading.id, metadata: { path: "reading" } });
+  }
   return (
     <main className="readingPage">
       <header className="simpleNav">

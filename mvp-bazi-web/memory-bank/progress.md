@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.7 Preview Page + Trust Conversion Polish is implemented, pushed, deployed, and smoke-checked.
+P0.8 Stability, Logging, Anti-Abuse, Recovery is implemented locally and verified. Commit, push, deployment, and post-deploy smoke are next.
 
 ### Next Required Action
 
-Start P0.8 Stability, Logging, Anti-Abuse, Recovery. The manual Stripe test-card flow remains a final P1 verification item.
+Commit and push P0.8, then verify the Vercel deployment. After P0.8 is deployed, continue to P1.1 Sample Report. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -91,3 +91,22 @@ Start P0.8 Stability, Logging, Anti-Abuse, Recovery. The manual Stripe test-card
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against current production baseline.
+
+### P0.8 Implementation Notes
+
+- Added `app_events` and `app_rate_limits` to the Supabase schema, with local JSON-store equivalents for development and tests.
+- Added event logging for reading creation, preview generation, checkout start/completion, webhook receipt, payment marking, full report generation start/completion/failure, and paid report views.
+- Added rate limits for preview generation by IP, reading creation by session/email/IP, and full report regeneration by reading id.
+- Moved duplicate Stripe event/session checks before full report generation, preventing retried webhooks from causing repeated paid report generation.
+- Preserved DeepSeek default AI generation, retry/timeout behavior, and deterministic fallback report behavior.
+- Synced the non-destructive schema to Supabase with `npm run db:setup` after loading `.env.local` into the process.
+
+### P0.8 Verification
+
+- `npm test -- src/tests/p08-stability.test.ts` passed: 3 tests.
+- `npm test` passed: 9 files, 33 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+- `npm run db:setup` completed successfully after loading local environment variables.

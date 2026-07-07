@@ -38,8 +38,17 @@
 - Production database: Supabase Postgres through `DATABASE_URL`
 - Local fallback: JSON local store through `src/lib/db/client.ts`
 - Schema: `src/lib/db/schema.sql`
-- Current key tables: `readings`, `payments`, `reports`, `users`
+- Current key tables: `readings`, `payments`, `reports`, `users`, `app_events`, `app_rate_limits`
 - RLS: enabled on schema tables
+
+## Stability And Abuse Protection
+
+- Event logging: `src/lib/db/events.ts`
+- Rate limits: `src/lib/db/rate-limit.ts`
+- Preview limit env: `MINGYI_PREVIEW_RATE_LIMIT_PER_HOUR`
+- Reading/session limit env: `MINGYI_READING_RATE_LIMIT_PER_DAY`
+- Full generation limit env: `MINGYI_FULL_REPORT_REGEN_LIMIT_PER_DAY`
+- AI timeout/retry/fallback: `src/lib/reports/ai-report.ts`
 
 ## Verification
 

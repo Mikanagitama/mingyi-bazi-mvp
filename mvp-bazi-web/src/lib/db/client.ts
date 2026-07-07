@@ -5,6 +5,22 @@ import { config } from "../config";
 import type { ReadingRecord } from "../bazi/types";
 import { assertPersistentStorageAvailable } from "../deploy/readiness";
 
+export type AppEventRecord = {
+  id: string;
+  name: string;
+  readingId?: string;
+  stripeEventId?: string;
+  stripeSessionId?: string;
+  metadata?: Record<string, unknown>;
+  createdAt: string;
+};
+
+export type RateLimitRecord = {
+  key: string;
+  count: number;
+  resetAt: string;
+};
+
 type LocalStore = {
   readings: ReadingRecord[];
   payments: Array<{
@@ -18,6 +34,8 @@ type LocalStore = {
     status: string;
     createdAt: string;
   }>;
+  events: AppEventRecord[];
+  rateLimits: RateLimitRecord[];
 };
 
 let sqlClient: ReturnType<typeof postgres> | null = null;
@@ -43,7 +61,7 @@ function localFilePath() {
 }
 
 function emptyStore(): LocalStore {
-  return { readings: [], payments: [] };
+  return { readings: [], payments: [], events: [], rateLimits: [] };
 }
 
 export function readLocalStore(): LocalStore {
@@ -56,7 +74,13 @@ export function readLocalStore(): LocalStore {
   if (!content.trim()) {
     return emptyStore();
   }
-  return JSON.parse(content) as LocalStore;
+  const parsed = JSON.parse(content) as Partial<LocalStore>;
+  return {
+    readings: parsed.readings || [],
+    payments: parsed.payments || [],
+    events: parsed.events || [],
+    rateLimits: parsed.rateLimits || []
+  };
 }
 
 export function writeLocalStore(store: LocalStore) {

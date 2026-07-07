@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { logEvent } from "@/lib/db/events";
 import { getInternalReading } from "@/lib/db/readings";
 import { canCreateCheckout, createFullReadingCheckout } from "@/lib/payments/stripe";
 
@@ -17,6 +18,7 @@ export async function POST(request: Request) {
     if (!record) {
       return NextResponse.json({ error: "Reading not found." }, { status: 404 });
     }
+    await logEvent({ name: "checkout_started", readingId: record.id, metadata: { paymentStatus: record.paymentStatus } });
 
     if (record.paymentStatus === "paid") {
       return NextResponse.json({ url: `/reading/${record.id}/full` });

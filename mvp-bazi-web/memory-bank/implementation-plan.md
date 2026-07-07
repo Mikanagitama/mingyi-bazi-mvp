@@ -134,13 +134,32 @@ Protect AI cost, improve reliability, and make payment/report issues debuggable.
 
 ### Steps
 
-- [ ] Add event logging for reading, checkout, webhook, payment, generation, and report-view events.
-- [ ] Add basic preview and regeneration rate limits.
-- [ ] Ensure duplicate Stripe events and sessions remain idempotent.
-- [ ] Keep AI timeout, retry, and fallback behavior explicit.
-- [ ] Add recovery behavior for revisiting paid report links.
-- [ ] Run relevant tests, build, signed webhook smoke, and P0 smoke.
-- [ ] Update progress and commit.
+- [x] Add event logging for reading, checkout, webhook, payment, generation, and report-view events.
+- [x] Add basic preview and regeneration rate limits.
+- [x] Ensure duplicate Stripe events and sessions remain idempotent.
+- [x] Keep AI timeout, retry, and fallback behavior explicit.
+- [x] Add recovery behavior for revisiting paid report links.
+- [x] Run relevant tests, build, database dry-run/setup, preflight smoke, and P0 smoke.
+- [ ] Update progress, commit, push, and verify deployment.
+
+### Implementation Notes
+
+- Added `app_events` and `app_rate_limits` schema objects.
+- Added local-store equivalents so tests and local development can verify logging and rate-limit behavior without Supabase.
+- Logged reading creation, preview generation, checkout start/completion, webhook receipt, payment marking, full-report generation start/completion/failure, and paid report views.
+- Added IP preview rate limiting, session/email reading rate limiting, and per-reading full generation rate limiting.
+- Moved duplicate payment checks before full-report generation so Stripe retries do not burn AI calls.
+- Kept existing DeepSeek timeout/retry/fallback behavior in `src/lib/reports/ai-report.ts`.
+
+### Verification
+
+- `npm test -- src/tests/p08-stability.test.ts` passed.
+- `npm test` passed: 9 files, 33 tests.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run build` passed.
+- `npm run smoke:p0` passed against production baseline.
+- `npm run db:setup` completed after loading `.env.local` into the process, creating/syncing the new non-destructive schema.
 
 ## Stage P1.1: Sample Report
 

@@ -4,9 +4,16 @@ import { generateBaziChart } from "../bazi/chart";
 import { generateFreeReport } from "../reports/free-report";
 import { generateFullReportWithAi } from "../reports/ai-report";
 import { hasDatabaseUrl, readLocalStore, sql, writeLocalStore } from "./client";
+import { logEvent } from "./events";
+import { assertRateLimit } from "./rate-limit";
 
 function now() {
   return new Date().toISOString();
+}
+
+function intEnv(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
 }
 
 function toPublic(record: ReadingRecord): PublicReading {
@@ -127,12 +134,25 @@ export async function createReading(input: BirthInput): Promise<PublicReading> {
       `;
       return rows;
     });
-    return toPublic(mapDbRow(row));
+    const created = mapDbRow(row);
+    await logEvent({ name: "reading_created", readingId: created.id, metadata: { language: created.language } });
+    await logEvent({
+      name: "preview_generated",
+      readingId: created.id,
+      metadata: { lockedSections: created.freeReport.lockedSections.length }
+    });
+    return toPublic(created);
   }
 
   const store = readLocalStore();
   store.readings.push(record);
   writeLocalStore(store);
+  await logEvent({ name: "reading_created", readingId: record.id, metadata: { language: record.language } });
+  await logEvent({
+    name: "preview_generated",
+    readingId: record.id,
+    metadata: { lockedSections: record.freeReport.lockedSections.length }
+  });
   return toPublic(record);
 }
 
@@ -160,9 +180,7 @@ export async function ensureFullReport(id: string): Promise<FullReport | null> {
   if (record.fullReport) {
     return record.fullReport;
   }
-  const report = await generateFullReportWithAi(record.chart, record.language);
-  await saveFullReport(id, report);
-  return report;
+  return createAndSaveFullReport(record);
 }
 
 export async function saveFullReport(id: string, report: FullReport) {
@@ -200,10 +218,17 @@ export async function markReadingPaid(params: {
   amount: number;
   currency: string;
 }) {
-  const fullReport = await ensureGeneratedPaidReport(params.readingId);
-
   if (hasDatabaseUrl()) {
     const db = sql();
+    if (params.stripeEventId) {
+      const rows = await db`select id from payments where stripe_event_id = ${params.stripeEventId} limit 1`;
+      if (rows[0]) return;
+    }
+    if (params.stripeSessionId) {
+      const rows = await db`select id from payments where stripe_session_id = ${params.stripeSessionId} limit 1`;
+      if (rows[0]) return;
+    }
+    const fullReport = await ensureGeneratedPaidReport(params.readingId);
     await db.begin(async (tx) => {
       await tx`
         update readings
@@ -217,11 +242,18 @@ export async function markReadingPaid(params: {
         on conflict do nothing
       `;
     });
+    await logEvent({
+      name: "payment_marked_paid",
+      readingId: params.readingId,
+      stripeEventId: params.stripeEventId,
+      stripeSessionId: params.stripeSessionId,
+      metadata: { amount: params.amount, currency: params.currency }
+    });
     return;
   }
 
-  const store = readLocalStore();
-  const index = store.readings.findIndex((reading) => reading.id === params.readingId);
+  let store = readLocalStore();
+  let index = store.readings.findIndex((reading) => reading.id === params.readingId);
   if (index < 0) {
     throw new Error("Reading not found.");
   }
@@ -233,6 +265,12 @@ export async function markReadingPaid(params: {
   });
   if (duplicatePayment) {
     return;
+  }
+  const fullReport = await ensureGeneratedPaidReport(params.readingId);
+  store = readLocalStore();
+  index = store.readings.findIndex((reading) => reading.id === params.readingId);
+  if (index < 0) {
+    throw new Error("Reading not found.");
   }
   store.readings[index].paymentStatus = "paid";
   store.readings[index].email = params.email || store.readings[index].email;
@@ -250,6 +288,13 @@ export async function markReadingPaid(params: {
     createdAt: now()
   });
   writeLocalStore(store);
+  await logEvent({
+    name: "payment_marked_paid",
+    readingId: params.readingId,
+    stripeEventId: params.stripeEventId,
+    stripeSessionId: params.stripeSessionId,
+    metadata: { amount: params.amount, currency: params.currency }
+  });
 }
 
 async function ensureGeneratedPaidReport(readingId: string) {
@@ -257,5 +302,35 @@ async function ensureGeneratedPaidReport(readingId: string) {
   if (!record) {
     throw new Error("Reading not found.");
   }
-  return record.fullReport || generateFullReportWithAi(record.chart, record.language);
+  if (record.fullReport) {
+    return record.fullReport;
+  }
+  return createAndSaveFullReport(record);
+}
+
+async function createAndSaveFullReport(record: ReadingRecord) {
+  await assertRateLimit(
+    `full-generation:${record.id}`,
+    intEnv("MINGYI_FULL_REPORT_REGEN_LIMIT_PER_DAY", 3),
+    24 * 60 * 60,
+    "Full report generation limit reached."
+  );
+  await logEvent({ name: "full_generation_started", readingId: record.id });
+  try {
+    const report = await generateFullReportWithAi(record.chart, record.language);
+    await saveFullReport(record.id, report);
+    await logEvent({
+      name: "full_generation_completed",
+      readingId: record.id,
+      metadata: { mode: report.generation?.mode || "unknown" }
+    });
+    return report;
+  } catch (error) {
+    await logEvent({
+      name: "full_generation_failed",
+      readingId: record.id,
+      metadata: { message: error instanceof Error ? error.message : "unknown error" }
+    });
+    throw error;
+  }
 }

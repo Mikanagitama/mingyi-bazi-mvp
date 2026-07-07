@@ -20,6 +20,9 @@ flowchart TD
   J --> K["AI or fallback full report"]
   H --> L["Return to /reading/[id]/full"]
   L --> M["Render full report if paid"]
+  C --> N["Event logging and rate-limit checks"]
+  I --> N
+  J --> N
 ```
 
 ## Boundaries
@@ -29,6 +32,8 @@ flowchart TD
 - `src/lib/reports/ai-report.ts`: AI full-report generation through DeepSeek by default, OpenAI optionally.
 - `src/lib/reports/full-report.ts`: deterministic fallback full report.
 - `src/lib/db/readings.ts`: reading persistence, public/private reading shaping, payment marking, full-report storage.
+- `src/lib/db/events.ts`: best-effort event logging to Supabase `app_events` or local JSON store.
+- `src/lib/db/rate-limit.ts`: basic rate-limit counters backed by Supabase `app_rate_limits`, local JSON store, or in-memory fallback.
 - `src/lib/payments/stripe.ts`: Stripe Checkout and webhook verification.
 - `src/lib/payments/webhook.ts`: Stripe event application.
 - `src/components/*`: landing, form, preview, locked modules, and full report rendering.
@@ -68,6 +73,27 @@ flowchart TD
 ```
 
 The public status API strips internal fallback reasons from `fullReport.generation` before sending paid report data to the browser.
+
+## P0.8 Stability Layer
+
+```mermaid
+flowchart TD
+  A["POST /api/readings"] --> B["IP preview limit"]
+  B --> C["Session/email daily reading limit"]
+  C --> D["createReading"]
+  D --> E["reading_created + preview_generated events"]
+  F["POST /api/checkout"] --> G["checkout_started event"]
+  H["Stripe signed webhook"] --> I["webhook_received event"]
+  I --> J["checkout_completed event"]
+  J --> K["Duplicate payment check"]
+  K -->|duplicate| L["Return without regenerating"]
+  K -->|new payment| M["full-generation rate limit"]
+  M --> N["AI report or fallback"]
+  N --> O["payment_marked_paid + generation events"]
+  P["Paid report page"] --> Q["full_report_viewed event"]
+```
+
+Event logging is best effort: failures are caught so customer payment/report flows are not blocked by observability problems. Rate-limit storage prefers Supabase when configured, uses the local JSON store in development/tests, and falls back to in-memory counters if the database rate-limit table is temporarily unavailable.
 
 ## Architecture Constraints
 

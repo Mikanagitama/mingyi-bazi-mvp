@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FullReportStatus } from "@/components/FullReportStatus";
+import { logEvent } from "@/lib/db/events";
 import { buildReadingStatus, getReading } from "@/lib/db/readings";
 import { en } from "@/lib/i18n/en";
 
@@ -21,6 +22,9 @@ export default async function FullReadingPage({
         <Link href="/reading/new">Start again</Link>
       </main>
     );
+  }
+  if (reading.paymentStatus === "paid" && reading.fullReport) {
+    await logEvent({ name: "full_report_viewed", readingId: reading.id, metadata: { path: "full" } });
   }
 
   return (
