@@ -19,6 +19,18 @@ export const config = {
   },
   get openAiModel() {
     return cleanEnv(process.env.OPENAI_MODEL) || "gpt-5.2-mini";
+  },
+  get deepSeekKey() {
+    return cleanEnv(process.env.DEEPSEEK_API_KEY);
+  },
+  get deepSeekModel() {
+    return cleanEnv(process.env.DEEPSEEK_MODEL) || "deepseek-v4-flash";
+  },
+  get deepSeekBaseUrl() {
+    return cleanEnv(process.env.DEEPSEEK_BASE_URL) || "https://api.deepseek.com";
+  },
+  get aiProvider() {
+    return cleanEnv(process.env.AI_PROVIDER);
   }
 };
 

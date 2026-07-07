@@ -34,6 +34,9 @@ describe("AI full report generation", () => {
   beforeEach(() => {
     delete process.env.OPENAI_API_KEY;
     delete process.env.OPENAI_MODEL;
+    delete process.env.DEEPSEEK_API_KEY;
+    delete process.env.DEEPSEEK_MODEL;
+    delete process.env.AI_PROVIDER;
     vi.restoreAllMocks();
   });
 
@@ -45,7 +48,7 @@ describe("AI full report generation", () => {
     const report = await generateFullReportWithAi(chart(), "en");
 
     expect(report.generation?.mode).toBe("template");
-    expect(report.generation?.fallbackReason).toContain("OPENAI_API_KEY");
+    expect(report.generation?.fallbackReason).toContain("No AI provider");
   });
 
   it("uses OpenAI JSON when configured and valid", async () => {
@@ -65,6 +68,35 @@ describe("AI full report generation", () => {
     expect(fetchMock).toHaveBeenCalledOnce();
     expect(report.generation?.mode).toBe("ai");
     expect(report.sections.map((section) => section.title)).toEqual(aiSections.map((section) => section.title));
+  });
+
+  it("uses DeepSeek chat completions when selected with OPENAI_API_KEY", async () => {
+    process.env.AI_PROVIDER = "deepseek";
+    process.env.OPENAI_API_KEY = "sk_deepseek_fake";
+    process.env.DEEPSEEK_MODEL = "deepseek-v4-flash";
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                headline: "Your full Bazi reading is ready.",
+                sections: aiSections
+              })
+            }
+          }
+        ]
+      })
+    } as Response);
+
+    const report = await generateFullReportWithAi(chart(), "en");
+    const [url, init] = fetchMock.mock.calls[0];
+
+    expect(String(url)).toBe("https://api.deepseek.com/chat/completions");
+    expect(JSON.stringify((init as RequestInit).body)).toContain("deepseek-v4-flash");
+    expect(report.generation?.mode).toBe("ai");
+    expect(report.generation?.model).toBe("deepseek:deepseek-v4-flash");
   });
 
   it("retries AI generation and falls back safely on repeated failure", async () => {

@@ -23,11 +23,11 @@ const requiredEnv = [
   "STRIPE_SECRET_KEY",
   "STRIPE_PRICE_ID",
   "STRIPE_WEBHOOK_SECRET",
-  "OPENAI_API_KEY",
   "NEXT_PUBLIC_SITE_URL"
 ];
 
-const optionalEnv = ["OPENAI_MODEL"];
+const requiredOneOfEnv = [["OPENAI_API_KEY", "DEEPSEEK_API_KEY"]];
+const optionalEnv = ["OPENAI_MODEL", "DEEPSEEK_MODEL", "DEEPSEEK_BASE_URL", "AI_PROVIDER"];
 
 function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
@@ -60,6 +60,12 @@ console.log("Environment variables");
 for (const name of requiredEnv) {
   const ok = isSet(name);
   printStatus(name, ok);
+  if (!ok) failed = true;
+}
+
+for (const group of requiredOneOfEnv) {
+  const ok = group.some(isSet);
+  printStatus(group.join(" or "), ok, "required for AI-written full reports");
   if (!ok) failed = true;
 }
 
