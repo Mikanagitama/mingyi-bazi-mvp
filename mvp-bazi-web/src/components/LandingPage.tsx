@@ -106,15 +106,6 @@ export function LandingPage({ copy }: { copy: Copy }) {
         <p>{copy.landing.footerSub}</p>
         <Link className="primaryButton" href={readingHref}>{copy.landing.primary}</Link>
       </section>
-
-      <footer className="footer">
-        <span>MINGYI Bazi Destiny</span>
-        <Link href="/privacy">Privacy</Link>
-        <Link href="/terms">Terms</Link>
-        <Link href="/refund">Refund</Link>
-        <Link href="/disclaimer">Disclaimer</Link>
-        <Link href="/methodology">Methodology</Link>
-      </footer>
     </main>
   );
 }

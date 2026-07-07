@@ -81,9 +81,12 @@ export const zh = {
     elements: "五行",
     accuracy: "准确度说明",
     lockedTitle: "解锁完整报告",
-    lockedText: "事业、财运、感情、年度趋势、幸运指南和实用建议将在付费后开放。",
+    lockedText: "事业、财运、感情、未来30天能量、年度节奏和实用建议将在付费后开放。",
     unlock: "解锁完整报告 — 500 日元",
-    secure: "通过 Stripe Checkout 安全支付。",
+    secure: "一次性付费。通过 Stripe Checkout 安全支付。即时数字访问。不会重复扣费。",
+    trustBullets: ["一次性付费", "Stripe 安全支付", "即时数字访问", "不会重复扣费"],
+    privacyReassurance: "你的出生资料只用于生成报告。我们不会出售你的个人信息。",
+    refundReassurance: "如果你已付款但无法访问报告，请联系支持，我们会帮助恢复或退款。",
     paid: "支付已确认",
     copy: "复制报告",
     print: "打印 / 保存 PDF",
@@ -96,5 +99,15 @@ export const zh = {
     disclaimer: "免责声明",
     methodology: "方法说明",
     body: "MINGYI 提供的是文化解读、娱乐参考和自我理解工具，不构成医疗、法律、财务或心理建议，也不保证任何具体结果。"
+  },
+  footer: {
+    links: [
+      ["隐私政策", "/privacy"],
+      ["服务条款", "/terms"],
+      ["退款政策", "/refund"],
+      ["免责声明", "/disclaimer"],
+      ["方法说明", "/methodology"],
+      ["联系支持", "/contact"]
+    ] as Array<[string, string]>
   }
 };

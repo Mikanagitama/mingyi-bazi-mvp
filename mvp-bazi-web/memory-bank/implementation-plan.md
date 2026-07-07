@@ -4,7 +4,7 @@
 
 ## Current Gate
 
-P0.6 implementation is deployed and smoke-checked. The next implementation stage is P0.7: Preview Page + Trust Conversion Polish.
+P0.7 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.7 is accepted is P0.8. Do not start P0.8 until P0.7 is deployed, smoke-checked, and recorded as accepted.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
@@ -105,14 +105,19 @@ Make the free preview useful and conversion-ready without leaking paid content.
 
 ### Steps
 
-- [ ] Structure preview around Bazi Preview, Basic Chart Summary, Day Master, Five Elements Snapshot, Short Personality Insight, Locked Full Report Modules, and Unlock CTA.
-- [ ] Show locked cards for the paid modules.
-- [ ] Add one-time payment, Stripe checkout, instant digital access, and no recurring charge text near CTA.
-- [ ] Add privacy and access/refund reassurance.
-- [ ] Ensure legal footer links appear on relevant pages.
-- [ ] Strengthen methodology language.
-- [ ] Run relevant tests, build, and P0 smoke.
-- [ ] Update progress and commit.
+- [x] Structure preview around Bazi Preview, Basic Chart Summary, Day Master, Five Elements Snapshot, Short Personality Insight, Locked Full Report Modules, and Unlock CTA.
+- [x] Show locked cards for the paid modules.
+- [x] Add one-time payment, Stripe checkout, instant digital access, and no recurring charge text near CTA.
+- [x] Add privacy and access/refund reassurance.
+- [x] Ensure legal footer links appear on relevant pages.
+- [x] Strengthen methodology language.
+- [x] Run relevant tests, build, and P0 smoke.
+- [x] Update progress and commit.
+
+### Deployment Verification
+
+- Pending deploy of P0.7 preview/trust changes.
+- Production checks should confirm `/contact`, shared footer links, preview trust text, and methodology copy are live.
 
 ## Stage P0.8: Stability, Logging, Anti-Abuse, Recovery
 

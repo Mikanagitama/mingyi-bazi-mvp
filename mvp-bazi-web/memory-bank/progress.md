@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.6 Landing Page + Birth Form Conversion Polish is implemented, pushed, deployed, and smoke-checked.
+P0.7 Preview Page + Trust Conversion Polish is implemented locally and ready to deploy.
 
 ### Next Required Action
 
-Start P0.7 Preview Page + Trust Conversion Polish. The manual Stripe test-card flow remains a final P1 verification item.
+Commit, push, deploy, and verify that the production preview page, methodology page, contact page, and shared footer show the P0.7 trust conversion copy. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -40,14 +40,12 @@ Start P0.7 Preview Page + Trust Conversion Polish. The manual Stripe test-card f
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against current production baseline.
-- Production homepage probe confirmed the P0.6 headline, method section, and Current 30-Day Energy card are live.
-- Production `npm run smoke:p0` passed after deployment.
 - Production status API probe passed after deploy: `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
 - Production full-page HTTP probe passed: `/reading/[id]/full?session_id=...` includes the waiting UI and does not leak full report content before payment.
 - Production signed Stripe webhook probe passed: webhook returned 200, payment status became paid, report state became ready, AI generation mode was `ai`, 8 full-report sections were present, and the paid full page rendered.
 - Production `npm run smoke:p0` passed after deploy.
 
-### Known Current Product Gaps After P0.6
+### Known Current Product Gaps After P0.7
 
 - Full report UI is still mostly prose and needs stronger Bazi visual evidence.
 - Sample Report page does not exist yet.
@@ -67,6 +65,26 @@ Start P0.7 Preview Page + Trust Conversion Polish. The manual Stripe test-card f
 ### P0.6 Verification
 
 - `npm test` passed: 7 files, 27 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against current production baseline.
+- Production homepage probe confirmed the P0.6 headline, method section, and Current 30-Day Energy card are live.
+- Production `npm run smoke:p0` passed after deployment.
+
+### P0.7 Implementation Notes
+
+- Expanded free preview locked modules to include Career Direction, Wealth Pattern, Love & Relationships, Current 30-Day Energy, 2026 Yearly Timing, and Practical Advice.
+- Added a Day Master card to the free preview.
+- Added payment trust bullets near checkout: one-time payment, Stripe checkout, instant digital access, and no recurring charge.
+- Added privacy reassurance and access/refund reassurance near the checkout CTA.
+- Added shared footer links across all pages: Privacy Policy, Terms of Service, Refund Policy, Disclaimer, Methodology, and Contact.
+- Added `/contact` support page.
+- Strengthened methodology copy to explain Four Pillars, Five Elements, Ten Gods, timing cycles, AI-after-calculation, and professional-advice boundaries.
+
+### P0.7 Verification
+
+- `npm test` passed: 8 files, 30 tests.
 - `npm run build` passed.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.

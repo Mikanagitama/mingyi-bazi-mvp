@@ -36,7 +36,9 @@ function enPreview(chart: BaziChart): FreeReport {
       { title: "Career Direction", body: "Unlock work strengths, direction, and practical career guidance." },
       { title: "Wealth Pattern", body: "Unlock money rhythm, planning signals, and risk-aware reflection." },
       { title: "Love & Relationships", body: "Unlock patterns around affection, partnership, and social support." },
-      { title: "2026 Yearly Timing", body: "Unlock this year's opportunities, pressure points, and timing notes." }
+      { title: "Current 30-Day Energy", body: "Unlock near-term emotional energy, work momentum, relationship atmosphere, and practical focus." },
+      { title: "2026 Yearly Timing", body: "Unlock this year's opportunities, pressure points, and timing notes." },
+      { title: "Practical Advice", body: "Unlock grounded suggestions for timing, decisions, and everyday self-reflection." }
     ]
   };
 }
@@ -68,7 +70,9 @@ function zhPreview(chart: BaziChart): FreeReport {
       { title: "事业方向", body: "解锁工作优势、方向感和职业建议。" },
       { title: "财富模式", body: "解锁财富节奏、规划信号和风险边界。" },
       { title: "感情关系", body: "解锁亲密关系、人际互动和支持模式。" },
-      { title: "2026年度节奏", body: "解锁今年的机会、压力点和时间提示。" }
+      { title: "未来30天能量", body: "解锁近期情绪能量、工作节奏、关系氛围和行动重点。" },
+      { title: "2026年度节奏", body: "解锁今年的机会、压力点和时间提示。" },
+      { title: "实用建议", body: "解锁关于时间、决策和日常自我观察的实用建议。" }
     ]
   };
 }

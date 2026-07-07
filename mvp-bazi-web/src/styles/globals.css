@@ -545,6 +545,24 @@ meter {
   height: 12px;
 }
 
+.dayMasterCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 22px;
+  margin: 18px 0;
+}
+
+.dayMasterCard h2 {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.dayMasterCard p {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .reportSections {
   display: grid;
   gap: 16px;
@@ -593,6 +611,23 @@ meter {
   display: grid;
   gap: 8px;
   justify-items: start;
+}
+
+.trustList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.trustList span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--muted);
+  padding: 8px 11px;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .reportActions {

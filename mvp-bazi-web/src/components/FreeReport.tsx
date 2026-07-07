@@ -25,6 +25,16 @@ export function FreeReport({ reading }: { reading: PublicReading }) {
         ))}
       </div>
 
+      <article className="dayMasterCard">
+        <p className="eyebrow">{copy.reading.dayMaster}</p>
+        <h2>{reading.chart.dayMaster.label}</h2>
+        <p>
+          {reading.language === "zh"
+            ? `日主代表你观察世界、回应压力和使用能量的核心方式。本盘日主属于${elementLabel(reading.chart.dayMaster.element, reading.language)}。`
+            : `The Day Master represents your core style for meeting pressure, opportunity, and relationships. This chart's Day Master is associated with ${elementLabel(reading.chart.dayMaster.element, reading.language)}.`}
+        </p>
+      </article>
+
       <div className="elementGrid">
         {Object.entries(reading.chart.elements).map(([element, count]) => (
           <div key={element}>
@@ -52,6 +62,13 @@ export function FreeReport({ reading }: { reading: PublicReading }) {
             <LockedSection key={section.title} section={section} />
           ))}
         </div>
+        <div className="trustList">
+          {copy.reading.trustBullets.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+        <p className="finePrint">{copy.reading.privacyReassurance}</p>
+        <p className="finePrint">{copy.reading.refundReassurance}</p>
         <CheckoutButton readingId={reading.id} label={copy.reading.unlock} secureText={copy.reading.secure} />
       </div>
     </section>
