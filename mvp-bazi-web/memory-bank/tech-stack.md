@@ -1,0 +1,71 @@
+# Mingyi Tech Stack
+
+## Application
+
+- Framework: Next.js `16.2.10`
+- UI: React `19.2.7`
+- Language: TypeScript
+- Styling: global CSS in `src/styles/globals.css`
+- Runtime target: Node.js `>=20.0.0`
+
+## Bazi Calculation
+
+- Library: `lunar-typescript`
+- Deterministic chart logic: `src/lib/bazi/chart.ts`
+- Data types: `src/lib/bazi/types.ts`
+- True solar time: implemented in chart calculation policy when location can be resolved
+
+## AI Report Generation
+
+- Default provider: DeepSeek
+- DeepSeek endpoint: chat completions through `DEEPSEEK_BASE_URL`
+- Optional fallback provider: OpenAI through `AI_PROVIDER=openai`
+- AI report entry: `src/lib/reports/ai-report.ts`
+- Deterministic fallback report: `src/lib/reports/full-report.ts`
+- Safety language guard: `src/lib/reports/safety.ts`
+
+## Payments
+
+- Provider: Stripe Checkout
+- Product model: one-time Full Bazi Report payment
+- Checkout creation: `src/app/api/checkout/route.ts`
+- Stripe helper: `src/lib/payments/stripe.ts`
+- Signed webhook: `src/app/api/stripe/webhook/route.ts`
+- Webhook application: `src/lib/payments/webhook.ts`
+
+## Database
+
+- Production database: Supabase Postgres through `DATABASE_URL`
+- Local fallback: JSON local store through `src/lib/db/client.ts`
+- Schema: `src/lib/db/schema.sql`
+- Current key tables: `readings`, `payments`, `reports`, `users`
+- RLS: enabled on schema tables
+
+## Verification
+
+- Unit/integration tests: Vitest
+- Test command: `npm test`
+- Build command: `npm run build`
+- Local DB dry run: `npm run db:setup:dry`
+- Production smoke: `npm run smoke:p0`
+- Combined verifier: `npm run verify`
+
+## Deployment
+
+- Hosting: Vercel
+- Production URL: `https://mingyi-bazi-mvp.vercel.app`
+- GitHub repository: `Mikanagitama/mingyi-bazi-mvp`
+- Working app directory: `D:\文档\算命\mvp-bazi-web`
+
+## Secret Boundaries
+
+These values must stay server-side only:
+
+- `DATABASE_URL`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WEBHOOK_SECRET`
+- `STRIPE_PRICE_ID`
+- `OPENAI_API_KEY`
+- `DEEPSEEK_API_KEY`
+- `ADMIN_UNLOCK_TOKEN`
+- `ADMIN_TOKEN`

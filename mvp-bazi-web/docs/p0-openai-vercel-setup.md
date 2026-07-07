@@ -1,6 +1,8 @@
-# P0 AI Provider Vercel Setup
+# P0/P1 AI Provider Vercel Setup
 
-Mingyi P0 is code-complete, but production is not AI-ready until Vercel has an AI provider key.
+Mingyi production uses DeepSeek by default. OpenAI remains supported only as an optional fallback when `AI_PROVIDER=openai`.
+
+P0 has already been verified with DeepSeek on production. Keep these settings stable while moving toward P1.
 
 ## Add Environment Variables
 
@@ -20,6 +22,14 @@ Mingyi P0 is code-complete, but production is not AI-ready until Vercel has an A
 7. Select `Production`, `Preview`, and `Development` if Vercel asks which environments should receive the value.
 8. Save.
 9. Redeploy the latest production deployment.
+
+## P1 Rules
+
+- Keep DeepSeek as the default provider.
+- Do not expose AI keys to frontend code.
+- Do not change the 8-section report contract without explicit product approval.
+- AI generation must keep deterministic Bazi calculation as the source of chart truth.
+- If AI fails, the fallback report may be shown, but internal provider errors should not be shown to customers.
 
 ## Verify
 
