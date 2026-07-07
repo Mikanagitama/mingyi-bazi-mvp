@@ -99,6 +99,33 @@ describe("AI full report generation", () => {
     expect(report.generation?.model).toBe("deepseek:deepseek-v4-flash");
   });
 
+  it("accepts DeepSeek JSON when the report is nested one level down", async () => {
+    process.env.OPENAI_API_KEY = "sk_deepseek_fake";
+    const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
+      ok: true,
+      json: async () => ({
+        choices: [
+          {
+            message: {
+              content: JSON.stringify({
+                report: {
+                  headline: "Your full Bazi reading is ready.",
+                  sections: aiSections
+                }
+              })
+            }
+          }
+        ]
+      })
+    } as Response);
+
+    const report = await generateFullReportWithAi(chart(), "en");
+
+    expect(fetchMock).toHaveBeenCalledOnce();
+    expect(report.generation?.mode).toBe("ai");
+    expect(report.sections).toHaveLength(8);
+  });
+
   it("retries AI generation and falls back safely on repeated failure", async () => {
     process.env.OPENAI_API_KEY = "sk_test_fake";
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
