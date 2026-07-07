@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.5 Payment-to-Full-Report UX Polish is implemented, pushed, and deployed to production.
+P0.6 Landing Page + Birth Form Conversion Polish is implemented locally and ready to deploy.
 
 ### Next Required Action
 
-Ask the user to run one Stripe test-card checkout in the browser to confirm the visible return flow. After P0.5 is accepted, the next stage is P0.6 Landing Page + Birth Form Conversion Polish.
+Commit, push, deploy, and verify that the production homepage and birth form show the P0.6 copy and helper text. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -45,9 +45,27 @@ Ask the user to run one Stripe test-card checkout in the browser to confirm the 
 - Production signed Stripe webhook probe passed: webhook returned 200, payment status became paid, report state became ready, AI generation mode was `ai`, 8 full-report sections were present, and the paid full page rendered.
 - Production `npm run smoke:p0` passed after deploy.
 
-### Known Current Product Gaps After P0.5
+### Known Current Product Gaps After P0.6
 
 - Full report UI is still mostly prose and needs stronger Bazi visual evidence.
 - Sample Report page does not exist yet.
 - P1 SEO pages and social/contact configuration are not implemented yet.
 - Manual Stripe test-card verification is still needed for final P0.5 acceptance.
+
+### P0.6 Implementation Notes
+
+- Updated English homepage positioning to "Ancient Chinese Bazi Reading, Explained by AI".
+- Changed primary English CTA to "Get My Free Preview".
+- Added Current 30-Day Energy to homepage discovery cards.
+- Added a Mingyi method section covering structured Bazi calculation, AI interpretation, true solar time, private data, secure checkout, and one-time payment.
+- Added true solar time helper text to the form.
+- Added unknown birth time helper text when that option is selected.
+- Updated Chinese copy to match the free-preview flow.
+
+### P0.6 Verification
+
+- `npm test` passed: 7 files, 27 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against current production baseline.

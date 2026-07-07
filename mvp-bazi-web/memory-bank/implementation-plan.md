@@ -4,7 +4,7 @@
 
 ## Current Gate
 
-P0.5 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.5 is accepted is P0.6. Do not start P0.6 until P0.5 is deployed, smoke-checked, and recorded as accepted.
+P0.6 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.6 is accepted is P0.7. Do not start P0.7 until P0.6 is deployed, smoke-checked, and recorded as accepted.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
@@ -72,16 +72,21 @@ Make the homepage and form clear enough for real English-speaking users.
 
 ### Steps
 
-- [ ] Update English homepage headline and CTA to focus on a free preview.
-- [ ] Add discover cards for Core Personality, Five Elements Balance, Career Direction, Wealth Pattern, Love & Relationships, and Current 30-Day Energy.
-- [ ] Add a clear Mingyi workflow section: structured Bazi first, AI interpretation second, true solar time supported, private birth data, secure checkout, one-time payment.
-- [ ] Add true solar time helper text.
-- [ ] Make unknown birth time a clear supported path.
-- [ ] Verify mobile input spacing.
-- [ ] Run relevant tests.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run smoke:p0`.
-- [ ] Update progress and commit.
+- [x] Update English homepage headline and CTA to focus on a free preview.
+- [x] Add discover cards for Core Personality, Five Elements Balance, Career Direction, Wealth Pattern, Love & Relationships, and Current 30-Day Energy.
+- [x] Add a clear Mingyi workflow section: structured Bazi first, AI interpretation second, true solar time supported, private birth data, secure checkout, one-time payment.
+- [x] Add true solar time helper text.
+- [x] Make unknown birth time a clear supported path.
+- [x] Verify mobile input spacing through responsive CSS constraints.
+- [x] Run relevant tests.
+- [x] Run `npm run build`.
+- [x] Run `npm run smoke:p0`.
+- [x] Update progress and commit.
+
+### Deployment Verification
+
+- Pending deploy of P0.6 copy/form changes.
+- Manual visual check after deploy should confirm homepage CTA, method section, and form helper text appear on production.
 
 ## Stage P0.7: Preview Page + Trust Conversion Polish
 

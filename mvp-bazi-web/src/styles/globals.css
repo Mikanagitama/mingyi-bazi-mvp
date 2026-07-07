@@ -356,6 +356,30 @@ h3 {
   flex: 0 0 64px;
 }
 
+.methodGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 34px;
+  text-align: left;
+}
+
+.methodGrid article {
+  border-top: 1px solid var(--line);
+  padding: 18px 4px 0;
+}
+
+.methodGrid h3 {
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.methodGrid p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
 .banner {
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -411,6 +435,13 @@ h3 {
   display: grid;
   gap: 8px;
   font-weight: 700;
+}
+
+.fieldHelp {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin: -8px 0 4px;
 }
 
 .formPanel input,
@@ -715,6 +746,7 @@ meter {
   .proofBand,
   .discoverGrid,
   .stepGrid,
+  .methodGrid,
   .chartGrid,
   .lockedGrid {
     grid-template-columns: 1fr 1fr;
@@ -752,6 +784,7 @@ meter {
   .proofBand,
   .discoverGrid,
   .stepGrid,
+  .methodGrid,
   .chartGrid,
   .lockedGrid {
     grid-template-columns: 1fr;

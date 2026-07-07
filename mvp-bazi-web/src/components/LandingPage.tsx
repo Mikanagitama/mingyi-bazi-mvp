@@ -88,6 +88,19 @@ export function LandingPage({ copy }: { copy: Copy }) {
         </div>
       </section>
 
+      <section className="section">
+        <p className="eyebrow">MINGYI METHOD</p>
+        <h2>{copy.landing.methodTitle}</h2>
+        <div className="methodGrid">
+          {copy.landing.method.map(([title, body]) => (
+            <article key={title}>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="banner">
         <h2>{copy.landing.footerCta}</h2>
         <p>{copy.landing.footerSub}</p>

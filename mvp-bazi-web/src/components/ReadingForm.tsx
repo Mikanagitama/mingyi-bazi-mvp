@@ -69,6 +69,7 @@ export function ReadingForm() {
         <input type="checkbox" checked={birthTimeUnknown} onChange={(event) => setBirthTimeUnknown(event.target.checked)} />
         <span>{copy.form.unknownTime}</span>
       </label>
+      {birthTimeUnknown ? <p className="fieldHelp">{copy.form.unknownTimeHelp}</p> : null}
       <label>
         {copy.form.gender}
         <select name="gender" defaultValue="unspecified">
@@ -100,6 +101,7 @@ export function ReadingForm() {
         <input type="checkbox" checked={trueSolarTime} onChange={(event) => setTrueSolarTime(event.target.checked)} />
         <span>{copy.form.trueSolarTime}</span>
       </label>
+      <p className="fieldHelp">{copy.form.trueSolarTimeHelp}</p>
       <label>
         {copy.form.userQuestion}
         <textarea name="userQuestion" placeholder={copy.form.userQuestionPlaceholder} maxLength={500} />
