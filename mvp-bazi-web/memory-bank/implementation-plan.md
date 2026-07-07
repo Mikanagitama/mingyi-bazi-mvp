@@ -4,7 +4,7 @@
 
 ## Current Gate
 
-P0.7 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.7 is accepted is P0.8. Do not start P0.8 until P0.7 is deployed, smoke-checked, and recorded as accepted.
+P0.7 implementation is deployed and smoke-checked. The next implementation stage is P0.8: Stability, Logging, Anti-Abuse, Recovery.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
@@ -116,8 +116,8 @@ Make the free preview useful and conversion-ready without leaking paid content.
 
 ### Deployment Verification
 
-- Pending deploy of P0.7 preview/trust changes.
-- Production checks should confirm `/contact`, shared footer links, preview trust text, and methodology copy are live.
+- Production checks confirmed `/contact`, shared footer links, preview trust text, locked modules, and methodology copy are live.
+- `npm run smoke:p0` passed after deployment.
 
 ## Stage P0.8: Stability, Logging, Anti-Abuse, Recovery
 

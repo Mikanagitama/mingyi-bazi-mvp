@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.7 Preview Page + Trust Conversion Polish is implemented locally and ready to deploy.
+P0.7 Preview Page + Trust Conversion Polish is implemented, pushed, deployed, and smoke-checked.
 
 ### Next Required Action
 
-Commit, push, deploy, and verify that the production preview page, methodology page, contact page, and shared footer show the P0.7 trust conversion copy. The manual Stripe test-card flow remains a final P1 verification item.
+Start P0.8 Stability, Logging, Anti-Abuse, Recovery. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -40,6 +40,8 @@ Commit, push, deploy, and verify that the production preview page, methodology p
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against current production baseline.
+- Production probe confirmed `/contact`, shared footer links, preview trust text, locked modules, and methodology copy are live.
+- Production `npm run smoke:p0` passed after deployment.
 - Production status API probe passed after deploy: `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
 - Production full-page HTTP probe passed: `/reading/[id]/full?session_id=...` includes the waiting UI and does not leak full report content before payment.
 - Production signed Stripe webhook probe passed: webhook returned 200, payment status became paid, report state became ready, AI generation mode was `ai`, 8 full-report sections were present, and the paid full page rendered.
