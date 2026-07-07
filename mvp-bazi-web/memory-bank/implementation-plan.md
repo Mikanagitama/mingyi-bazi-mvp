@@ -51,6 +51,7 @@ Make paid users feel guided after Stripe Checkout and prevent confusion during r
 ### Deployment Verification
 
 - Production status API probe confirmed `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
+- Production full-page HTTP probe confirmed `/reading/[id]/full?session_id=...` returns waiting UI text and does not leak full report content before payment.
 - `npm run smoke:p0` passed after deployment.
 - Manual Stripe test-card browser flow remains a human verification item because it requires completing checkout in Stripe.
 

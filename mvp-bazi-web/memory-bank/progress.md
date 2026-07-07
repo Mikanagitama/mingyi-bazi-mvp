@@ -41,6 +41,7 @@ Ask the user to run one Stripe test-card checkout in the browser to confirm the 
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against current production baseline.
 - Production status API probe passed after deploy: `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
+- Production full-page HTTP probe passed: `/reading/[id]/full?session_id=...` includes the waiting UI and does not leak full report content before payment.
 - Production `npm run smoke:p0` passed after deploy.
 
 ### Known Current Product Gaps After P0.5
