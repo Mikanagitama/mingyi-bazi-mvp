@@ -1,4 +1,5 @@
 import type { PublicReading } from "@/lib/bazi/types";
+import Link from "next/link";
 import { elementLabel } from "@/lib/bazi/chart";
 import { en } from "@/lib/i18n/en";
 import { zh } from "@/lib/i18n/zh";
@@ -69,6 +70,9 @@ export function FreeReport({ reading }: { reading: PublicReading }) {
         </div>
         <p className="finePrint">{copy.reading.privacyReassurance}</p>
         <p className="finePrint">{copy.reading.refundReassurance}</p>
+        <Link className="sampleLink" href="/sample-report">
+          {reading.language === "zh" ? "先看样例报告" : "View a sample full report"}
+        </Link>
         <CheckoutButton readingId={reading.id} label={copy.reading.unlock} secureText={copy.reading.secure} />
       </div>
     </section>

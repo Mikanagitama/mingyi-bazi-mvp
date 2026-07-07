@@ -182,6 +182,25 @@ Show what a paid report looks like before payment using fake data only.
 - It includes chart, elements, personality, career, wealth, relationships, current energy, yearly timing, and practical advice examples.
 - Build and P0 smoke pass.
 
+### Steps
+
+- [x] Add fake sample report data only.
+- [x] Add `/sample-report` route.
+- [x] Show fake profile, Four Pillars chart, Five Elements balance, and the 8 full-report section shape.
+- [x] Clearly state the sample is not based on the user's birth details.
+- [x] Link to Sample Report from homepage and preview page.
+- [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
+- [ ] Commit, push, and verify deployment.
+
+### Verification
+
+- `npm test -- src/tests/p11-sample-report.test.ts` passed.
+- `npm test` passed: 10 files, 35 tests.
+- `npm run build` passed and listed `/sample-report`.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+
 ## Stage P1.2: Report Visualization
 
 ### Objective

@@ -20,7 +20,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
         </Link>
         <nav>
           <a href="#how">{copy.nav.how}</a>
-          <a href="#sample">{copy.nav.sample}</a>
+          <Link href="/sample-report">{copy.nav.sample}</Link>
           <Link href="/privacy">{copy.nav.privacy}</Link>
           <LanguageSwitch language={copy.lang} />
           <Link className="navCta" href={readingHref}>{copy.nav.cta}</Link>
@@ -34,6 +34,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
           <p className="subtitle">{copy.landing.subtitle}</p>
           <div className="heroActions">
             <Link className="primaryButton" href={readingHref}>{copy.landing.primary}</Link>
+            <Link className="secondaryButton" href="/sample-report">{copy.nav.sample}</Link>
             <span>{copy.landing.trust}</span>
           </div>
         </div>

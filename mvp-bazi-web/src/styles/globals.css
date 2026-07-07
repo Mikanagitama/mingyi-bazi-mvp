@@ -106,6 +106,14 @@ textarea {
 }
 
 .navCta,
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navCta,
 .primaryButton {
   border: 0;
   background: var(--ink);
@@ -118,6 +126,16 @@ textarea {
 
 .navCta {
   padding: 12px 18px;
+}
+
+.secondaryButton,
+.sampleLink {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--ink);
+  padding: 13px 18px;
+  font-weight: 700;
 }
 
 .hero {
@@ -651,6 +669,56 @@ meter {
   margin-top: 22px;
 }
 
+.sampleReport h2 {
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.sampleNotice {
+  border-left: 4px solid var(--seal);
+  padding: 12px 16px;
+  background: rgba(158, 61, 47, 0.08);
+  color: var(--ink);
+  line-height: 1.7;
+}
+
+.sampleProfile {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.sampleProfile article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 20px;
+}
+
+.sampleProfile span,
+.sampleProfile small {
+  display: block;
+  color: var(--muted);
+}
+
+.sampleProfile strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.sampleCta {
+  margin-top: 24px;
+}
+
+.sampleLink {
+  width: fit-content;
+  margin: 8px 0 6px;
+}
+
 .waitingReport {
   display: grid;
   gap: 18px;
@@ -783,7 +851,8 @@ meter {
   .stepGrid,
   .methodGrid,
   .chartGrid,
-  .lockedGrid {
+  .lockedGrid,
+  .sampleProfile {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -821,7 +890,8 @@ meter {
   .stepGrid,
   .methodGrid,
   .chartGrid,
-  .lockedGrid {
+  .lockedGrid,
+  .sampleProfile {
     grid-template-columns: 1fr;
   }
 
