@@ -2,6 +2,12 @@
 
 日期：2026-07-06
 
+生产网址：
+
+```text
+https://mingyi-bazi-mvp.vercel.app/
+```
+
 ## 当前已完成
 
 - 已创建独立 Next.js 项目：`mvp-bazi-web/`
@@ -47,6 +53,12 @@ npm run verify
 - `/api/health` 在缺少部署配置时返回 `ok: false` 和明确 blocker
 - `npm run preflight` 在缺少生产环境变量时会失败并列出缺失项
 - GitHub 仓库已绑定并推送到 `Mikanagitama/mingyi-bazi-mvp` 的 `main` 分支
+- 生产环境 `/api/health` 已返回 `ok: true`
+- 生产环境可创建免费八字预览
+- Stripe test mode 可创建 Checkout Session
+- Stripe test payment 已成功完成，当前测试价格为 `JP¥500`
+- Webhook 已将测试报告状态更新为 `paid`
+- 付费完整报告刷新后仍可访问
 
 ## 上线前必须准备
 
@@ -90,7 +102,7 @@ npm run db:setup
 需要在 Stripe Dashboard 创建：
 
 - Product：`Full Bazi Reading`
-- Price：`2.99 USD`
+- 当前测试 Price：`JP¥500`
 - Mode：one-time payment
 
 需要配置：
@@ -104,7 +116,7 @@ STRIPE_WEBHOOK_SECRET
 Webhook endpoint：
 
 ```text
-https://你的域名/api/stripe/webhook
+https://mingyi-bazi-mvp.vercel.app/api/stripe/webhook
 ```
 
 监听事件：
@@ -142,7 +154,7 @@ npm run preflight
 - 中文首页可公网访问
 - 免费报告可生成
 - 未付费访问 `/reading/[id]/full` 仍显示锁定/预览
-- Stripe test mode 可以完成 $2.99 支付
+- Stripe test mode 可以完成当前 `JP¥500` 测试支付
 - webhook 成功后报告变为 paid
 - paid 报告刷新后仍可访问
 - 移动端 390px 宽度无横向滚动
@@ -151,12 +163,13 @@ npm run preflight
 
 ## 当前阻塞项
 
-外部上线需要用户提供或完成：
+MVP 测试上线闭环已完成。后续如果要正式商业化，还需要：
 
-- Vercel 账号/项目授权
-- Stripe test key、price id、webhook secret
-
-在没有这些外部凭证前，本地 MVP 已可运行，但不能完成真实公网部署和 Stripe test checkout。
+- 决定正式价格是否继续 `JP¥500`，还是改回 `$2.99 USD`
+- 将 Stripe 从 Test mode 切到 Live mode
+- 配置正式 live secret key、live price id、live webhook secret
+- 绑定自定义域名
+- 根据销售地区补充税务/VAT/退款政策
 
 已检查 Vercel CLI：
 
