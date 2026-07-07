@@ -11,6 +11,7 @@
     "db:setup:dry": "node scripts/db-setup.mjs --dry-run",
     "preflight": "node scripts/preflight.mjs",
     "preflight:smoke": "node scripts/preflight.test.mjs",
+    "smoke:p0": "node scripts/p0-production-smoke.mjs",
     "verify": "npm test && npm run build && npm run db:setup:dry && npm run preflight:smoke"
   },
   "engines": {
