@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.4 Future Product Entry Points is implemented locally and verified. Commit, push, deployment, and post-deploy homepage smoke are next.
+P1.4 Future Product Entry Points is implemented, pushed, deployed, and smoke-checked.
 
 ### Next Required Action
 
-Commit and push P1.4, then verify production homepage shows the future product cards without changing checkout. The manual Stripe test-card flow remains a final P1 verification item.
+Start P1.5 Basic SEO + Contact + Social Links. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -109,6 +109,8 @@ Commit and push P1.4, then verify production homepage shows the future product c
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy homepage smoke passed for the future product cards.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy current-energy smoke passed for a production paid test reading.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - `npm run db:setup` completed successfully after loading local environment variables.

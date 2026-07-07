@@ -310,7 +310,7 @@ Prepare future monetization without implementing separate products.
 - [x] Keep cards non-disruptive and clearly separate from the current Full Bazi Report purchase flow.
 - [x] Avoid adding credits, subscriptions, separate checkout, notify storage, or AI chat.
 - [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
-- [ ] Commit, push, and verify deployment.
+- [x] Commit, push, and verify deployment.
 
 ### Verification
 
@@ -320,6 +320,8 @@ Prepare future monetization without implementing separate products.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy homepage smoke passed: production showed Future Report Editions, Wealth Pattern Report, Love & Relationship Report, and Coming Soon labels.
+- Post-deploy `npm run smoke:p0` passed.
 
 ## Stage P1.5: Basic SEO + Contact + Social Links
 
