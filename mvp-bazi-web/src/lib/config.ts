@@ -16,6 +16,9 @@ export const config = {
   },
   get openAiKey() {
     return cleanEnv(process.env.OPENAI_API_KEY);
+  },
+  get openAiModel() {
+    return cleanEnv(process.env.OPENAI_MODEL) || "gpt-5.2-mini";
   }
 };
 

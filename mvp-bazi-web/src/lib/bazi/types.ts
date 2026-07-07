@@ -109,6 +109,12 @@ export type FullReport = {
   headline: string;
   sections: ReportSection[];
   disclaimer: string;
+  generation?: {
+    mode: "ai" | "template";
+    model?: string;
+    attempts?: number;
+    fallbackReason?: string;
+  };
 };
 
 export type PaymentStatus = "free" | "paid";

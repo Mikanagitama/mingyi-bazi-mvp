@@ -7,6 +7,7 @@ import { applyStripeEvent } from "@/lib/payments/webhook";
 describe("Stripe webhook application", () => {
   beforeEach(() => {
     delete process.env.DATABASE_URL;
+    delete process.env.OPENAI_API_KEY;
     delete process.env.VERCEL;
     process.env.NODE_ENV = "test";
     process.env.MINGYI_LOCAL_STORE_NAME = `stripe-webhook-${Date.now()}-${Math.random()}.json`;

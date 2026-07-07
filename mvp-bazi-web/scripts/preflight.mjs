@@ -26,7 +26,7 @@ const requiredEnv = [
   "NEXT_PUBLIC_SITE_URL"
 ];
 
-const optionalEnv = ["OPENAI_API_KEY"];
+const optionalEnv = ["OPENAI_API_KEY", "OPENAI_MODEL"];
 
 function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
@@ -63,7 +63,7 @@ for (const name of requiredEnv) {
 }
 
 for (const name of optionalEnv) {
-  printStatus(name, isSet(name), "optional for v0.1 template reports", true);
+  printStatus(name, isSet(name), "optional for AI-written full reports; template fallback remains available", true);
 }
 
 console.log("");

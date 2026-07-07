@@ -53,7 +53,8 @@ function english(chart: BaziChart): FullReport {
     language: "en" as const,
     headline: "Your full Bazi reading is unlocked.",
     sections,
-    disclaimer: disclaimer("en")
+    disclaimer: disclaimer("en"),
+    generation: { mode: "template" as const }
   };
   assertSafeReportText(JSON.stringify(report));
   return report;
@@ -102,7 +103,8 @@ function chinese(chart: BaziChart): FullReport {
     language: "zh" as const,
     headline: "你的完整八字解读已解锁。",
     sections,
-    disclaimer: disclaimer("zh")
+    disclaimer: disclaimer("zh"),
+    generation: { mode: "template" as const }
   };
   assertSafeReportText(JSON.stringify(report));
   return report;

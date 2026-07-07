@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import type { BirthInput, FullReport, PublicReading, ReadingRecord } from "../bazi/types";
 import { generateBaziChart } from "../bazi/chart";
 import { generateFreeReport } from "../reports/free-report";
-import { generateFullReport } from "../reports/full-report";
+import { generateFullReportWithAi } from "../reports/ai-report";
 import { hasDatabaseUrl, readLocalStore, sql, writeLocalStore } from "./client";
 
 function now() {
@@ -121,7 +121,7 @@ export async function ensureFullReport(id: string): Promise<FullReport | null> {
   if (record.fullReport) {
     return record.fullReport;
   }
-  const report = generateFullReport(record.chart, record.language);
+  const report = await generateFullReportWithAi(record.chart, record.language);
   await saveFullReport(id, report);
   return report;
 }
@@ -218,5 +218,5 @@ async function ensureGeneratedPaidReport(readingId: string) {
   if (!record) {
     throw new Error("Reading not found.");
   }
-  return record.fullReport || generateFullReport(record.chart, record.language);
+  return record.fullReport || generateFullReportWithAi(record.chart, record.language);
 }
