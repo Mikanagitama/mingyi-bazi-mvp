@@ -9,12 +9,25 @@ describe("Bazi chart generation", () => {
       birthTime: "09:30",
       birthTimeUnknown: false,
       language: "en",
-      gender: "unspecified"
+      gender: "female",
+      birthPlace: "Tokyo",
+      timezone: "Asia/Tokyo",
+      trueSolarTime: true,
+      userQuestion: "What should I focus on?"
     });
 
     expect(chart.pillars).toHaveLength(4);
     expect(chart.dayMaster.stem).toMatch(/^[甲乙丙丁戊己庚辛壬癸]$/);
     expect(chart.elements.wood + chart.elements.fire + chart.elements.earth + chart.elements.metal + chart.elements.water).toBeGreaterThanOrEqual(8);
+    expect(chart.day_master).toEqual(chart.dayMaster);
+    expect(chart.five_elements).toEqual(chart.elements);
+    expect(chart.ten_gods).toHaveLength(4);
+    expect(chart.hidden_stems.day.length).toBeGreaterThan(0);
+    expect(chart.nayin.year).toBeTruthy();
+    expect(chart.luck_pillars.length).toBeGreaterThan(0);
+    expect(chart.annual_transits[0].year).toBe(2026);
+    expect(chart.calculation_policy.true_solar_time_requested).toBe(true);
+    expect(chart.calculation_policy.true_solar_time_applied).toBe(false);
   });
 
   it("marks lower confidence when exact birth time is unknown", () => {
@@ -39,7 +52,7 @@ describe("Bazi chart generation", () => {
     const report = generateFreeReport(chart, "en");
 
     expect(report.sections.length).toBeGreaterThan(0);
-    expect(report.lockedSections.map((section) => section.title)).toContain("Career & Wealth");
+    expect(report.lockedSections.map((section) => section.title)).toContain("Career Direction");
     expect(JSON.stringify(report)).not.toContain("Your full Bazi reading is unlocked");
   });
 });

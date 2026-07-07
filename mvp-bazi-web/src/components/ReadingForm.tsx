@@ -11,6 +11,7 @@ export function ReadingForm() {
   const initialLang = searchParams.get("lang") === "zh" ? "zh" : "en";
   const [language, setLanguage] = useState<"en" | "zh">(initialLang);
   const [birthTimeUnknown, setBirthTimeUnknown] = useState(false);
+  const [trueSolarTime, setTrueSolarTime] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const copy = useMemo(() => (language === "zh" ? zh : en), [language]);
@@ -26,6 +27,10 @@ export function ReadingForm() {
       birthDate: String(formData.get("birthDate") || ""),
       birthTime: birthTimeUnknown ? undefined : String(formData.get("birthTime") || ""),
       birthTimeUnknown,
+      birthPlace: String(formData.get("birthPlace") || ""),
+      timezone: String(formData.get("timezone") || "auto"),
+      trueSolarTime,
+      userQuestion: String(formData.get("userQuestion") || ""),
       language
     };
 
@@ -72,6 +77,32 @@ export function ReadingForm() {
           <option value="male">{copy.form.male}</option>
           <option value="unspecified">{copy.form.other}</option>
         </select>
+      </label>
+      <label>
+        {copy.form.birthPlace}
+        <input name="birthPlace" placeholder={copy.form.birthPlacePlaceholder} maxLength={120} />
+      </label>
+      <label>
+        {copy.form.timezone}
+        <select name="timezone" defaultValue="auto">
+          <option value="auto">{copy.form.timezoneAuto}</option>
+          <option value="America/New_York">America/New_York</option>
+          <option value="America/Los_Angeles">America/Los_Angeles</option>
+          <option value="Europe/London">Europe/London</option>
+          <option value="Europe/Paris">Europe/Paris</option>
+          <option value="Asia/Tokyo">Asia/Tokyo</option>
+          <option value="Asia/Shanghai">Asia/Shanghai</option>
+          <option value="Asia/Singapore">Asia/Singapore</option>
+          <option value="Australia/Sydney">Australia/Sydney</option>
+        </select>
+      </label>
+      <label className="checkRow">
+        <input type="checkbox" checked={trueSolarTime} onChange={(event) => setTrueSolarTime(event.target.checked)} />
+        <span>{copy.form.trueSolarTime}</span>
+      </label>
+      <label>
+        {copy.form.userQuestion}
+        <textarea name="userQuestion" placeholder={copy.form.userQuestionPlaceholder} maxLength={500} />
       </label>
       <label>
         {copy.form.language}

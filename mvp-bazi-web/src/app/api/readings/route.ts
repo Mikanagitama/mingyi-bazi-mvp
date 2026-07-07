@@ -19,6 +19,10 @@ export async function POST(request: Request) {
       birthDate: String(body.birthDate || ""),
       birthTime: typeof body.birthTime === "string" ? body.birthTime : undefined,
       birthTimeUnknown: Boolean(body.birthTimeUnknown),
+      birthPlace: typeof body.birthPlace === "string" ? body.birthPlace.trim().slice(0, 120) : undefined,
+      timezone: typeof body.timezone === "string" ? body.timezone.trim().slice(0, 80) : undefined,
+      trueSolarTime: Boolean(body.trueSolarTime),
+      userQuestion: typeof body.userQuestion === "string" ? body.userQuestion.trim().slice(0, 500) : undefined,
       language: parseLanguage(body.language)
     };
 

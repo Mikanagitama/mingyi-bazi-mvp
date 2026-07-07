@@ -11,6 +11,7 @@ type LocalStore = {
     id: string;
     readingId: string;
     stripeSessionId?: string;
+    stripeEventId?: string;
     stripePaymentIntent?: string;
     amount: number;
     currency: string;

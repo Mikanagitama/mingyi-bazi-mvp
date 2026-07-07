@@ -34,7 +34,8 @@ a {
 
 button,
 input,
-select {
+select,
+textarea {
   font: inherit;
 }
 
@@ -413,13 +414,19 @@ h3 {
 }
 
 .formPanel input,
-.formPanel select {
+.formPanel select,
+.formPanel textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 14px 12px;
   background: rgba(255, 255, 255, 0.78);
   color: var(--ink);
+}
+
+.formPanel textarea {
+  min-height: 116px;
+  resize: vertical;
 }
 
 .checkRow {

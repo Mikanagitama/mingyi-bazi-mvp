@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import type Stripe from "stripe";
-import { resetLocalStoreForTests } from "@/lib/db/client";
+import { readLocalStore, resetLocalStoreForTests } from "@/lib/db/client";
 import { createReading, getReading } from "@/lib/db/readings";
 import { applyStripeEvent } from "@/lib/payments/webhook";
 
@@ -31,8 +31,8 @@ describe("Stripe webhook application", () => {
           id: "cs_test_paid",
           object: "checkout.session",
           metadata: { reading_id: reading.id, product: "full_bazi_reading", language: "en" },
-          amount_total: 299,
-          currency: "usd",
+          amount_total: 500,
+          currency: "jpy",
           payment_intent: "pi_test_paid",
           customer_details: { email: "reader@example.com" }
         }
@@ -57,5 +57,37 @@ describe("Stripe webhook application", () => {
     } as Stripe.Event;
 
     await expect(applyStripeEvent(event)).resolves.toEqual({ handled: false });
+  });
+
+  it("does not duplicate payment rows when Stripe retries the same event", async () => {
+    const reading = await createReading({
+      birthDate: "1988-11-20",
+      birthTime: "21:15",
+      birthTimeUnknown: false,
+      language: "en",
+      gender: "unspecified"
+    });
+
+    const event = {
+      id: "evt_retry_once",
+      object: "event",
+      type: "checkout.session.completed",
+      data: {
+        object: {
+          id: "cs_test_retry",
+          object: "checkout.session",
+          metadata: { reading_id: reading.id, product: "full_bazi_reading", language: "en" },
+          amount_total: 500,
+          currency: "jpy",
+          payment_intent: "pi_test_retry"
+        }
+      }
+    } as Stripe.Event;
+
+    await applyStripeEvent(event);
+    await applyStripeEvent(event);
+
+    const store = readLocalStore();
+    expect(store.payments.filter((payment) => payment.stripeEventId === "evt_retry_once")).toHaveLength(1);
   });
 });

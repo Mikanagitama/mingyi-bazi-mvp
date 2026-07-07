@@ -41,8 +41,8 @@ describe("reading access control", () => {
       readingId: reading.id,
       stripeSessionId: "cs_test_access",
       stripePaymentIntent: "pi_test_access",
-      amount: 299,
-      currency: "usd"
+      amount: 500,
+      currency: "jpy"
     });
 
     const publicReading = await getReading(reading.id);
@@ -50,6 +50,15 @@ describe("reading access control", () => {
 
     expect(publicReading?.paymentStatus).toBe("paid");
     expect(publicReading?.fullReport?.headline).toContain("full Bazi reading");
-    expect(fullReport?.sections.length).toBeGreaterThan(8);
+    expect(fullReport?.sections.map((section) => section.title)).toEqual([
+      "Core Personality",
+      "Five Elements Balance",
+      "Career Direction",
+      "Wealth Pattern",
+      "Love & Relationships",
+      "Current 30-Day Energy",
+      "2026 Yearly Timing",
+      "Practical Advice"
+    ]);
   });
 });

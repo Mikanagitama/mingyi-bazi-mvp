@@ -33,10 +33,10 @@ function enPreview(chart: BaziChart): FreeReport {
     summary: "This preview opens the chart structure and gives you a first plain-language interpretation before the full reading.",
     sections,
     lockedSections: [
-      { title: "Career & Wealth", body: "Unlock work strengths, money timing, and practical career guidance." },
-      { title: "Relationships", body: "Unlock patterns around affection, partnership, and social support." },
-      { title: "Yearly Forecast", body: "Unlock this year's opportunities, pressure points, and timing notes." },
-      { title: "Lucky Guide", body: "Unlock supportive elements, colors, directions, and daily-life suggestions." }
+      { title: "Career Direction", body: "Unlock work strengths, direction, and practical career guidance." },
+      { title: "Wealth Pattern", body: "Unlock money rhythm, planning signals, and risk-aware reflection." },
+      { title: "Love & Relationships", body: "Unlock patterns around affection, partnership, and social support." },
+      { title: "2026 Yearly Timing", body: "Unlock this year's opportunities, pressure points, and timing notes." }
     ]
   };
 }
@@ -65,10 +65,10 @@ function zhPreview(chart: BaziChart): FreeReport {
     summary: "这份预览先打开命盘结构，并用白话给你第一层解读。完整内容可在付费后解锁。",
     sections,
     lockedSections: [
-      { title: "事业与财运", body: "解锁工作优势、财富节奏和职业建议。" },
+      { title: "事业方向", body: "解锁工作优势、方向感和职业建议。" },
+      { title: "财富模式", body: "解锁财富节奏、规划信号和风险边界。" },
       { title: "感情关系", body: "解锁亲密关系、人际互动和支持模式。" },
-      { title: "年度趋势", body: "解锁今年的机会、压力点和时间提示。" },
-      { title: "幸运指南", body: "解锁有帮助的五行、颜色、方向和生活建议。" }
+      { title: "2026年度节奏", body: "解锁今年的机会、压力点和时间提示。" }
     ]
   };
 }

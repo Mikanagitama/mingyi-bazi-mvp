@@ -25,6 +25,10 @@ function mapDbRow(row: Record<string, unknown>): ReadingRecord {
     birthDate: String(row.birth_date),
     birthTime: row.birth_time ? String(row.birth_time) : undefined,
     birthTimeUnknown: Boolean(row.birth_time_unknown),
+    birthPlace: row.birth_place ? String(row.birth_place) : undefined,
+    timezone: row.timezone ? String(row.timezone) : undefined,
+    trueSolarTime: Boolean(row.true_solar_time),
+    userQuestion: row.user_question ? String(row.user_question) : undefined,
     language: row.language as ReadingRecord["language"],
     chart: row.chart_json as ReadingRecord["chart"],
     freeReport: row.free_report_json as ReadingRecord["freeReport"],
@@ -46,6 +50,10 @@ export async function createReading(input: BirthInput): Promise<PublicReading> {
     birthDate: input.birthDate,
     birthTime: input.birthTime,
     birthTimeUnknown: input.birthTimeUnknown,
+    birthPlace: input.birthPlace,
+    timezone: input.timezone,
+    trueSolarTime: input.trueSolarTime,
+    userQuestion: input.userQuestion,
     language: input.language,
     chart,
     freeReport,
@@ -56,19 +64,30 @@ export async function createReading(input: BirthInput): Promise<PublicReading> {
 
   if (hasDatabaseUrl()) {
     const db = sql();
-    const [row] = await db`
-      insert into readings (
-        id, name, gender, birth_date, birth_time, birth_time_unknown, language,
-        chart_json, free_report_json, payment_status, created_at, updated_at
-      )
-      values (
-        ${record.id}, ${record.name || null}, ${record.gender || null}, ${record.birthDate},
-        ${record.birthTime || null}, ${record.birthTimeUnknown}, ${record.language},
-        ${db.json(record.chart)}, ${db.json(record.freeReport)}, ${record.paymentStatus},
-        ${record.createdAt}, ${record.updatedAt}
-      )
-      returning *
-    `;
+    const [row] = await db.begin(async (tx) => {
+      const rows = await tx`
+        insert into readings (
+          id, name, gender, birth_date, birth_time, birth_time_unknown, birth_place,
+          timezone, true_solar_time, user_question, language,
+          chart_json, free_report_json, payment_status, created_at, updated_at
+        )
+        values (
+          ${record.id}, ${record.name || null}, ${record.gender || null}, ${record.birthDate},
+          ${record.birthTime || null}, ${record.birthTimeUnknown}, ${record.birthPlace || null},
+          ${record.timezone || null}, ${Boolean(record.trueSolarTime)}, ${record.userQuestion || null}, ${record.language},
+          ${tx.json(record.chart)}, ${tx.json(record.freeReport)}, ${record.paymentStatus},
+          ${record.createdAt}, ${record.updatedAt}
+        )
+        returning *
+      `;
+      await tx`
+        insert into reports (reading_id, report_type, language, status, preview_json, created_at, updated_at)
+        values (${record.id}, 'full_bazi', ${record.language}, 'preview_created', ${tx.json(record.freeReport)}, ${record.createdAt}, ${record.updatedAt})
+        on conflict (reading_id) do update
+        set preview_json = excluded.preview_json, updated_at = excluded.updated_at
+      `;
+      return rows;
+    });
     return toPublic(mapDbRow(row));
   }
 
@@ -115,6 +134,12 @@ export async function saveFullReport(id: string, report: FullReport) {
       set full_report_json = ${db.json(report)}, updated_at = ${now()}
       where id = ${id}
     `;
+    await db`
+      insert into reports (reading_id, report_type, language, status, full_json, created_at, updated_at)
+      values (${id}, 'full_bazi', ${report.language}, 'full_created', ${db.json(report)}, ${now()}, ${now()})
+      on conflict (reading_id) do update
+      set full_json = excluded.full_json, status = excluded.status, updated_at = excluded.updated_at
+    `;
     return;
   }
 
@@ -131,6 +156,7 @@ export async function markReadingPaid(params: {
   readingId: string;
   email?: string;
   stripeSessionId?: string;
+  stripeEventId?: string;
   stripePaymentIntent?: string;
   amount: number;
   currency: string;
@@ -147,9 +173,9 @@ export async function markReadingPaid(params: {
         where id = ${params.readingId}
       `;
       await tx`
-        insert into payments (reading_id, stripe_session_id, stripe_payment_intent, amount, currency, status)
-        values (${params.readingId}, ${params.stripeSessionId || null}, ${params.stripePaymentIntent || null}, ${params.amount}, ${params.currency}, 'paid')
-        on conflict (stripe_session_id) do nothing
+        insert into payments (reading_id, stripe_session_id, stripe_event_id, stripe_payment_intent, amount, currency, status)
+        values (${params.readingId}, ${params.stripeSessionId || null}, ${params.stripeEventId || null}, ${params.stripePaymentIntent || null}, ${params.amount}, ${params.currency}, 'paid')
+        on conflict do nothing
       `;
     });
     return;
@@ -160,6 +186,15 @@ export async function markReadingPaid(params: {
   if (index < 0) {
     throw new Error("Reading not found.");
   }
+  const duplicatePayment = store.payments.some((payment) => {
+    return (
+      (params.stripeEventId && payment.stripeEventId === params.stripeEventId) ||
+      (params.stripeSessionId && payment.stripeSessionId === params.stripeSessionId)
+    );
+  });
+  if (duplicatePayment) {
+    return;
+  }
   store.readings[index].paymentStatus = "paid";
   store.readings[index].email = params.email || store.readings[index].email;
   store.readings[index].fullReport = fullReport;
@@ -168,6 +203,7 @@ export async function markReadingPaid(params: {
     id: crypto.randomUUID(),
     readingId: params.readingId,
     stripeSessionId: params.stripeSessionId,
+    stripeEventId: params.stripeEventId,
     stripePaymentIntent: params.stripePaymentIntent,
     amount: params.amount,
     currency: params.currency,

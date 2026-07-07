@@ -23,18 +23,18 @@ export const zh = {
     ],
     discoverTitle: "你将看到什么",
     discover: [
-      ["人生总览", "你的性格底色和人生主题"],
-      ["事业财运", "适合的工作方式和财富节奏"],
+      ["核心性格", "你的性格底色和人生主题"],
+      ["五行平衡", "木火土金水的整体分布"],
+      ["事业方向", "适合的工作方式和职业节奏"],
+      ["财富模式", "把金钱节奏作为规划参考"],
       ["感情关系", "亲密关系和人际互动模式"],
-      ["健康能量", "精力平衡和恢复方式"],
-      ["年度趋势", "接下来一年的机会和压力点"],
-      ["幸运指南", "有帮助的五行、颜色和方向"]
+      ["2026节奏", "接下来一年的机会和压力点"]
     ],
     howTitle: "简单三步",
     steps: [
       ["输入信息", "填写出生日期、时间和可选性别。"],
       ["生成预览", "先查看四柱和免费解读。"],
-      ["解锁完整报告", "支付 $2.99 获取完整内容。"]
+      ["解锁完整报告", "支付 500 日元获取完整内容。"]
     ],
     footerCta: "命运在你手中。",
     footerSub: "现在开始了解它。"
@@ -51,9 +51,16 @@ export const zh = {
     female: "女",
     male: "男",
     other: "不透露",
+    birthPlace: "出生地",
+    birthPlacePlaceholder: "可选，例如 London / Tokyo / Shanghai",
+    timezone: "时区",
+    timezoneAuto: "使用出生地当地时间 / 不确定",
+    trueSolarTime: "可用时启用真太阳时",
+    userQuestion: "想重点看的问题",
+    userQuestionPlaceholder: "例如：今年事业上应该注意什么？",
     language: "报告语言",
     submit: "生成免费预览",
-    note: "本产品不收集户籍地。第一版不强制填写出生地。"
+    note: "本产品不收集户籍地。出生地可选，只作为排盘上下文。"
   },
   reading: {
     freeTitle: "你的免费八字预览",
@@ -64,7 +71,7 @@ export const zh = {
     accuracy: "准确度说明",
     lockedTitle: "解锁完整报告",
     lockedText: "事业、财运、感情、年度趋势、幸运指南和实用建议将在付费后开放。",
-    unlock: "解锁完整报告 — $2.99",
+    unlock: "解锁完整报告 — 500 日元",
     secure: "通过 Stripe Checkout 安全支付。",
     paid: "支付已确认",
     copy: "复制报告",
@@ -74,7 +81,9 @@ export const zh = {
   legal: {
     privacy: "隐私政策",
     terms: "服务条款",
+    refund: "退款政策",
     disclaimer: "免责声明",
+    methodology: "方法说明",
     body: "MINGYI 提供的是文化解读、娱乐参考和自我理解工具，不构成医疗、法律、财务或心理建议，也不保证任何具体结果。"
   }
 };

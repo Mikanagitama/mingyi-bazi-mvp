@@ -16,9 +16,10 @@ export async function applyStripeEvent(event: Stripe.Event) {
     readingId,
     email: session.customer_details?.email || session.customer_email || undefined,
     stripeSessionId: session.id,
+    stripeEventId: event.id,
     stripePaymentIntent: typeof session.payment_intent === "string" ? session.payment_intent : undefined,
-    amount: session.amount_total || 299,
-    currency: session.currency || "usd"
+    amount: session.amount_total || 500,
+    currency: session.currency || "jpy"
   });
 
   return { handled: true, readingId };

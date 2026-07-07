@@ -98,7 +98,9 @@ export function LandingPage({ copy }: { copy: Copy }) {
         <span>MINGYI Bazi Destiny</span>
         <Link href="/privacy">Privacy</Link>
         <Link href="/terms">Terms</Link>
+        <Link href="/refund">Refund</Link>
         <Link href="/disclaimer">Disclaimer</Link>
+        <Link href="/methodology">Methodology</Link>
       </footer>
     </main>
   );

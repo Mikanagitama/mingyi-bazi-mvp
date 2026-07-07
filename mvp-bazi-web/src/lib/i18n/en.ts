@@ -23,18 +23,18 @@ export const en = {
     ],
     discoverTitle: "What You Will Discover",
     discover: [
-      ["Life Overview", "Your core temperament and life themes"],
-      ["Career & Wealth", "Best work style and money timing"],
-      ["Relationships", "Love, partnership, and social patterns"],
-      ["Health & Energy", "Balance and recovery tendencies"],
-      ["Yearly Forecast", "Opportunities and pressure points ahead"],
-      ["Lucky Guide", "Helpful elements, colors, and directions"]
+      ["Core Personality", "Your core temperament and life themes"],
+      ["Five Elements", "Balance across Wood, Fire, Earth, Metal, and Water"],
+      ["Career Direction", "Best work style and professional rhythm"],
+      ["Wealth Pattern", "Money timing as planning insight"],
+      ["Love & Relationships", "Love, partnership, and social patterns"],
+      ["2026 Timing", "Opportunities and pressure points ahead"]
     ],
     howTitle: "Simple & Easy",
     steps: [
       ["Enter Your Details", "Provide your birth date, time, and optional gender."],
       ["Generate Preview", "See your Four Pillars and free interpretation."],
-      ["Unlock Full Reading", "Pay $2.99 to receive the full report."]
+      ["Unlock Full Reading", "Pay JP¥500 to receive the full report."]
     ],
     footerCta: "Your destiny is in your hands.",
     footerSub: "Discover it now."
@@ -51,9 +51,16 @@ export const en = {
     female: "Female",
     male: "Male",
     other: "Prefer not to say",
+    birthPlace: "Birth place",
+    birthPlacePlaceholder: "Optional city, e.g. London or Tokyo",
+    timezone: "Timezone",
+    timezoneAuto: "Use birth-place local time / not sure",
+    trueSolarTime: "Enable true solar time when available",
+    userQuestion: "Optional question",
+    userQuestionPlaceholder: "Example: What should I focus on in career this year?",
     language: "Report language",
     submit: "Generate Free Preview",
-    note: "We do not ask for hukou. Birthplace is not required for this MVP."
+    note: "We do not ask for hukou. Birthplace is optional and used only for calculation context."
   },
   reading: {
     freeTitle: "Your Free Bazi Preview",
@@ -64,7 +71,7 @@ export const en = {
     accuracy: "Accuracy note",
     lockedTitle: "Unlock the full report",
     lockedText: "Career, wealth, relationships, yearly forecast, lucky guide, and practical advice are available after payment.",
-    unlock: "Unlock Full Reading — $2.99",
+    unlock: "Unlock Full Reading — JP¥500",
     secure: "Secure payment via Stripe Checkout.",
     paid: "Payment confirmed",
     copy: "Copy Report",
@@ -74,7 +81,9 @@ export const en = {
   legal: {
     privacy: "Privacy Policy",
     terms: "Terms of Service",
+    refund: "Refund Policy",
     disclaimer: "Disclaimer",
+    methodology: "Methodology",
     body: "MINGYI provides reflective cultural interpretation for entertainment and self-understanding. It is not medical, legal, financial, or psychological advice, and it does not guarantee any outcome."
   }
 };
