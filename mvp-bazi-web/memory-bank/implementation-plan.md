@@ -190,7 +190,7 @@ Show what a paid report looks like before payment using fake data only.
 - [x] Clearly state the sample is not based on the user's birth details.
 - [x] Link to Sample Report from homepage and preview page.
 - [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
-- [ ] Commit, push, and verify deployment.
+- [x] Commit, push, and verify deployment.
 
 ### Verification
 
@@ -200,6 +200,8 @@ Show what a paid report looks like before payment using fake data only.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy `/sample-report` production smoke passed: page returned 200, sample disclaimer was present, Four Pillars Chart was present, Current 30-Day Energy was present, and the homepage linked to `/sample-report`.
+- Post-deploy `npm run smoke:p0` passed.
 
 ## Stage P1.2: Report Visualization
 

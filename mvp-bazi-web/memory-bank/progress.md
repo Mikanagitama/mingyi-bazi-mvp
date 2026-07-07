@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.1 Sample Report is implemented locally and verified. Commit, push, deployment, and post-deploy sample-page smoke are next.
+P1.1 Sample Report is implemented, pushed, deployed, and smoke-checked.
 
 ### Next Required Action
 
-Commit and push P1.1, then verify `/sample-report` on production. The manual Stripe test-card flow remains a final P1 verification item.
+Start P1.2 Report Visualization. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -109,6 +109,8 @@ Commit and push P1.1, then verify `/sample-report` on production. The manual Str
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy `/sample-report` production smoke passed.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - `npm run db:setup` completed successfully after loading local environment variables.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy signed Stripe webhook smoke passed for a production test reading: payment status became paid, report state was `ready`, generation mode was `ai`, and the full report contained 8 sections.
