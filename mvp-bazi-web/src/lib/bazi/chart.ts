@@ -62,6 +62,41 @@ const branchCombinations: Array<[string, string]> = [
   ["午", "未"]
 ];
 
+const knownBirthPlaces: Record<string, { longitude: number; timezone: string }> = {
+  beijing: { longitude: 116.4074, timezone: "Asia/Shanghai" },
+  "beijing, china": { longitude: 116.4074, timezone: "Asia/Shanghai" },
+  shanghai: { longitude: 121.4737, timezone: "Asia/Shanghai" },
+  "shanghai, china": { longitude: 121.4737, timezone: "Asia/Shanghai" },
+  guangzhou: { longitude: 113.2644, timezone: "Asia/Shanghai" },
+  shenzhen: { longitude: 114.0579, timezone: "Asia/Shanghai" },
+  hongkong: { longitude: 114.1694, timezone: "Asia/Hong_Kong" },
+  "hong kong": { longitude: 114.1694, timezone: "Asia/Hong_Kong" },
+  taipei: { longitude: 121.5654, timezone: "Asia/Taipei" },
+  tokyo: { longitude: 139.6917, timezone: "Asia/Tokyo" },
+  "tokyo, japan": { longitude: 139.6917, timezone: "Asia/Tokyo" },
+  osaka: { longitude: 135.5023, timezone: "Asia/Tokyo" },
+  singapore: { longitude: 103.8198, timezone: "Asia/Singapore" },
+  london: { longitude: -0.1276, timezone: "Europe/London" },
+  paris: { longitude: 2.3522, timezone: "Europe/Paris" },
+  "new york": { longitude: -74.006, timezone: "America/New_York" },
+  "new york city": { longitude: -74.006, timezone: "America/New_York" },
+  "los angeles": { longitude: -118.2437, timezone: "America/Los_Angeles" },
+  sydney: { longitude: 151.2093, timezone: "Australia/Sydney" }
+};
+
+const standardTimezoneOffsets: Record<string, number> = {
+  "Asia/Shanghai": 8,
+  "Asia/Hong_Kong": 8,
+  "Asia/Taipei": 8,
+  "Asia/Tokyo": 9,
+  "Asia/Singapore": 8,
+  "Europe/London": 0,
+  "Europe/Paris": 1,
+  "America/New_York": -5,
+  "America/Los_Angeles": -8,
+  "Australia/Sydney": 10
+};
+
 const hourBranchByIndex = ["子", "丑", "丑", "寅", "寅", "卯", "卯", "辰", "辰", "巳", "巳", "午", "午", "未", "未", "申", "申", "酉", "酉", "戌", "戌", "亥", "亥", "子"];
 
 const elementLabels = {
@@ -105,6 +140,81 @@ function parseDate(input: BirthInput) {
   }
 
   return { year, month, day, hour, minute };
+}
+
+function normalizePlace(value?: string) {
+  return (value || "").trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function dayOfYear(year: number, month: number, day: number) {
+  const start = Date.UTC(year, 0, 0);
+  const current = Date.UTC(year, month - 1, day);
+  return Math.floor((current - start) / 86400000);
+}
+
+function equationOfTimeMinutes(year: number, month: number, day: number) {
+  const dayNumber = dayOfYear(year, month, day);
+  const b = (2 * Math.PI * (dayNumber - 81)) / 364;
+  return 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
+}
+
+function toDateParts(date: Date) {
+  return {
+    year: date.getUTCFullYear(),
+    month: date.getUTCMonth() + 1,
+    day: date.getUTCDate(),
+    hour: date.getUTCHours(),
+    minute: date.getUTCMinutes()
+  };
+}
+
+function formatDateParts(parts: ReturnType<typeof toDateParts>) {
+  const pad = (value: number) => String(value).padStart(2, "0");
+  return `${parts.year}-${pad(parts.month)}-${pad(parts.day)} ${pad(parts.hour)}:${pad(parts.minute)}`;
+}
+
+function resolveTrueSolarTime(input: BirthInput, parsed: ReturnType<typeof parseDate>) {
+  const notes: string[] = [];
+  const requested = Boolean(input.trueSolarTime);
+  if (!requested) {
+    return { parsed, applied: false, notes };
+  }
+  if (input.birthTimeUnknown) {
+    notes.push("True solar time was requested but not applied because exact birth time is unknown.");
+    return { parsed, applied: false, notes };
+  }
+
+  const place = knownBirthPlaces[normalizePlace(input.birthPlace)];
+  if (!place) {
+    notes.push("True solar time was requested but not applied because the birth place is not in the built-in longitude table.");
+    return { parsed, applied: false, notes };
+  }
+
+  const timezone = input.timezone && input.timezone !== "auto" ? input.timezone : place.timezone;
+  const standardOffset = standardTimezoneOffsets[timezone];
+  if (standardOffset === undefined) {
+    notes.push("True solar time was requested but not applied because the timezone is not supported by the built-in standard-meridian table.");
+    return { parsed, applied: false, notes };
+  }
+
+  const standardMeridian = standardOffset * 15;
+  const longitudeCorrection = 4 * (place.longitude - standardMeridian);
+  const eot = equationOfTimeMinutes(parsed.year, parsed.month, parsed.day);
+  const correctionMinutes = Math.round(longitudeCorrection + eot);
+  const adjusted = new Date(Date.UTC(parsed.year, parsed.month - 1, parsed.day, parsed.hour, parsed.minute + correctionMinutes));
+  const adjustedParts = toDateParts(adjusted);
+
+  notes.push(`True solar time applied using ${input.birthPlace || "birth place"} longitude ${place.longitude.toFixed(4)} and timezone ${timezone}.`);
+  notes.push(`Correction: ${correctionMinutes} minutes; longitude component ${longitudeCorrection.toFixed(1)} minutes; equation of time ${eot.toFixed(1)} minutes.`);
+  return {
+    parsed: adjustedParts,
+    applied: true,
+    correctionMinutes,
+    timezone,
+    longitude: place.longitude,
+    notes,
+    method: "longitude correction plus approximate equation of time; standard meridian uses built-in timezone table"
+  };
 }
 
 function splitPillar(label: string) {
@@ -243,16 +353,21 @@ function yearPillar(year: number) {
   return solar.getLunar().getEightChar().getYear();
 }
 
-function accuracyNote(input: BirthInput) {
+function accuracyNote(input: BirthInput, solarCorrection: ReturnType<typeof resolveTrueSolarTime>) {
   if (input.birthTimeUnknown) {
     return input.language === "zh"
       ? "你选择了不知道准确出生时间，因此时柱采用中午作为临时参考，完整解读会降低对时柱细节的判断权重。"
       : "You selected unknown birth time, so the hour pillar uses noon as a temporary reference and the reading reduces confidence around hour-specific details.";
   }
   if (input.trueSolarTime) {
+    if (solarCorrection.applied) {
+      return input.language === "zh"
+        ? `已根据出生地经度和时区应用真太阳时修正，约修正 ${solarCorrection.correctionMinutes} 分钟。`
+        : `True solar time was applied using birthplace longitude and timezone, with an approximate correction of ${solarCorrection.correctionMinutes} minutes.`;
+    }
     return input.language === "zh"
-      ? "你开启了真太阳时选项；当前 MVP 会记录该选择，但尚未根据经纬度校正出生时间，因此完整解读会避免过度依赖边界时刻。"
-      : "You enabled true solar time; this MVP records that preference, but it has not yet corrected the birth time by longitude, so the reading avoids over-weighting boundary-hour details.";
+      ? "你开启了真太阳时选项，但当前出生地或时区无法被内置表识别，因此本次未强行校正。"
+      : "You enabled true solar time, but the current birthplace or timezone could not be resolved by the built-in table, so no correction was forced.";
   }
   return input.language === "zh"
     ? "本 MVP 不收集户籍地；出生地用于未来真太阳时校正，不会作为身份信息使用。"
@@ -261,7 +376,9 @@ function accuracyNote(input: BirthInput) {
 
 export function generateBaziChart(input: BirthInput): BaziChart {
   const parsed = parseDate(input);
-  const solar = Solar.fromYmdHms(parsed.year, parsed.month, parsed.day, parsed.hour, parsed.minute, 0);
+  const solarCorrection = resolveTrueSolarTime(input, parsed);
+  const calculationTime = solarCorrection.parsed;
+  const solar = Solar.fromYmdHms(calculationTime.year, calculationTime.month, calculationTime.day, calculationTime.hour, calculationTime.minute, 0);
   const lunar = solar.getLunar();
   const eightChar = lunar.getEightChar();
 
@@ -304,7 +421,7 @@ export function generateBaziChart(input: BirthInput): BaziChart {
 
   return {
     input,
-    solarDateTime: `${input.birthDate} ${input.birthTimeUnknown ? "unknown" : input.birthTime || "12:00"}`,
+    solarDateTime: input.birthTimeUnknown ? `${input.birthDate} unknown` : formatDateParts(calculationTime),
     pillars,
     dayMaster,
     elements,
@@ -331,18 +448,20 @@ export function generateBaziChart(input: BirthInput): BaziChart {
     calculation_policy: {
       engine: "lunar-typescript",
       calendar: "Gregorian birth input converted to Chinese lunar EightChar/Four Pillars",
-      timezone: input.timezone || "local civil time as entered",
+      timezone: solarCorrection.timezone || input.timezone || "local civil time as entered",
       birth_place: input.birthPlace || undefined,
       true_solar_time_requested: Boolean(input.trueSolarTime),
-      true_solar_time_applied: false,
+      true_solar_time_applied: solarCorrection.applied,
+      true_solar_time_correction_minutes: solarCorrection.correctionMinutes,
+      true_solar_time_method: solarCorrection.method,
       unknown_birth_time: input.birthTimeUnknown,
       notes: [
         "LLM is not used to calculate Four Pillars.",
         "@openfate/bazi-mcp 0.2.6 is MIT licensed and was reviewed as a future deterministic engine option.",
-        "True solar time requires longitude correction and is recorded but not applied in this MVP increment."
+        ...solarCorrection.notes
       ]
     },
-    accuracyNote: accuracyNote(input)
+    accuracyNote: accuracyNote(input, solarCorrection)
   };
 }
 

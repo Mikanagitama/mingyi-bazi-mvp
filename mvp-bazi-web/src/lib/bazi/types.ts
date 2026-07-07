@@ -85,6 +85,8 @@ export type BaziChart = {
     birth_place?: string;
     true_solar_time_requested: boolean;
     true_solar_time_applied: boolean;
+    true_solar_time_correction_minutes?: number;
+    true_solar_time_method?: string;
     unknown_birth_time: boolean;
     notes: string[];
   };

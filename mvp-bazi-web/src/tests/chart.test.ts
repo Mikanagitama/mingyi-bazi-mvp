@@ -27,7 +27,26 @@ describe("Bazi chart generation", () => {
     expect(chart.luck_pillars.length).toBeGreaterThan(0);
     expect(chart.annual_transits[0].year).toBe(2026);
     expect(chart.calculation_policy.true_solar_time_requested).toBe(true);
+    expect(chart.calculation_policy.true_solar_time_applied).toBe(true);
+    expect(chart.calculation_policy.true_solar_time_correction_minutes).toEqual(expect.any(Number));
+    expect(chart.accuracyNote).toContain("True solar time was applied");
+  });
+
+  it("does not force true solar time when birthplace cannot be resolved", () => {
+    const chart = generateBaziChart({
+      birthDate: "1992-08-14",
+      birthTime: "09:30",
+      birthTimeUnknown: false,
+      language: "en",
+      gender: "female",
+      birthPlace: "Unknown Village",
+      timezone: "Asia/Tokyo",
+      trueSolarTime: true
+    });
+
+    expect(chart.calculation_policy.true_solar_time_requested).toBe(true);
     expect(chart.calculation_policy.true_solar_time_applied).toBe(false);
+    expect(chart.calculation_policy.notes.join(" ")).toContain("not in the built-in longitude table");
   });
 
   it("marks lower confidence when exact birth time is unknown", () => {

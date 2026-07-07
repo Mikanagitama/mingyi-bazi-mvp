@@ -8,7 +8,7 @@ export default function MethodologyPage() {
       <h1>{en.legal.methodology}</h1>
       <p>MINGYI separates calculation from interpretation. The Four Pillars chart is produced by deterministic calendar logic; AI text, when configured, is used only to explain the structured chart in plain language.</p>
       <p>The current engine uses Gregorian birth input converted into Chinese lunar EightChar data through lunar-typescript. The report stores structured fields including pillars, Day Master, Five Elements, Ten Gods, hidden stems, Na Yin, annual transit, branch interactions, and calculation policy.</p>
-      <p>True solar time is recorded as a user preference in this MVP. Longitude-based correction is not yet applied, so the report avoids presenting boundary-hour details as certainty.</p>
+      <p>True solar time is optional. When the birthplace matches the built-in longitude table, MINGYI applies a longitude and equation-of-time correction before calculating the chart. If the birthplace cannot be resolved, no correction is forced.</p>
       <p>If AI generation is unavailable or does not pass safety checks, MINGYI falls back to a deterministic template report so paid access can still be restored.</p>
     </main>
   );
