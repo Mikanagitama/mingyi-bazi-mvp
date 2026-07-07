@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.5 Payment-to-Full-Report UX Polish is implemented locally.
+P0.5 Payment-to-Full-Report UX Polish is implemented, pushed, and deployed to production.
 
 ### Next Required Action
 
-Commit, push, deploy, then verify the Stripe return flow on production. After P0.5 is accepted, the next stage is P0.6 Landing Page + Birth Form Conversion Polish.
+Ask the user to run one Stripe test-card checkout in the browser to confirm the visible return flow. After P0.5 is accepted, the next stage is P0.6 Landing Page + Birth Form Conversion Polish.
 
 ### P0.5 Implementation Notes
 
@@ -40,10 +40,12 @@ Commit, push, deploy, then verify the Stripe return flow on production. After P0
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against current production baseline.
+- Production status API probe passed after deploy: `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
+- Production `npm run smoke:p0` passed after deploy.
 
 ### Known Current Product Gaps After P0.5
 
 - Full report UI is still mostly prose and needs stronger Bazi visual evidence.
 - Sample Report page does not exist yet.
 - P1 SEO pages and social/contact configuration are not implemented yet.
-- Post-deploy manual Stripe test-card verification is still needed for P0.5 acceptance.
+- Manual Stripe test-card verification is still needed for final P0.5 acceptance.

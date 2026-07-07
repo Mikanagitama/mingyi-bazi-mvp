@@ -37,7 +37,7 @@ Make paid users feel guided after Stripe Checkout and prevent confusion during r
 - [x] Run `npm run build`.
 - [x] Run `npm run smoke:p0`.
 - [x] Update `memory-bank/progress.md`.
-- [ ] Commit and push.
+- [x] Commit and push.
 
 ### Acceptance
 
@@ -47,6 +47,12 @@ Make paid users feel guided after Stripe Checkout and prevent confusion during r
 - Unpaid user cannot access full report.
 - Preview still does not leak full report.
 - P0 smoke remains green.
+
+### Deployment Verification
+
+- Production status API probe confirmed `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
+- `npm run smoke:p0` passed after deployment.
+- Manual Stripe test-card browser flow remains a human verification item because it requires completing checkout in Stripe.
 
 ## Stage P0.6: Landing Page + Birth Form Conversion Polish
 
