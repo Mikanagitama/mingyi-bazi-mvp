@@ -4,7 +4,7 @@
 
 ## Current Gate
 
-P0.6 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.6 is accepted is P0.7. Do not start P0.7 until P0.6 is deployed, smoke-checked, and recorded as accepted.
+P0.6 implementation is deployed and smoke-checked. The next implementation stage is P0.7: Preview Page + Trust Conversion Polish.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
@@ -85,8 +85,9 @@ Make the homepage and form clear enough for real English-speaking users.
 
 ### Deployment Verification
 
-- Pending deploy of P0.6 copy/form changes.
-- Manual visual check after deploy should confirm homepage CTA, method section, and form helper text appear on production.
+- Production homepage HTTP probe confirmed the new headline, method section, and Current 30-Day Energy discovery card are live.
+- `npm run smoke:p0` passed after deployment.
+- Birth form helper text is client-rendered; local tests and production build verify the copy contract.
 
 ## Stage P0.7: Preview Page + Trust Conversion Polish
 
