@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P0.8 Stability, Logging, Anti-Abuse, Recovery is implemented locally and verified. Commit, push, deployment, and post-deploy smoke are next.
+P0.8 Stability, Logging, Anti-Abuse, Recovery is implemented, pushed, deployed, and smoke-checked.
 
 ### Next Required Action
 
-Commit and push P0.8, then verify the Vercel deployment. After P0.8 is deployed, continue to P1.1 Sample Report. The manual Stripe test-card flow remains a final P1 verification item.
+Start P1.1 Sample Report. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -110,3 +110,5 @@ Commit and push P0.8, then verify the Vercel deployment. After P0.8 is deployed,
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
 - `npm run db:setup` completed successfully after loading local environment variables.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+- Post-deploy signed Stripe webhook smoke passed for a production test reading: payment status became paid, report state was `ready`, generation mode was `ai`, and the full report contained 8 sections.

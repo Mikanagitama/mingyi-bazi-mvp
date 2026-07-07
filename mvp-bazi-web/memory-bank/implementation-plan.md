@@ -140,7 +140,7 @@ Protect AI cost, improve reliability, and make payment/report issues debuggable.
 - [x] Keep AI timeout, retry, and fallback behavior explicit.
 - [x] Add recovery behavior for revisiting paid report links.
 - [x] Run relevant tests, build, database dry-run/setup, preflight smoke, and P0 smoke.
-- [ ] Update progress, commit, push, and verify deployment.
+- [x] Update progress, commit, push, and verify deployment.
 
 ### Implementation Notes
 
@@ -160,6 +160,8 @@ Protect AI cost, improve reliability, and make payment/report issues debuggable.
 - `npm run build` passed.
 - `npm run smoke:p0` passed against production baseline.
 - `npm run db:setup` completed after loading `.env.local` into the process, creating/syncing the new non-destructive schema.
+- Post-deploy `npm run smoke:p0` passed.
+- Post-deploy signed webhook smoke passed: the signed `checkout.session.completed` event unlocked a paid reading, returned `state=ready`, used AI generation, and preserved the 8-section full-report contract.
 
 ## Stage P1.1: Sample Report
 
