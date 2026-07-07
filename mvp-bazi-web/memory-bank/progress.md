@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.5 Basic SEO + Contact + Social Links is implemented locally and verified. Commit, push, deployment, and post-deploy SEO smoke are next.
+P1.5 Basic SEO + Contact + Social Links is implemented, pushed, deployed, and smoke-checked.
 
 ### Next Required Action
 
-Commit and push P1.5, then run final P1 verification. The manual Stripe test-card flow remains a final P1 verification item.
+Run final P1 verification. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -128,6 +128,8 @@ Commit and push P1.5, then run final P1 verification. The manual Stripe test-car
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy SEO smoke passed for the three SEO pages, sitemap, robots, homepage metadata, and footer links.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy homepage smoke passed for the future product cards.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy current-energy smoke passed for a production paid test reading.

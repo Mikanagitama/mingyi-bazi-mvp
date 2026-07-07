@@ -354,7 +354,7 @@ Make the site more shareable and search-ready.
 - [x] Add SEO pages for Bazi, Four Pillars of Destiny, and Day Master.
 - [x] Add sitemap and robots routes.
 - [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
-- [ ] Commit, push, and verify deployment.
+- [x] Commit, push, and verify deployment.
 
 ### Verification
 
@@ -364,6 +364,8 @@ Make the site more shareable and search-ready.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy SEO smoke passed: production returned 200 for the three SEO pages, `/sitemap.xml`, and `/robots.txt`; homepage contained SEO metadata and footer contact/SEO links.
+- Post-deploy `npm run smoke:p0` passed.
 
 ## Final P1 Verification
 
