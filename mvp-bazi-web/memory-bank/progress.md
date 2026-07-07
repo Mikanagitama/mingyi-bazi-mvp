@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-Final P1 automated verification is complete. Two strict manual checks remain: Stripe test-card browser checkout and mobile visual layout review.
+Final P1 verification is complete. The Stripe test-card browser flow, signed webhook smoke, paid report recovery, and mobile layout review have all passed against production.
 
 ### Next Required Action
 
-Have the user run the manual Stripe test-card flow and inspect the site on a mobile viewport/device. Do not mark the goal complete until those manual checks pass.
+After P1, decide the next product direction separately: custom domain/email, analytics, calibration questions, or a second paid report type. Do not expand the current MVP goal with credits, subscriptions, AI chat, compatibility reports, Ziwei, Western astrology, app, or admin dashboard.
 
 ### P0.5 Implementation Notes
 
@@ -145,10 +145,11 @@ Have the user run the manual Stripe test-card flow and inspect the site on a mob
 - Full report still returned 8 sections.
 - Trust pages, sample report, SEO pages, sitemap, and robots were accessible.
 
-### Remaining Manual Checks
+### Final Manual Checks
 
-- Manual Stripe test-card flow in Stripe Checkout.
-- Mobile visual layout inspection.
+- Stripe test-card flow completed in Edge through Stripe Checkout and returned to `/reading/8ccf5733-f749-449e-afeb-5c7b73c635a0/full?session_id=...`.
+- Mobile production layout inspection completed at 390px viewport for homepage, birth form, sample report, and paid full report. All checked pages reported `scrollWidth=390`, no horizontal overflow, and the paid full report contained Four Pillars Table and Core Personality content.
+- Final signed production webhook smoke after the mobile fix passed for reading `9f7093a7-2d0a-489b-b68e-1fcd5f2aa28d`: webhook returned handled, report state became `ready`, generation mode was `ai`, model was `deepseek:deepseek-v4-flash`, 8 sections were present, and true solar time remained applied.
 - Post-deploy homepage smoke passed for the future product cards.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy current-energy smoke passed for a production paid test reading.

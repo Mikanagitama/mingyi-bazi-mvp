@@ -372,7 +372,7 @@ Make the site more shareable and search-ready.
 - [x] Run `npm run build`.
 - [x] Run `npm run smoke:p0`.
 - [x] Run signed Stripe webhook smoke.
-- [ ] Run manual Stripe test-card flow.
+- [x] Run manual Stripe test-card flow.
 - [x] Confirm preview does not leak full report.
 - [x] Confirm unpaid full-report access is blocked.
 - [x] Confirm paid access works.
@@ -382,10 +382,11 @@ Make the site more shareable and search-ready.
 - [x] Confirm 8 fixed report sections still exist.
 - [x] Confirm trust pages are accessible.
 - [x] Confirm sample report is accessible.
-- [ ] Check mobile layout manually.
+- [x] Check mobile layout manually.
 
 ### Final Verification Notes
 
 - Automated production verification passed for preview access, unpaid lock, signed webhook unlock, paid recovery, true solar time, AI generation, 8-section full-report contract, trust pages, sample report, SEO pages, sitemap, and robots.
-- Strict manual Stripe test-card checkout remains open because it requires completing Stripe Checkout in a browser.
-- Strict mobile visual review remains open because Playwright browser binaries are not installed locally, and installing them would write outside the allowed project folder.
+- Stripe test-card checkout was completed in Edge against Stripe Checkout. The flow returned to `/reading/8ccf5733-f749-449e-afeb-5c7b73c635a0/full?session_id=...`, then the paid report became accessible.
+- A final signed production webhook smoke passed after the mobile overflow fix: reading `9f7093a7-2d0a-489b-b68e-1fcd5f2aa28d` reached `reportState=ready`, used `deepseek:deepseek-v4-flash`, returned 8 sections, and preserved true solar time.
+- Mobile production layout was checked at 390px width for homepage, birth form, sample report, and paid full report. All pages reported `scrollWidth=390`, no horizontal overflow, and the paid full report contained Four Pillars Table and Core Personality content.
