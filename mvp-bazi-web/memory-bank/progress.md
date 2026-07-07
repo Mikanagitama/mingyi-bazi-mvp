@@ -42,6 +42,7 @@ Ask the user to run one Stripe test-card checkout in the browser to confirm the 
 - `npm run smoke:p0` passed against current production baseline.
 - Production status API probe passed after deploy: `/api/readings/[id]?session_id=...` returns `status.reportState=confirming`.
 - Production full-page HTTP probe passed: `/reading/[id]/full?session_id=...` includes the waiting UI and does not leak full report content before payment.
+- Production signed Stripe webhook probe passed: webhook returned 200, payment status became paid, report state became ready, AI generation mode was `ai`, 8 full-report sections were present, and the paid full page rendered.
 - Production `npm run smoke:p0` passed after deploy.
 
 ### Known Current Product Gaps After P0.5
