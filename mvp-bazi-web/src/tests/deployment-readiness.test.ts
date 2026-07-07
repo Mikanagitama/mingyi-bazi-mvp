@@ -55,6 +55,7 @@ describe("deployment readiness", () => {
 
     expect(readiness.ok).toBe(true);
     expect(readiness.aiConfigured).toBe(true);
+    expect(readiness.aiProvider).toBe("deepseek");
     expect(readiness.blockers).toEqual([]);
   });
 

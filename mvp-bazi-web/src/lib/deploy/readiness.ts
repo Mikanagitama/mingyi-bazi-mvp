@@ -8,6 +8,7 @@ export type DeploymentReadiness = {
   stripeWebhookConfigured: boolean;
   siteUrlConfigured: boolean;
   aiConfigured: boolean;
+  aiProvider: string | null;
   blockers: string[];
 };
 
@@ -20,7 +21,7 @@ export function getDeploymentReadiness(): DeploymentReadiness {
   const stripeCheckoutConfigured = Boolean(config.stripeSecretKey && config.stripePriceId);
   const stripeWebhookConfigured = Boolean(config.stripeWebhookSecret);
   const siteUrlConfigured = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
-  const aiProvider = config.aiProvider.toLowerCase();
+  const aiProvider = config.aiProvider.toLowerCase() || "deepseek";
   const aiConfigured = aiProvider === "deepseek"
     ? Boolean(config.deepSeekKey || config.openAiKey)
     : Boolean(config.openAiKey || config.deepSeekKey);
@@ -40,6 +41,7 @@ export function getDeploymentReadiness(): DeploymentReadiness {
     stripeWebhookConfigured,
     siteUrlConfigured,
     aiConfigured,
+    aiProvider: aiConfigured ? aiProvider : null,
     blockers
   };
 }

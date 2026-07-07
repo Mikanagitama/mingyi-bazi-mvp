@@ -7,10 +7,10 @@ Mingyi P0 is code-complete, but production is not AI-ready until Vercel has an A
 1. Open Vercel.
 2. Go to project `mingyi-bazi-mvp`.
 3. Open `Settings` -> `Environment Variables`.
-4. If you use DeepSeek but pasted the key into `OPENAI_API_KEY`, add these variables:
+4. If you use DeepSeek but pasted the key into `OPENAI_API_KEY`, this is supported. Add:
    - `OPENAI_API_KEY`: your DeepSeek API key.
-   - `AI_PROVIDER`: `deepseek`
-   - `DEEPSEEK_MODEL`: `deepseek-v4-flash`
+   - `AI_PROVIDER`: `deepseek` optional; DeepSeek is the default provider for this MVP.
+   - `DEEPSEEK_MODEL`: `deepseek-v4-flash` optional; this is the default.
 5. Alternative DeepSeek naming also works:
    - `DEEPSEEK_API_KEY`: your DeepSeek API key.
    - `DEEPSEEK_MODEL`: `deepseek-v4-flash`

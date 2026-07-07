@@ -69,7 +69,7 @@ function buildAiPrompt(chart: BaziChart, language: Language) {
 }
 
 function resolveAiRuntime(): AiRuntime | null {
-  const preferred = config.aiProvider.toLowerCase();
+  const preferred = config.aiProvider.toLowerCase() || "deepseek";
   if (preferred === "deepseek") {
     const apiKey = config.deepSeekKey || config.openAiKey;
     return apiKey ? { provider: "deepseek", apiKey, model: config.deepSeekModel } : null;

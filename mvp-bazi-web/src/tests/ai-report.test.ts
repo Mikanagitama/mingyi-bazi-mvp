@@ -52,6 +52,7 @@ describe("AI full report generation", () => {
   });
 
   it("uses OpenAI JSON when configured and valid", async () => {
+    process.env.AI_PROVIDER = "openai";
     process.env.OPENAI_API_KEY = "sk_test_fake";
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
       ok: true,
@@ -70,8 +71,7 @@ describe("AI full report generation", () => {
     expect(report.sections.map((section) => section.title)).toEqual(aiSections.map((section) => section.title));
   });
 
-  it("uses DeepSeek chat completions when selected with OPENAI_API_KEY", async () => {
-    process.env.AI_PROVIDER = "deepseek";
+  it("uses DeepSeek chat completions by default with OPENAI_API_KEY", async () => {
     process.env.OPENAI_API_KEY = "sk_deepseek_fake";
     process.env.DEEPSEEK_MODEL = "deepseek-v4-flash";
     const fetchMock = vi.spyOn(globalThis, "fetch").mockResolvedValue({
