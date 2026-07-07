@@ -271,7 +271,7 @@ Strengthen the current-energy section so it can later become a repeat-purchase p
 - [x] Keep current timing language non-absolute and reflective.
 - [x] Avoid building a separate payment flow.
 - [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
-- [ ] Commit, push, and verify deployment.
+- [x] Commit, push, and verify deployment.
 
 ### Verification
 
@@ -281,6 +281,8 @@ Strengthen the current-energy section so it can later become a repeat-purchase p
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy current-energy smoke passed: a signed production webhook unlocked a paid test reading, the Current 30-Day Energy section contained emotional/work/money/relationship signals, and fallback generation remained customer-safe.
+- Post-deploy `npm run smoke:p0` passed.
 
 ## Stage P1.4: Future Product Entry Points
 
