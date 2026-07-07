@@ -121,6 +121,15 @@ export type FullReport = {
 
 export type PaymentStatus = "free" | "paid";
 
+export type FullReportState = "locked" | "confirming" | "generating" | "ready" | "fallback_ready" | "failed_retryable";
+
+export type ReadingStatus = {
+  paymentStatus: PaymentStatus;
+  reportState: FullReportState;
+  fullReportReady: boolean;
+  generationMode?: "ai" | "template";
+};
+
 export type ReadingRecord = {
   id: string;
   name?: string;

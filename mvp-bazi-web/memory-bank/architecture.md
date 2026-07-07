@@ -44,12 +44,30 @@ flowchart TD
 
 P1 should keep the current architecture and add small focused pieces:
 
-- A report status surface for polling after payment.
-- A client-side full-report waiting component.
+- A report status surface for polling after payment. P0.5 adds this to `GET /api/readings/[id]` as a `status` object.
+- A client-side full-report waiting component. P0.5 adds `FullReportStatus` for `/reading/[id]/full`.
 - Structured visual report components based on `reading.chart`.
 - Event logging helpers and tables for observability.
 - Optional rate-limit helpers for preview and regeneration protection.
 - SEO and sample-report pages as normal Next.js routes.
+
+## P0.5 Status Flow
+
+```mermaid
+flowchart TD
+  A["/reading/[id]/full"] --> B["Render FullReportStatus"]
+  B --> C["GET /api/readings/[id]?session_id=...&ensure_full=1"]
+  C --> D{"status.reportState"}
+  D -->|locked| E["Show free preview and unlock CTA"]
+  D -->|confirming| F["Show payment confirmation progress"]
+  D -->|generating| G["Show report generation progress"]
+  D -->|ready| H["Render paid full report"]
+  D -->|fallback_ready| I["Render fallback full report with customer-safe note"]
+  F --> C
+  G --> C
+```
+
+The public status API strips internal fallback reasons from `fullReport.generation` before sending paid report data to the browser.
 
 ## Architecture Constraints
 

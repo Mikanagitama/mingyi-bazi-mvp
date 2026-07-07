@@ -1,11 +1,18 @@
 import Link from "next/link";
-import { FullReport } from "@/components/FullReport";
-import { FreeReport } from "@/components/FreeReport";
-import { ensureFullReport, getReading } from "@/lib/db/readings";
+import { FullReportStatus } from "@/components/FullReportStatus";
+import { buildReadingStatus, getReading } from "@/lib/db/readings";
 import { en } from "@/lib/i18n/en";
 
-export default async function FullReadingPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function FullReadingPage({
+  params,
+  searchParams
+}: {
+  params: Promise<{ id: string }>;
+  searchParams?: Promise<{ session_id?: string | string[] }>;
+}) {
   const { id } = await params;
+  const query = searchParams ? await searchParams : {};
+  const sessionId = Array.isArray(query.session_id) ? query.session_id[0] : query.session_id;
   const reading = await getReading(id);
   if (!reading) {
     return (
@@ -16,7 +23,6 @@ export default async function FullReadingPage({ params }: { params: Promise<{ id
     );
   }
 
-  const report = await ensureFullReport(id);
   return (
     <main className="readingPage">
       <header className="simpleNav">
@@ -28,7 +34,11 @@ export default async function FullReadingPage({ params }: { params: Promise<{ id
           </span>
         </Link>
       </header>
-      {report ? <FullReport reading={reading} report={report} /> : <FreeReport reading={reading} />}
+      <FullReportStatus
+        initialReading={reading}
+        initialStatus={buildReadingStatus(reading, Boolean(sessionId))}
+        sessionId={sessionId}
+      />
     </main>
   );
 }

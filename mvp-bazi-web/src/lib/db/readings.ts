@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import type { BirthInput, FullReport, PublicReading, ReadingRecord } from "../bazi/types";
+import type { BirthInput, FullReport, PublicReading, ReadingRecord, ReadingStatus } from "../bazi/types";
 import { generateBaziChart } from "../bazi/chart";
 import { generateFreeReport } from "../reports/free-report";
 import { generateFullReportWithAi } from "../reports/ai-report";
@@ -11,10 +11,49 @@ function now() {
 
 function toPublic(record: ReadingRecord): PublicReading {
   if (record.paymentStatus === "paid") {
+    if (record.fullReport?.generation?.fallbackReason) {
+      return {
+        ...record,
+        fullReport: {
+          ...record.fullReport,
+          generation: {
+            ...record.fullReport.generation,
+            fallbackReason: undefined
+          }
+        }
+      };
+    }
     return record;
   }
   const { fullReport: _fullReport, ...safe } = record;
   return safe;
+}
+
+export function buildReadingStatus(reading: PublicReading | ReadingRecord, hasCheckoutSession = false): ReadingStatus {
+  if (reading.paymentStatus !== "paid") {
+    return {
+      paymentStatus: reading.paymentStatus,
+      reportState: hasCheckoutSession ? "confirming" : "locked",
+      fullReportReady: false
+    };
+  }
+
+  if (!reading.fullReport) {
+    return {
+      paymentStatus: "paid",
+      reportState: "generating",
+      fullReportReady: false
+    };
+  }
+
+  const generationMode = reading.fullReport.generation?.mode;
+  const isFallback = generationMode === "template";
+  return {
+    paymentStatus: "paid",
+    reportState: isFallback ? "fallback_ready" : "ready",
+    fullReportReady: true,
+    generationMode
+  };
 }
 
 function mapDbRow(row: Record<string, unknown>): ReadingRecord {

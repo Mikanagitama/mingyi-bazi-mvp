@@ -4,7 +4,7 @@
 
 ## Current Gate
 
-Only documentation planning is complete. The next implementation stage is P0.5. No product code should be changed until the user approves starting P0.5.
+P0.5 implementation is complete locally and ready for deployment verification. The next implementation stage after P0.5 is accepted is P0.6. Do not start P0.6 until P0.5 is deployed, smoke-checked, and recorded as accepted.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
@@ -24,19 +24,19 @@ Make paid users feel guided after Stripe Checkout and prevent confusion during r
 
 ### Steps
 
-- [ ] Verify current success URL is `/reading/[id]/full?session_id={CHECKOUT_SESSION_ID}` and only change if production behavior contradicts it.
-- [ ] Add a failing test proving unpaid API responses do not expose `fullReport`.
-- [ ] Add a failing test proving paid API/status responses can indicate `paid`, `generating`, and `ready`.
-- [ ] Implement the smallest server-side status shape needed for polling.
-- [ ] Add a client waiting UI with progress bands: 0-25 confirming, 25-50 preparing chart, 50-85 writing report, 85-100 unlocking result.
-- [ ] Poll every 2-3 seconds while status is confirming or generating.
-- [ ] Automatically render the full report once paid and ready.
-- [ ] Add calm timeout copy after 60-90 seconds.
-- [ ] Add retry UI for true generation failure without exposing internal AI errors.
-- [ ] Run `npm test`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run smoke:p0`.
-- [ ] Update `memory-bank/progress.md`.
+- [x] Verify current success URL is `/reading/[id]/full?session_id={CHECKOUT_SESSION_ID}` and only change if production behavior contradicts it.
+- [x] Add a failing test proving unpaid API responses do not expose `fullReport`.
+- [x] Add a failing test proving paid API/status responses can indicate `paid`, `generating`, and `ready`.
+- [x] Implement the smallest server-side status shape needed for polling.
+- [x] Add a client waiting UI with progress bands: 0-25 confirming, 25-50 preparing chart, 50-85 writing report, 85-100 unlocking result.
+- [x] Poll every 2-3 seconds while status is confirming or generating.
+- [x] Automatically render the full report once paid and ready.
+- [x] Add calm timeout copy after 60-90 seconds.
+- [x] Add retry UI for true generation failure without exposing internal AI errors.
+- [x] Run `npm test`.
+- [x] Run `npm run build`.
+- [x] Run `npm run smoke:p0`.
+- [x] Update `memory-bank/progress.md`.
 - [ ] Commit and push.
 
 ### Acceptance

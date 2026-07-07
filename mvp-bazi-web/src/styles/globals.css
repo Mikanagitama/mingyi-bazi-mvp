@@ -585,6 +585,100 @@ meter {
   margin-top: 22px;
 }
 
+.waitingReport {
+  display: grid;
+  gap: 18px;
+}
+
+.waitingReport h1 {
+  font-size: clamp(34px, 5vw, 56px);
+  margin-bottom: 4px;
+}
+
+.progressTrack {
+  height: 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+.progressTrack span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--gold), var(--jade));
+  transition: width 280ms ease;
+}
+
+.progressText {
+  margin: -8px 0 0;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.generationSteps {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  display: grid;
+  gap: 12px;
+}
+
+.generationSteps li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+}
+
+.generationSteps span {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--muted);
+}
+
+.generationSteps li.active {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.generationSteps li.active span {
+  background: var(--ink);
+  color: var(--gold);
+  border-color: var(--ink);
+}
+
+.retryBox,
+.statusNote {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 16px;
+}
+
+.retryBox button {
+  border: 0;
+  border-radius: 6px;
+  background: var(--ink);
+  color: white;
+  padding: 11px 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.statusNote {
+  width: min(860px, calc(100% - 32px));
+  margin: 18px auto -16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .legalPage {
   padding: 34px;
 }
