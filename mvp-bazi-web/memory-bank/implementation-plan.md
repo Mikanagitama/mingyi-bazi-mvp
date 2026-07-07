@@ -232,7 +232,7 @@ Make the paid report look like a structured Bazi product.
 - [x] Add Current Year / Current 30-Day Energy visual card.
 - [x] Preserve the 8-section full-report contract.
 - [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
-- [ ] Commit, push, and verify deployment.
+- [x] Commit, push, and verify deployment.
 
 ### Verification
 
@@ -242,6 +242,8 @@ Make the paid report look like a structured Bazi product.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy paid-report visualization smoke passed: a signed production webhook unlocked a test reading and the full page contained Four Pillars Table, Five Elements Balance, Your Day Master, Luck Pillar Timeline, and Current Year / Current 30-Day Energy.
+- Post-deploy `npm run smoke:p0` passed.
 
 ## Stage P1.3: Current 30-Day Energy Productization
 
