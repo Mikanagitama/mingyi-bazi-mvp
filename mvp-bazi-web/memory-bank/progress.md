@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.4 Future Product Entry Points is implemented, pushed, deployed, and smoke-checked.
+P1.5 Basic SEO + Contact + Social Links is implemented locally and verified. Commit, push, deployment, and post-deploy SEO smoke are next.
 
 ### Next Required Action
 
-Start P1.5 Basic SEO + Contact + Social Links. The manual Stripe test-card flow remains a final P1 verification item.
+Commit and push P1.5, then run final P1 verification. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -106,6 +106,25 @@ Start P1.5 Basic SEO + Contact + Social Links. The manual Stripe test-card flow 
 - `npm test -- src/tests/p08-stability.test.ts` passed: 3 tests.
 - `npm test` passed: 9 files, 33 tests.
 - `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy homepage smoke passed for the future product cards.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+
+### P1.5 Implementation Notes
+
+- Added professional contact/social link config in `src/lib/site-links.ts`.
+- Expanded footer to include legal links, SEO guide links, email, X, TikTok, Instagram, Xiaohongshu, and Douyin.
+- Added homepage SEO metadata, Open Graph, and Twitter card metadata.
+- Added SEO pages for Bazi, Four Pillars of Destiny, and Day Master.
+- Added `/sitemap.xml` and `/robots.txt`.
+
+### P1.5 Verification
+
+- `npm test -- src/tests/p15-seo-social.test.ts` passed: 3 tests.
+- `npm test` passed: 14 files, 42 tests.
+- `npm run build` passed and generated SEO pages, `/sitemap.xml`, and `/robots.txt`.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.

@@ -460,6 +460,18 @@ h3 {
   padding: 34px 20px;
 }
 
+.footerGroup {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footerGroup span {
+  color: white;
+  font-weight: 800;
+}
+
 .readingPage {
   padding-bottom: 60px;
 }

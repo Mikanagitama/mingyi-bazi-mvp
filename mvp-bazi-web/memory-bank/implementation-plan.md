@@ -346,6 +346,25 @@ Make the site more shareable and search-ready.
 - Sitemap and robots are available.
 - Build and P0 smoke pass.
 
+### Steps
+
+- [x] Add professional contact/social link config.
+- [x] Render legal, SEO, contact, and social links in the footer.
+- [x] Add homepage title, description, Open Graph, and Twitter metadata.
+- [x] Add SEO pages for Bazi, Four Pillars of Destiny, and Day Master.
+- [x] Add sitemap and robots routes.
+- [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
+- [ ] Commit, push, and verify deployment.
+
+### Verification
+
+- `npm test -- src/tests/p15-seo-social.test.ts` passed.
+- `npm test` passed: 14 files, 42 tests.
+- `npm run build` passed and generated SEO pages, `/sitemap.xml`, and `/robots.txt`.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+
 ## Final P1 Verification
 
 - [ ] Run `npm run build`.
