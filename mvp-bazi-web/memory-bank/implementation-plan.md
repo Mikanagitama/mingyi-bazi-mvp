@@ -223,6 +223,26 @@ Make the paid report look like a structured Bazi product.
 - Mobile layout works.
 - Build and P0 smoke pass.
 
+### Steps
+
+- [x] Add Four Pillars Table to the paid full report.
+- [x] Add Five Elements Balance visualization to the paid full report.
+- [x] Add Day Master card to the paid full report.
+- [x] Add Luck Pillar timeline to the paid full report.
+- [x] Add Current Year / Current 30-Day Energy visual card.
+- [x] Preserve the 8-section full-report contract.
+- [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
+- [ ] Commit, push, and verify deployment.
+
+### Verification
+
+- `npm test -- src/tests/p12-report-visualization.test.ts` passed.
+- `npm test` passed: 11 files, 36 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+
 ## Stage P1.3: Current 30-Day Energy Productization
 
 ### Objective

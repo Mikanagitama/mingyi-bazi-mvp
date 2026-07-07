@@ -587,6 +587,141 @@ meter {
   margin-top: 22px;
 }
 
+.visualEvidence {
+  display: grid;
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.visualBlock,
+.currentEnergyCard {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 22px;
+}
+
+.visualBlockHeader h2,
+.visualBlock h2,
+.currentEnergyCard h2 {
+  font-size: 28px;
+  margin: 4px 0 18px;
+}
+
+.pillarTable {
+  display: grid;
+  gap: 1px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--line);
+}
+
+.pillarRow {
+  display: grid;
+  grid-template-columns: minmax(130px, 1.1fr) repeat(4, minmax(92px, 1fr));
+  gap: 1px;
+}
+
+.pillarRow span,
+.pillarRow strong,
+.pillarRow b {
+  background: rgba(255, 255, 255, 0.74);
+  padding: 12px 10px;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.pillarRow span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.pillarRow strong,
+.pillarRow b {
+  justify-content: center;
+  text-align: center;
+}
+
+.pillarRow.header strong,
+.pillarRow.header span {
+  background: rgba(17, 17, 15, 0.92);
+  color: white;
+}
+
+.visualSplit {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 18px;
+}
+
+.fullDayMaster {
+  margin: 0;
+}
+
+.compactVisual {
+  display: grid;
+  align-content: start;
+}
+
+.compactElements {
+  margin-top: 0;
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.luckTimeline {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.luckTimeline article,
+.currentEnergyGrid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.52);
+  padding: 14px;
+}
+
+.luckTimeline span,
+.luckTimeline small,
+.currentEnergyGrid span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.luckTimeline strong,
+.currentEnergyGrid strong {
+  display: block;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.currentEnergyCard {
+  background:
+    radial-gradient(circle at 88% 15%, rgba(47, 111, 98, 0.12), transparent 12rem),
+    rgba(255, 255, 255, 0.45);
+}
+
+.currentEnergyGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 14px;
+}
+
+.currentEnergyGrid p {
+  color: var(--muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
 .reportSection {
   padding: 22px;
 }
@@ -852,8 +987,14 @@ meter {
   .methodGrid,
   .chartGrid,
   .lockedGrid,
-  .sampleProfile {
+  .sampleProfile,
+  .visualSplit,
+  .currentEnergyGrid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .luckTimeline {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -891,7 +1032,10 @@ meter {
   .methodGrid,
   .chartGrid,
   .lockedGrid,
-  .sampleProfile {
+  .sampleProfile,
+  .visualSplit,
+  .currentEnergyGrid,
+  .luckTimeline {
     grid-template-columns: 1fr;
   }
 

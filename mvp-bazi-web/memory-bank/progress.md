@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.1 Sample Report is implemented, pushed, deployed, and smoke-checked.
+P1.2 Report Visualization is implemented locally and verified. Commit, push, deployment, and post-deploy paid-report visualization smoke are next.
 
 ### Next Required Action
 
-Start P1.2 Report Visualization. The manual Stripe test-card flow remains a final P1 verification item.
+Commit and push P1.2, then verify a production paid report contains the new visual evidence. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -109,8 +109,6 @@ Start P1.2 Report Visualization. The manual Stripe test-card flow remains a fina
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
-- Post-deploy `/sample-report` production smoke passed.
-- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - `npm run db:setup` completed successfully after loading local environment variables.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 - Post-deploy signed Stripe webhook smoke passed for a production test reading: payment status became paid, report state was `ready`, generation mode was `ai`, and the full report contained 8 sections.
@@ -127,6 +125,24 @@ Start P1.2 Report Visualization. The manual Stripe test-card flow remains a fina
 - `npm test -- src/tests/p11-sample-report.test.ts` passed: 2 tests.
 - `npm test` passed: 10 files, 35 tests.
 - `npm run build` passed and generated `/sample-report`.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy `/sample-report` production smoke passed.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+
+### P1.2 Implementation Notes
+
+- Added structured Bazi evidence to the paid full-report component before the prose sections.
+- Added Four Pillars Table with heavenly stems, earthly branches, elements, Ten Gods, and hidden stems.
+- Added Five Elements balance, Day Master card, Luck Pillar timeline, and Current Year / Current 30-Day Energy card.
+- Preserved the existing 8-section full-report contract and did not change AI prompt structure.
+
+### P1.2 Verification
+
+- `npm test -- src/tests/p12-report-visualization.test.ts` passed: 1 test.
+- `npm test` passed: 11 files, 36 tests.
+- `npm run build` passed.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.

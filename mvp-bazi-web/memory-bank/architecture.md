@@ -55,6 +55,7 @@ P1 should keep the current architecture and add small focused pieces:
 - Event logging helpers and tables for observability.
 - Optional rate-limit helpers for preview and regeneration protection.
 - SEO and sample-report pages as normal Next.js routes. P1.1 adds `/sample-report` backed by static fake data in `src/lib/reports/sample-report.ts`.
+- P1.2 adds paid-report visual evidence inside `src/components/FullReport.tsx`, using the existing `reading.chart` object and leaving the 8-section report prose contract intact.
 
 ## P0.5 Status Flow
 
