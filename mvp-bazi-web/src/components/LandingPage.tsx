@@ -102,6 +102,21 @@ export function LandingPage({ copy }: { copy: Copy }) {
         </div>
       </section>
 
+      <section className="section futureReports">
+        <p className="eyebrow">Coming Soon</p>
+        <h2>{copy.landing.futureTitle}</h2>
+        <p className="sectionIntro">{copy.landing.futureSub}</p>
+        <div className="futureGrid">
+          {copy.landing.futureReports.map(([title, body]) => (
+            <article key={title}>
+              <span>Coming Soon</span>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="banner">
         <h2>{copy.landing.footerCta}</h2>
         <p>{copy.landing.footerSub}</p>

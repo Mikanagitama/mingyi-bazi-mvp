@@ -303,6 +303,24 @@ Prepare future monetization without implementing separate products.
 - Main Full Bazi Report flow is unchanged.
 - Build and P0 smoke pass.
 
+### Steps
+
+- [x] Add Wealth Pattern Report coming-soon card.
+- [x] Add Love & Relationship Report coming-soon card.
+- [x] Keep cards non-disruptive and clearly separate from the current Full Bazi Report purchase flow.
+- [x] Avoid adding credits, subscriptions, separate checkout, notify storage, or AI chat.
+- [x] Run relevant tests, build, database dry-run, preflight smoke, and P0 smoke.
+- [ ] Commit, push, and verify deployment.
+
+### Verification
+
+- `npm test -- src/tests/p14-future-products.test.ts` passed.
+- `npm test` passed: 13 files, 39 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
+
 ## Stage P1.5: Basic SEO + Contact + Social Links
 
 ### Objective

@@ -45,6 +45,12 @@ export const zh = {
       ["安全支付", "付款由 Stripe Checkout 处理。"],
       ["一次性付费", "完整报告不是订阅制，不会重复扣费。"]
     ],
+    futureTitle: "未来专题报告",
+    futureSub: "未来可能加入的细分报告，不影响当前完整八字报告的一次性购买流程。",
+    futureReports: [
+      ["财富模式报告", "理解你的命盘与金钱、机会和长期赚钱风格之间的关系。"],
+      ["感情关系报告", "探索你的关系模式、吸引方式和情感需求。"]
+    ] as Array<[string, string]>,
     footerCta: "命运在你手中。",
     footerSub: "现在开始了解它。"
   },

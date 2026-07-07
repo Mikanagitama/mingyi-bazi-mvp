@@ -45,6 +45,12 @@ export const en = {
       ["Secure checkout", "Payment is handled by Stripe Checkout."],
       ["One-time payment", "No subscription or recurring charge for the full report."]
     ],
+    futureTitle: "Future Report Editions",
+    futureSub: "Planned focused reports, without changing today's one-time Full Bazi Report purchase.",
+    futureReports: [
+      ["Wealth Pattern Report", "Understand how your chart relates to money, opportunity, and long-term earning style."],
+      ["Love & Relationship Report", "Explore your relationship patterns, attraction style, and emotional needs."]
+    ] as Array<[string, string]>,
     footerCta: "Your destiny is in your hands.",
     footerSub: "Discover it now."
   },

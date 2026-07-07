@@ -18,11 +18,11 @@
 
 ### Current Stage
 
-P1.3 Current 30-Day Energy Productization is implemented, pushed, deployed, and smoke-checked.
+P1.4 Future Product Entry Points is implemented locally and verified. Commit, push, deployment, and post-deploy homepage smoke are next.
 
 ### Next Required Action
 
-Start P1.4 Future Product Entry Points. The manual Stripe test-card flow remains a final P1 verification item.
+Commit and push P1.4, then verify production homepage shows the future product cards without changing checkout. The manual Stripe test-card flow remains a final P1 verification item.
 
 ### P0.5 Implementation Notes
 
@@ -130,6 +130,24 @@ Start P1.4 Future Product Entry Points. The manual Stripe test-card flow remains
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
+- Post-deploy `/sample-report` production smoke passed.
+- Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
+
+### P1.2 Implementation Notes
+
+- Added structured Bazi evidence to the paid full-report component before the prose sections.
+- Added Four Pillars Table with heavenly stems, earthly branches, elements, Ten Gods, and hidden stems.
+- Added Five Elements balance, Day Master card, Luck Pillar timeline, and Current Year / Current 30-Day Energy card.
+- Preserved the existing 8-section full-report contract and did not change AI prompt structure.
+
+### P1.2 Verification
+
+- `npm test -- src/tests/p12-report-visualization.test.ts` passed: 1 test.
+- `npm test` passed: 11 files, 36 tests.
+- `npm run build` passed.
+- `npm run db:setup:dry` passed.
+- `npm run preflight:smoke` passed.
+- `npm run smoke:p0` passed against the current production baseline.
 - Post-deploy paid-report visualization smoke passed for a production test reading.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 
@@ -148,20 +166,19 @@ Start P1.4 Future Product Entry Points. The manual Stripe test-card flow remains
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
 - `npm run smoke:p0` passed against the current production baseline.
-- Post-deploy `/sample-report` production smoke passed.
+- Post-deploy current-energy smoke passed for a production paid test reading.
 - Post-deploy `npm run smoke:p0` passed against `https://mingyi-bazi-mvp.vercel.app`.
 
-### P1.2 Implementation Notes
+### P1.4 Implementation Notes
 
-- Added structured Bazi evidence to the paid full-report component before the prose sections.
-- Added Four Pillars Table with heavenly stems, earthly branches, elements, Ten Gods, and hidden stems.
-- Added Five Elements balance, Day Master card, Luck Pillar timeline, and Current Year / Current 30-Day Energy card.
-- Preserved the existing 8-section full-report contract and did not change AI prompt structure.
+- Added non-disruptive homepage cards for Wealth Pattern Report and Love & Relationship Report.
+- Marked both future reports as Coming Soon.
+- Kept the current Full Bazi Report checkout flow unchanged and did not add a new payment path.
 
-### P1.2 Verification
+### P1.4 Verification
 
-- `npm test -- src/tests/p12-report-visualization.test.ts` passed: 1 test.
-- `npm test` passed: 11 files, 36 tests.
+- `npm test -- src/tests/p14-future-products.test.ts` passed: 1 test.
+- `npm test` passed: 13 files, 39 tests.
 - `npm run build` passed.
 - `npm run db:setup:dry` passed.
 - `npm run preflight:smoke` passed.
