@@ -23,10 +23,11 @@ const requiredEnv = [
   "STRIPE_SECRET_KEY",
   "STRIPE_PRICE_ID",
   "STRIPE_WEBHOOK_SECRET",
+  "OPENAI_API_KEY",
   "NEXT_PUBLIC_SITE_URL"
 ];
 
-const optionalEnv = ["OPENAI_API_KEY", "OPENAI_MODEL"];
+const optionalEnv = ["OPENAI_MODEL"];
 
 function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
@@ -63,7 +64,7 @@ for (const name of requiredEnv) {
 }
 
 for (const name of optionalEnv) {
-  printStatus(name, isSet(name), "optional for AI-written full reports; template fallback remains available", true);
+  printStatus(name, isSet(name), "optional; defaults to the app model setting", true);
 }
 
 console.log("");

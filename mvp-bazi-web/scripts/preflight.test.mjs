@@ -8,6 +8,7 @@ const result = spawnSync(process.execPath, ["scripts/preflight.mjs"], {
     STRIPE_SECRET_KEY: "sk_test_example",
     STRIPE_PRICE_ID: "price_example",
     STRIPE_WEBHOOK_SECRET: "whsec_example",
+    OPENAI_API_KEY: "sk_test_example_ai",
     NEXT_PUBLIC_SITE_URL: "https://example.vercel.app"
   },
   encoding: "utf8"
