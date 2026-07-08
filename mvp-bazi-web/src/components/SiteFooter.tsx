@@ -6,7 +6,7 @@ export function SiteFooter() {
   return (
     <footer className="footer">
       <div className="footerGroup">
-        <span>MINGYI Bazi Destiny</span>
+        <span>© 2026 Founter Saying. Mingyi Bazi is an AI-powered Bazi digital report product.</span>
         {en.footer.links.map(([label, href]) => (
           <Link key={href} href={href}>
             {label}

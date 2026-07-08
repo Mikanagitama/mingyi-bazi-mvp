@@ -11,7 +11,18 @@ describe("P1.5 SEO and social links", () => {
     expect(metadata.openGraph).toMatchObject({
       title: "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading"
     });
-    expect(metadata.twitter).toMatchObject({ card: "summary_large_image" });
+    expect(metadata.openGraph).toMatchObject({
+      url: "https://www.fountersaying.com",
+      images: expect.arrayContaining([
+        expect.objectContaining({ url: "/og/founter-saying-og.png", width: 1200, height: 630 }),
+        expect.objectContaining({ url: "/og/founter-saying-square.png", width: 1080, height: 1080 })
+      ])
+    });
+    expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: ["/og/founter-saying-og.png"] });
+    expect(metadata.icons).toMatchObject({
+      icon: expect.arrayContaining([expect.objectContaining({ url: "/favicon.svg" })]),
+      apple: expect.arrayContaining([expect.objectContaining({ url: "/apple-touch-icon.png" })])
+    });
     expect(siteUrl).toBe("https://www.fountersaying.com");
   });
 

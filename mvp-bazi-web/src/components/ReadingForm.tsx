@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { trackEvent } from "@/lib/client-events";
 import { en } from "@/lib/i18n/en";
 import { zh } from "@/lib/i18n/zh";
 
@@ -12,12 +13,14 @@ export function ReadingForm() {
   const [language, setLanguage] = useState<"en" | "zh">(initialLang);
   const [birthTimeUnknown, setBirthTimeUnknown] = useState(false);
   const [trueSolarTime, setTrueSolarTime] = useState(false);
+  const [started, setStarted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const copy = useMemo(() => (language === "zh" ? zh : en), [language]);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    trackEvent("form_submitted", { language });
     setLoading(true);
     setError("");
     const formData = new FormData(event.currentTarget);
@@ -51,7 +54,16 @@ export function ReadingForm() {
   }
 
   return (
-    <form className="formPanel" onSubmit={submit}>
+    <form
+      className="formPanel"
+      onSubmit={submit}
+      onFocusCapture={() => {
+        if (!started) {
+          setStarted(true);
+          trackEvent("form_started", { language });
+        }
+      }}
+    >
       <h1>{copy.form.title}</h1>
       <label>
         {copy.form.name}

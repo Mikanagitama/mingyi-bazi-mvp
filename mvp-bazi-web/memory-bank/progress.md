@@ -15,6 +15,7 @@
 - Added `RELEASE_CHECKLIST.md` and `LAUNCH_QA.md`.
 - Added `npm run smoke:creem` for strict production verification after Vercel is switched to Creem.
 - Added `npm run smoke:creem-webhook` for a signed production Creem webhook unlock smoke.
+- Added final launch-polish scope: mobile QA, formal English copy audit, social sharing assets, launch content kit, first-party funnel documentation, and live commercial readiness.
 
 ### 2026-07-08 Verification
 
@@ -48,6 +49,13 @@
 - `npm run build` passed after adding the signed Creem webhook smoke script.
 - `npm run smoke:creem` passed after adding the signed Creem webhook smoke script.
 - Manual Creem hosted checkout passed in test mode for reading `975d4a98-7008-4f61-ae22-22ed28847948`: Creem returned to `https://www.fountersaying.com/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?...`, the production API reported `paymentStatus=paid`, `paymentProvider=creem`, `reportState=ready`, and an 8-section full report.
+- Mobile QA passed locally on the final launch-polish build: 105 page/viewport combinations, 0 failures, 30 screenshots saved under `docs/mobile-qa/screenshots`.
+- Added OG, square, vertical, favicon, apple-touch, and 512 app icon assets.
+- Added first-party funnel events and documentation for launch analytics without storing full report content.
+- Added `docs/marketing/launch-content-kit.md`.
+- Added `LIVE_COMMERCIAL_READINESS.md`.
+- Final local verification passed: `npm test` (16 files, 51 tests) and `npm run build`.
+- Final production smoke passed before deploy: `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook`; the signed Creem webhook smoke unlocked reading `4d8390f8-2610-4f7f-8c58-7e9615e9955f` with an 8-section full report.
 
 ### 2026-07-08 Remaining Launch Tasks
 

@@ -17,6 +17,7 @@ Bring Mingyi / Founter Saying from a verified P1 MVP to a small-scale commercial
 - Provider-neutral paid unlock works through `paymentStatus=paid`.
 - True solar time works online.
 - Trust pages are accessible.
+- Final launch-polish build includes mobile QA evidence, first-party funnel events, OG/social assets, launch content drafts, and live readiness documentation.
 
 ## Target Audience
 
@@ -69,6 +70,11 @@ Prefer:
 8. Basic SEO, contact, and social link structure exist.
 9. Basic stability, logging, anti-abuse, and recovery protections exist.
 10. P0 verification remains green.
+11. Final commercial polish keeps mobile layouts usable across common phone/tablet widths.
+12. Public English copy stays formal, non-sensational, and clear about one-time secure checkout.
+13. Social sharing cards render premium Mingyi Bazi/Founter Saying assets on the official domain.
+14. Funnel events show the path from page view to full report viewed without storing report content.
+15. Live-readiness docs distinguish technical readiness from Creem live/KYC and business operations readiness.
 
 ## Execution Scope
 
@@ -84,6 +90,7 @@ Allowed stages:
 - P1.4 Future Product Entry Points
 - P1.5 Basic SEO + Contact + Social Links
 - Final P1 Verification
+- Final Commercial Launch Polish
 
 ## Explicit Non-Goals
 
@@ -139,3 +146,7 @@ P1 is complete only when these pass:
 - trust pages are accessible
 - sample report is accessible
 - mobile layout is manually checked
+- OG/social image paths load
+- launch content kit exists
+- funnel events are documented
+- live commercial readiness document separates marketing readiness from real-money readiness

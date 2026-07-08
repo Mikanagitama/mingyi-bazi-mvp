@@ -9,12 +9,12 @@ export const en = {
     switch: "中文"
   },
   landing: {
-    eyebrow: "Four Pillars, One Destiny",
+    eyebrow: "Four Pillars, One Reading",
     title: "Ancient Chinese Bazi Reading, Explained by AI",
     highlight: "Destiny.",
     subtitle: "Discover your personality, timing, career direction, and relationship patterns through a structured Four Pillars report.",
     primary: "Get My Free Preview",
-    trust: "Private by design. No hukou. Birthplace is optional.",
+    trust: "Private by design. No household-registration data. Birthplace is optional.",
     features: [
       ["Structured Bazi Chart", "Four Pillars, Day Master, Five Elements, and Ten Gods"],
       ["Free Preview", "See the core chart and a plain-language snapshot before paying"],
@@ -51,8 +51,8 @@ export const en = {
       ["Wealth Pattern Report", "Understand how your chart relates to money, opportunity, and long-term earning style."],
       ["Love & Relationship Report", "Explore your relationship patterns, attraction style, and emotional needs."]
     ] as Array<[string, string]>,
-    footerCta: "Your destiny is in your hands.",
-    footerSub: "Discover it now."
+    footerCta: "Explore your Four Pillars with structure and care.",
+    footerSub: "Start with a free preview."
   },
   form: {
     title: "Start Your Free Bazi Preview",
@@ -92,7 +92,7 @@ export const en = {
     secure: "One-time payment. Secure checkout. Instant digital access. No recurring charge.",
     trustBullets: ["One-time payment", "Secure checkout", "Instant digital access", "No recurring charge"],
     privacyReassurance: "Your birth details are used only to generate your report. We do not sell your personal information.",
-    refundReassurance: "If you paid but cannot access your report, contact support and we will help or refund.",
+    refundReassurance: "If you paid but cannot access your report, contact support and we will help restore access or review a refund.",
     paid: "Payment confirmed",
     copy: "Copy Report",
     print: "Print / Save PDF",

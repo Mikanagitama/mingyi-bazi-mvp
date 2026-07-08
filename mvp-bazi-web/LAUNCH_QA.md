@@ -67,6 +67,51 @@ Functional checks:
 - full report still has exactly 8 fixed sections
 - mobile paid full report has no horizontal overflow
 
+## Domain And Asset Checks
+
+- `https://www.fountersaying.com`
+- `https://www.fountersaying.com/api/health`
+- `https://www.fountersaying.com/sitemap.xml`
+- `https://www.fountersaying.com/robots.txt`
+- `https://www.fountersaying.com/og/founter-saying-og.png`
+- `https://www.fountersaying.com/og/founter-saying-square.png`
+- `https://www.fountersaying.com/og/founter-saying-vertical.png`
+- `https://www.fountersaying.com/favicon.svg`
+
+## Mobile QA
+
+See `MOBILE_QA.md` for the current final launch-polish layout check.
+
+Required viewports:
+
+- `360x800`
+- `375x812`
+- `390x844`
+- `414x896`
+- `430x932`
+- `768x1024`
+- `1440x900`
+
+Required result: no global horizontal overflow, no clipped CTAs, readable report visualizations, usable footer/legal links, and a clear payment return/progress state.
+
+## Funnel Analytics
+
+See `docs/analytics/funnel-events.md`.
+
+Key conversion steps must be trackable without storing report content:
+
+- `page_view`
+- `homepage_cta_clicked`
+- `form_started`
+- `form_submitted`
+- `preview_generated`
+- `unlock_clicked`
+- `checkout_started`
+- `checkout_returned`
+- `payment_confirmed`
+- `full_report_generating`
+- `full_report_viewed`
+
 ## Support Readiness
 
 - `support@fountersaying.com` receives mail.

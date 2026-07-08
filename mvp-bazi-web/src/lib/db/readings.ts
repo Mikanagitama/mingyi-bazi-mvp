@@ -285,6 +285,13 @@ export async function markReadingPaid(params: {
       stripeSessionId: params.stripeSessionId,
       metadata: { amount: params.amount, currency: params.currency, provider, providerCheckoutId, providerEventId }
     });
+    await logEvent({
+      name: "payment_confirmed",
+      readingId: params.readingId,
+      stripeEventId: params.stripeEventId,
+      stripeSessionId: params.stripeSessionId,
+      metadata: { amount: params.amount, currency: params.currency, provider }
+    });
     return;
   }
 
@@ -339,6 +346,13 @@ export async function markReadingPaid(params: {
     stripeSessionId: params.stripeSessionId,
     metadata: { amount: params.amount, currency: params.currency, provider, providerCheckoutId, providerEventId }
   });
+  await logEvent({
+    name: "payment_confirmed",
+    readingId: params.readingId,
+    stripeEventId: params.stripeEventId,
+    stripeSessionId: params.stripeSessionId,
+    metadata: { amount: params.amount, currency: params.currency, provider }
+  });
 }
 
 async function ensureGeneratedPaidReport(readingId: string) {
@@ -360,6 +374,7 @@ async function createAndSaveFullReport(record: ReadingRecord) {
     "Full report generation limit reached."
   );
   await logEvent({ name: "full_generation_started", readingId: record.id });
+  await logEvent({ name: "full_report_generating", readingId: record.id });
   try {
     const report = await generateFullReportWithAi(record.chart, record.language);
     await saveFullReport(record.id, report);

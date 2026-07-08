@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { PublicReading, ReadingStatus } from "@/lib/bazi/types";
+import { trackEvent } from "@/lib/client-events";
 import { FreeReport } from "./FreeReport";
 import { FullReport } from "./FullReport";
 
@@ -57,6 +58,9 @@ export function FullReportStatus({ initialReading, initialStatus, sessionId }: F
   const [status, setStatus] = useState(initialStatus);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
   const [error, setError] = useState("");
+  const trackedReturn = useRef(false);
+  const trackedPayment = useRef(false);
+  const trackedGenerating = useRef(false);
   const copy = stepCopy(reading.language);
   const shouldPoll = status.reportState === "confirming" || status.reportState === "generating";
 
@@ -80,6 +84,24 @@ export function FullReportStatus({ initialReading, initialStatus, sessionId }: F
     setStatus(data.status);
     setError("");
   }, [reading.id, sessionId]);
+
+  useEffect(() => {
+    if (sessionId && !trackedReturn.current) {
+      trackedReturn.current = true;
+      trackEvent("checkout_returned", { reportState: status.reportState }, reading.id);
+    }
+  }, [reading.id, sessionId, status.reportState]);
+
+  useEffect(() => {
+    if (status.paymentStatus === "paid" && !trackedPayment.current) {
+      trackedPayment.current = true;
+      trackEvent("payment_confirmed", { reportState: status.reportState }, reading.id);
+    }
+    if (status.reportState === "generating" && !trackedGenerating.current) {
+      trackedGenerating.current = true;
+      trackEvent("full_report_generating", {}, reading.id);
+    }
+  }, [reading.id, status.paymentStatus, status.reportState]);
 
   useEffect(() => {
     if (!shouldPoll) {

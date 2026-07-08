@@ -3,16 +3,26 @@ import type postgres from "postgres";
 import { hasDatabaseUrl, readLocalStore, sql, writeLocalStore } from "./client";
 
 export type EventName =
+  | "page_view"
+  | "homepage_cta_clicked"
+  | "form_started"
+  | "form_submitted"
   | "reading_created"
   | "preview_generated"
+  | "unlock_clicked"
   | "checkout_started"
+  | "checkout_returned"
   | "checkout_completed"
   | "webhook_received"
+  | "payment_confirmed"
   | "payment_marked_paid"
+  | "full_report_generating"
   | "full_generation_started"
   | "full_generation_completed"
   | "full_generation_failed"
-  | "full_report_viewed";
+  | "full_report_viewed"
+  | "sample_report_viewed"
+  | "trust_page_viewed";
 
 type EventMetadata = {
   readonly [key: string]: postgres.JSONValue | undefined;

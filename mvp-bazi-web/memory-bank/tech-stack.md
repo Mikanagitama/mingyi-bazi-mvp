@@ -49,6 +49,8 @@
 ## Stability And Abuse Protection
 
 - Event logging: `src/lib/db/events.ts`
+- Browser funnel endpoint: `src/app/api/events/route.ts`
+- Client event tracker: `src/components/AnalyticsTracker.tsx` and `src/lib/client-events.ts`
 - Rate limits: `src/lib/db/rate-limit.ts`
 - Preview limit env: `MINGYI_PREVIEW_RATE_LIMIT_PER_HOUR`
 - Reading/session limit env: `MINGYI_READING_RATE_LIMIT_PER_DAY`
@@ -63,6 +65,10 @@
 - Local DB dry run: `npm run db:setup:dry`
 - Production smoke: `npm run smoke:p0`
 - Combined verifier: `npm run verify`
+- Mobile QA evidence: `MOBILE_QA.md` and `docs/mobile-qa/mobile-qa-results.json`
+- Marketing kit: `docs/marketing/launch-content-kit.md`
+- Funnel docs: `docs/analytics/funnel-events.md`
+- Live readiness doc: `LIVE_COMMERCIAL_READINESS.md`
 
 ## Deployment
 
@@ -71,6 +77,15 @@
 - Vercel fallback URL: `https://mingyi-bazi-mvp.vercel.app`
 - GitHub repository: `Mikanagitama/mingyi-bazi-mvp`
 - Working app directory: `D:\文档\算命\mvp-bazi-web`
+
+## Public Assets
+
+- Open Graph image: `public/og/founter-saying-og.png` (`1200x630`)
+- Square social image: `public/og/founter-saying-square.png` (`1080x1080`)
+- Vertical social image: `public/og/founter-saying-vertical.png` (`1080x1920`)
+- Favicon: `public/favicon.svg`
+- Apple touch icon: `public/apple-touch-icon.png`
+- App icon: `public/icon-512.png`
 
 ## Secret Boundaries
 

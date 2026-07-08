@@ -74,7 +74,24 @@ If Cloudflare Email Routing is not configured yet:
 17. Footer links work.
 18. No secret key appears in the frontend bundle.
 19. Stripe test fallback works when `PAYMENT_PROVIDER=stripe`.
+20. Mobile QA evidence is current in `MOBILE_QA.md`.
+21. OG images load:
+   - `https://www.fountersaying.com/og/founter-saying-og.png`
+   - `https://www.fountersaying.com/og/founter-saying-square.png`
+   - `https://www.fountersaying.com/og/founter-saying-vertical.png`
+22. Funnel events are documented in `docs/analytics/funnel-events.md`.
+23. `LIVE_COMMERCIAL_READINESS.md` still separates public marketing readiness from real-money readiness.
 
 ## Known Launch Gate
 
 Creem live payments may require account approval/KYC. Keep `CREEM_API_BASE_URL=https://test-api.creem.io` until live mode is approved and a live product/API key is ready.
+
+## Real-Money Launch Gate
+
+Do not announce real-money availability until:
+
+1. Creem live/KYC approval is complete.
+2. Live Creem API key, product ID, and webhook secret are configured in Vercel.
+3. Vercel is redeployed.
+4. One small real payment test passes.
+5. `support@fountersaying.com` receives mail.

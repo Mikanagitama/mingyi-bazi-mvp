@@ -39,6 +39,9 @@ flowchart TD
 - `src/lib/reports/full-report.ts`: deterministic fallback full report.
 - `src/lib/db/readings.ts`: reading persistence, public/private reading shaping, payment marking, full-report storage.
 - `src/lib/db/events.ts`: best-effort event logging to Supabase `app_events` or local JSON store.
+- `src/app/api/events/route.ts`: browser-safe event endpoint with a strict event allowlist and metadata sanitization.
+- `src/components/AnalyticsTracker.tsx`: page view, trust page, sample report, and homepage CTA tracking.
+- `src/lib/client-events.ts`: browser helper for `sendBeacon`/`fetch` event delivery.
 - `src/lib/db/rate-limit.ts`: basic rate-limit counters backed by Supabase `app_rate_limits`, local JSON store, or in-memory fallback.
 - `src/lib/payments/provider.ts`: active checkout provider selection.
 - `src/lib/payments/creem.ts`: Creem Checkout creation, webhook signature verification, and event application.
@@ -106,6 +109,26 @@ flowchart TD
 ```
 
 Event logging is best effort: failures are caught so customer payment/report flows are not blocked by observability problems. Rate-limit storage prefers Supabase when configured, uses the local JSON store in development/tests, and falls back to in-memory counters if the database rate-limit table is temporarily unavailable.
+
+## Final Launch Observability
+
+The final launch-polish layer tracks the funnel with first-party events only:
+
+```mermaid
+flowchart TD
+  A["page_view"] --> B["homepage_cta_clicked"]
+  B --> C["form_started"]
+  C --> D["form_submitted"]
+  D --> E["preview_generated"]
+  E --> F["unlock_clicked"]
+  F --> G["checkout_started"]
+  G --> H["checkout_returned"]
+  H --> I["payment_confirmed"]
+  I --> J["full_report_generating"]
+  J --> K["full_report_viewed"]
+```
+
+The event endpoint accepts only whitelisted event names and small primitive metadata. It does not accept full report content, card data, raw birth form text, or secrets.
 
 ## Architecture Constraints
 

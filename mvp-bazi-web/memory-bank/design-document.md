@@ -74,3 +74,18 @@ Each stage must keep:
 - Stripe webhook signature verification intact for fallback/testing
 
 Manual checks are required for Creem test checkout, Stripe fallback test-card return flow, and mobile layout because they involve browser state and external provider behavior.
+
+## Final Commercial Polish
+
+The final launch-polish layer keeps the product scope unchanged and prepares the site for cautious public marketing. It adds first-party funnel visibility, formal English copy constraints, social sharing assets, mobile QA evidence, and launch documentation without adding credits, subscriptions, chat, compatibility reports, Ziwei, Western astrology, apps, admin dashboards, or Chinese payment.
+
+Brand usage:
+
+- Product name: Mingyi Bazi.
+- Company/domain-facing brand: Founter Saying.
+- Footer wording: Founter Saying owns the site; Mingyi Bazi is the AI-powered Bazi digital report product.
+
+Commercial readiness is split into two states:
+
+- Public marketing readiness: suitable for cautious traffic and feedback once tests and mobile QA pass.
+- Real-money readiness: requires Creem live/KYC approval, live env values, support email routing, and a small real payment test.

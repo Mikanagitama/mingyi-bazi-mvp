@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { trackEvent } from "@/lib/client-events";
 
 export function CheckoutButton({ readingId, label, secureText }: { readingId: string; label: string; secureText: string }) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function startCheckout() {
+    trackEvent("unlock_clicked", {}, readingId);
     setLoading(true);
     setError("");
     const response = await fetch("/api/checkout", {

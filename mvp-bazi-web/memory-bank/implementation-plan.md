@@ -52,6 +52,43 @@ Make `https://www.fountersaying.com` the canonical production domain and use Cre
 - Preview still does not leak full report; paid access still uses `paymentStatus=paid`.
 - DeepSeek remains the default AI provider and 8 fixed report sections remain intact.
 
+## Stage C2: Final Commercial Launch Polish
+
+### Objective
+
+Prepare Mingyi Bazi / Founter Saying for cautious public marketing without adding new product features.
+
+### Planned Files
+
+- Update project docs: `PRD.md`, `memory-bank/design-document.md`, `memory-bank/tech-stack.md`, `memory-bank/architecture.md`, `memory-bank/progress.md`, `RELEASE_CHECKLIST.md`, and `LAUNCH_QA.md`.
+- Add or update `MOBILE_QA.md`, `LIVE_COMMERCIAL_READINESS.md`, `docs/analytics/funnel-events.md`, and `docs/marketing/launch-content-kit.md`.
+- Add social assets under `public/og/` and icon assets under `public/`.
+- Add minimal first-party browser funnel logging through `src/app/api/events/route.ts`, `src/components/AnalyticsTracker.tsx`, and `src/lib/client-events.ts`.
+- Update metadata in `src/app/layout.tsx`.
+
+### Steps
+
+- [x] Audit current docs, copy, metadata, assets, and event logging against final launch-polish requirements.
+- [x] Add first-party funnel events for page views, homepage CTA, form start/submit, unlock click, checkout return, payment confirmation, report generation, sample report, and trust pages.
+- [x] Add tests for browser event sanitization and metadata references.
+- [x] Refine public English copy and footer brand language to use Founter Saying as company/domain brand and Mingyi Bazi as product name.
+- [x] Create OG, square, vertical, favicon, apple-touch, and app icon assets.
+- [x] Run mobile QA across required viewports and critical pages with screenshots/results saved under `docs/mobile-qa/`.
+- [x] Create launch content kit.
+- [x] Document funnel events and basic queries.
+- [x] Create live commercial readiness document that separates marketing readiness from real-money readiness.
+- [x] Run final verification: `npm test`, `npm run build`, `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook`.
+- [ ] Verify live official URL, health, sitemap, robots, OG image paths, footer/legal links, and Creem flow after deployment.
+
+### Acceptance
+
+- `MOBILE_QA.md` exists and records all required viewports/pages.
+- Public English copy has no informal placeholder, fear-based, guaranteed-outcome, or professional-advice language.
+- OG, square, vertical, favicon, and app icon assets exist and metadata references official-domain paths.
+- `docs/marketing/launch-content-kit.md` contains 20 X posts, 12 short video scripts, 15 Chinese warm-up ideas, hashtags, posting plan, and UTM rules.
+- `docs/analytics/funnel-events.md` documents all key funnel events and privacy rules.
+- `LIVE_COMMERCIAL_READINESS.md` clearly says small-scale public marketing can proceed but real-money launch waits for Creem live/KYC, live envs, support email, and a real small payment test.
+
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 
 ### Objective

@@ -23,7 +23,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
           <Link href="/sample-report">{copy.nav.sample}</Link>
           <Link href="/privacy">{copy.nav.privacy}</Link>
           <LanguageSwitch language={copy.lang} />
-          <Link className="navCta" href={readingHref}>{copy.nav.cta}</Link>
+          <Link className="navCta" href={readingHref} data-track-event="homepage_cta_clicked">{copy.nav.cta}</Link>
         </nav>
       </header>
 
@@ -33,7 +33,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
           <h1>{copy.landing.title}</h1>
           <p className="subtitle">{copy.landing.subtitle}</p>
           <div className="heroActions">
-            <Link className="primaryButton" href={readingHref}>{copy.landing.primary}</Link>
+            <Link className="primaryButton" href={readingHref} data-track-event="homepage_cta_clicked">{copy.landing.primary}</Link>
             <Link className="secondaryButton" href="/sample-report">{copy.nav.sample}</Link>
             <span>{copy.landing.trust}</span>
           </div>
@@ -120,7 +120,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
       <section className="banner">
         <h2>{copy.landing.footerCta}</h2>
         <p>{copy.landing.footerSub}</p>
-        <Link className="primaryButton" href={readingHref}>{copy.landing.primary}</Link>
+        <Link className="primaryButton" href={readingHref} data-track-event="homepage_cta_clicked">{copy.landing.primary}</Link>
       </section>
     </main>
   );

@@ -1,0 +1,3210 @@
+{
+  "generatedAt": "2026-07-08T10:16:41.694Z",
+  "base": "http://127.0.0.1:3000",
+  "viewports": [
+    {
+      "name": "360x800",
+      "width": 360,
+      "height": 800
+    },
+    {
+      "name": "375x812",
+      "width": 375,
+      "height": 812
+    },
+    {
+      "name": "390x844",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "name": "414x896",
+      "width": 414,
+      "height": 896
+    },
+    {
+      "name": "430x932",
+      "width": 430,
+      "height": 932
+    },
+    {
+      "name": "768x1024",
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "name": "1440x900",
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "pages": [
+    {
+      "name": "homepage",
+      "url": "/"
+    },
+    {
+      "name": "birth-form",
+      "url": "/reading/new"
+    },
+    {
+      "name": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7"
+    },
+    {
+      "name": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full"
+    },
+    {
+      "name": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return"
+    },
+    {
+      "name": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending"
+    },
+    {
+      "name": "sample-report",
+      "url": "/sample-report"
+    },
+    {
+      "name": "privacy",
+      "url": "/privacy"
+    },
+    {
+      "name": "terms",
+      "url": "/terms"
+    },
+    {
+      "name": "refund",
+      "url": "/refund"
+    },
+    {
+      "name": "disclaimer",
+      "url": "/disclaimer"
+    },
+    {
+      "name": "methodology",
+      "url": "/methodology"
+    },
+    {
+      "name": "seo-what-is-bazi",
+      "url": "/what-is-bazi"
+    },
+    {
+      "name": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny"
+    },
+    {
+      "name": "seo-day-master",
+      "url": "/day-master-bazi"
+    }
+  ],
+  "results": [
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 288,
+            "scrollWidth": 288,
+            "overflowX": "visible",
+            "rectWidth": 290
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 288,
+            "scrollWidth": 288,
+            "overflowX": "visible",
+            "rectWidth": 290
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 254,
+            "scrollWidth": 254,
+            "overflowX": "auto",
+            "rectWidth": 256
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 256,
+            "scrollWidth": 256,
+            "overflowX": "visible",
+            "rectWidth": 256
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 256,
+            "scrollWidth": 256,
+            "overflowX": "visible",
+            "rectWidth": 256
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 288,
+            "scrollWidth": 288,
+            "overflowX": "hidden",
+            "rectWidth": 290
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 288,
+            "scrollWidth": 288,
+            "overflowX": "visible",
+            "rectWidth": 290
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "360x800",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 360,
+        "innerWidth": 360,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 360,
+            "scrollWidth": 360,
+            "overflowX": "visible",
+            "rectWidth": 360
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 303,
+            "scrollWidth": 303,
+            "overflowX": "visible",
+            "rectWidth": 305
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 303,
+            "scrollWidth": 303,
+            "overflowX": "visible",
+            "rectWidth": 305
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 269,
+            "scrollWidth": 269,
+            "overflowX": "auto",
+            "rectWidth": 271
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 271,
+            "scrollWidth": 271,
+            "overflowX": "visible",
+            "rectWidth": 271
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 271,
+            "scrollWidth": 271,
+            "overflowX": "visible",
+            "rectWidth": 271
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 303,
+            "scrollWidth": 303,
+            "overflowX": "hidden",
+            "rectWidth": 305
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 303,
+            "scrollWidth": 303,
+            "overflowX": "visible",
+            "rectWidth": 305
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "375x812",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 375,
+        "innerWidth": 375,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 375,
+            "scrollWidth": 375,
+            "overflowX": "visible",
+            "rectWidth": 375
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\homepage-390x844.png"
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\birth-form-390x844.png"
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 318,
+            "scrollWidth": 318,
+            "overflowX": "visible",
+            "rectWidth": 320
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\preview-page-390x844.png"
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 318,
+            "scrollWidth": 318,
+            "overflowX": "visible",
+            "rectWidth": 320
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\locked-full-report-390x844.png"
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 284,
+            "scrollWidth": 284,
+            "overflowX": "auto",
+            "rectWidth": 286
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 286,
+            "scrollWidth": 286,
+            "overflowX": "visible",
+            "rectWidth": 286
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 286,
+            "scrollWidth": 286,
+            "overflowX": "visible",
+            "rectWidth": 286
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\paid-full-report-390x844.png"
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 318,
+            "scrollWidth": 318,
+            "overflowX": "hidden",
+            "rectWidth": 320
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\loading-progress-390x844.png"
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 318,
+            "scrollWidth": 318,
+            "overflowX": "visible",
+            "rectWidth": 320
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\sample-report-390x844.png"
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\privacy-390x844.png"
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\terms-390x844.png"
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\refund-390x844.png"
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\disclaimer-390x844.png"
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\methodology-390x844.png"
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-what-is-bazi-390x844.png"
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-four-pillars-390x844.png"
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "390x844",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 390,
+        "innerWidth": 390,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 390,
+            "scrollWidth": 390,
+            "overflowX": "visible",
+            "rectWidth": 390
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-day-master-390x844.png"
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 342,
+            "scrollWidth": 342,
+            "overflowX": "visible",
+            "rectWidth": 344
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 342,
+            "scrollWidth": 342,
+            "overflowX": "visible",
+            "rectWidth": 344
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 308,
+            "scrollWidth": 308,
+            "overflowX": "auto",
+            "rectWidth": 310
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 310,
+            "scrollWidth": 310,
+            "overflowX": "visible",
+            "rectWidth": 310
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 310,
+            "scrollWidth": 310,
+            "overflowX": "visible",
+            "rectWidth": 310
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 342,
+            "scrollWidth": 342,
+            "overflowX": "hidden",
+            "rectWidth": 344
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 342,
+            "scrollWidth": 342,
+            "overflowX": "visible",
+            "rectWidth": 344
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "414x896",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 414,
+        "innerWidth": 414,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 414,
+            "scrollWidth": 414,
+            "overflowX": "visible",
+            "rectWidth": 414
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 358,
+            "scrollWidth": 358,
+            "overflowX": "visible",
+            "rectWidth": 360
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 358,
+            "scrollWidth": 358,
+            "overflowX": "visible",
+            "rectWidth": 360
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 324,
+            "scrollWidth": 324,
+            "overflowX": "auto",
+            "rectWidth": 326
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 326,
+            "scrollWidth": 326,
+            "overflowX": "visible",
+            "rectWidth": 326
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 326,
+            "scrollWidth": 326,
+            "overflowX": "visible",
+            "rectWidth": 326
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 358,
+            "scrollWidth": 358,
+            "overflowX": "hidden",
+            "rectWidth": 360
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 358,
+            "scrollWidth": 358,
+            "overflowX": "visible",
+            "rectWidth": 360
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "430x932",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 430,
+        "innerWidth": 430,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 430,
+            "scrollWidth": 430,
+            "overflowX": "visible",
+            "rectWidth": 430
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 664,
+            "scrollWidth": 664,
+            "overflowX": "visible",
+            "rectWidth": 666
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 664,
+            "scrollWidth": 664,
+            "overflowX": "visible",
+            "rectWidth": 666
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 618,
+            "scrollWidth": 618,
+            "overflowX": "auto",
+            "rectWidth": 620
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 278,
+            "scrollWidth": 278,
+            "overflowX": "visible",
+            "rectWidth": 278
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 620,
+            "scrollWidth": 620,
+            "overflowX": "visible",
+            "rectWidth": 620
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 664,
+            "scrollWidth": 664,
+            "overflowX": "hidden",
+            "rectWidth": 666
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 664,
+            "scrollWidth": 664,
+            "overflowX": "visible",
+            "rectWidth": 666
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "768x1024",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 768,
+        "innerWidth": 768,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 768,
+            "scrollWidth": 768,
+            "overflowX": "visible",
+            "rectWidth": 768
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": ""
+    },
+    {
+      "page": "homepage",
+      "url": "/",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\homepage-1440x900.png"
+    },
+    {
+      "page": "birth-form",
+      "url": "/reading/new",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\birth-form-1440x900.png"
+    },
+    {
+      "page": "preview-page",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 788,
+            "scrollWidth": 788,
+            "overflowX": "visible",
+            "rectWidth": 790
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\preview-page-1440x900.png"
+    },
+    {
+      "page": "locked-full-report",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 788,
+            "scrollWidth": 788,
+            "overflowX": "visible",
+            "rectWidth": 790
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\locked-full-report-1440x900.png"
+    },
+    {
+      "page": "paid-full-report",
+      "url": "/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?checkout_id=mobile_qa_paid_return",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "pillarTable",
+            "clientWidth": 742,
+            "scrollWidth": 742,
+            "overflowX": "auto",
+            "rectWidth": 744
+          },
+          {
+            "selector": "elementGrid compactElements",
+            "clientWidth": 379,
+            "scrollWidth": 379,
+            "overflowX": "visible",
+            "rectWidth": 379
+          },
+          {
+            "selector": "luckTimeline",
+            "clientWidth": 744,
+            "scrollWidth": 744,
+            "overflowX": "visible",
+            "rectWidth": 744
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\paid-full-report-1440x900.png"
+    },
+    {
+      "page": "loading-progress",
+      "url": "/reading/4d139a0a-985c-4586-8d77-1649c2fac4e7/full?checkout_id=mobile_qa_pending",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "progressTrack",
+            "clientWidth": 788,
+            "scrollWidth": 788,
+            "overflowX": "hidden",
+            "rectWidth": 790
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\loading-progress-1440x900.png"
+    },
+    {
+      "page": "sample-report",
+      "url": "/sample-report",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "elementGrid",
+            "clientWidth": 788,
+            "scrollWidth": 788,
+            "overflowX": "visible",
+            "rectWidth": 790
+          },
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\sample-report-1440x900.png"
+    },
+    {
+      "page": "privacy",
+      "url": "/privacy",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\privacy-1440x900.png"
+    },
+    {
+      "page": "terms",
+      "url": "/terms",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\terms-1440x900.png"
+    },
+    {
+      "page": "refund",
+      "url": "/refund",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\refund-1440x900.png"
+    },
+    {
+      "page": "disclaimer",
+      "url": "/disclaimer",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\disclaimer-1440x900.png"
+    },
+    {
+      "page": "methodology",
+      "url": "/methodology",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\methodology-1440x900.png"
+    },
+    {
+      "page": "seo-what-is-bazi",
+      "url": "/what-is-bazi",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-what-is-bazi-1440x900.png"
+    },
+    {
+      "page": "seo-four-pillars",
+      "url": "/four-pillars-of-destiny",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-four-pillars-1440x900.png"
+    },
+    {
+      "page": "seo-day-master",
+      "url": "/day-master-bazi",
+      "viewport": "1440x900",
+      "pass": true,
+      "errors": [],
+      "data": {
+        "title": "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
+        "scrollWidth": 1440,
+        "innerWidth": 1440,
+        "overflow": 0,
+        "clippedClickables": [],
+        "smallTapTargets": [],
+        "reportBlocks": [
+          {
+            "selector": "footer",
+            "clientWidth": 1440,
+            "scrollWidth": 1440,
+            "overflowX": "visible",
+            "rectWidth": 1440
+          }
+        ],
+        "footerLinks": 15
+      },
+      "screenshot": "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-day-master-1440x900.png"
+    }
+  ],
+  "screenshots": [
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\homepage-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\birth-form-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\preview-page-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\locked-full-report-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\paid-full-report-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\loading-progress-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\sample-report-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\privacy-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\terms-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\refund-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\disclaimer-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\methodology-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-what-is-bazi-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-four-pillars-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-day-master-390x844.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\homepage-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\birth-form-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\preview-page-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\locked-full-report-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\paid-full-report-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\loading-progress-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\sample-report-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\privacy-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\terms-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\refund-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\disclaimer-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\methodology-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-what-is-bazi-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-four-pillars-1440x900.png",
+    "D:\\文档\\算命\\mvp-bazi-web\\docs\\mobile-qa\\screenshots\\seo-day-master-1440x900.png"
+  ]
+}
