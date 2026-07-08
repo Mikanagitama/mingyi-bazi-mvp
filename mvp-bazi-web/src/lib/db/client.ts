@@ -26,13 +26,19 @@ type LocalStore = {
   payments: Array<{
     id: string;
     readingId: string;
+    provider?: string;
+    providerCheckoutId?: string;
+    providerEventId?: string;
+    providerCustomerId?: string;
     stripeSessionId?: string;
     stripeEventId?: string;
     stripePaymentIntent?: string;
     amount: number;
     currency: string;
     status: string;
+    rawEvent?: Record<string, unknown>;
     createdAt: string;
+    updatedAt?: string;
   }>;
   events: AppEventRecord[];
   rateLimits: RateLimitRecord[];
@@ -89,7 +95,17 @@ export function writeLocalStore(store: LocalStore) {
   fs.mkdirSync(path.dirname(localFile), { recursive: true });
   const tempFile = `${localFile}.${process.pid}.${Date.now()}.tmp`;
   fs.writeFileSync(tempFile, JSON.stringify(store, null, 2), "utf8");
-  fs.renameSync(tempFile, localFile);
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      fs.renameSync(tempFile, localFile);
+      return;
+    } catch (error) {
+      if (attempt === 2 || !(error instanceof Error) || !("code" in error) || error.code !== "EPERM") {
+        throw error;
+      }
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 25);
+    }
+  }
 }
 
 export function resetLocalStoreForTests() {

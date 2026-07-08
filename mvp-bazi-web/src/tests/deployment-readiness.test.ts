@@ -4,6 +4,10 @@ import { assertPersistentStorageAvailable, getDeploymentReadiness } from "@/lib/
 describe("deployment readiness", () => {
   const keys = [
     "DATABASE_URL",
+    "PAYMENT_PROVIDER",
+    "CREEM_API_KEY",
+    "CREEM_PRODUCT_ID",
+    "CREEM_WEBHOOK_SECRET",
     "STRIPE_SECRET_KEY",
     "STRIPE_PRICE_ID",
     "STRIPE_WEBHOOK_SECRET",
@@ -27,6 +31,10 @@ describe("deployment readiness", () => {
 
   it("reports blockers when required production services are missing", () => {
     delete process.env.DATABASE_URL;
+    delete process.env.PAYMENT_PROVIDER;
+    delete process.env.CREEM_API_KEY;
+    delete process.env.CREEM_PRODUCT_ID;
+    delete process.env.CREEM_WEBHOOK_SECRET;
     delete process.env.STRIPE_SECRET_KEY;
     delete process.env.STRIPE_PRICE_ID;
     delete process.env.STRIPE_WEBHOOK_SECRET;
@@ -45,22 +53,26 @@ describe("deployment readiness", () => {
 
   it("reports ready when payment, storage, site URL, and AI are configured", () => {
     process.env.DATABASE_URL = "postgres://example";
-    process.env.STRIPE_SECRET_KEY = "sk_test_example";
-    process.env.STRIPE_PRICE_ID = "price_example";
-    process.env.STRIPE_WEBHOOK_SECRET = "whsec_example";
+    process.env.PAYMENT_PROVIDER = "creem";
+    process.env.CREEM_API_KEY = "creem_test_example";
+    process.env.CREEM_PRODUCT_ID = "prod_example";
+    process.env.CREEM_WEBHOOK_SECRET = "whsec_creem";
     process.env.OPENAI_API_KEY = "sk_test_ai";
-    process.env.NEXT_PUBLIC_SITE_URL = "https://example.vercel.app";
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.fountersaying.com";
 
     const readiness = getDeploymentReadiness();
 
     expect(readiness.ok).toBe(true);
     expect(readiness.aiConfigured).toBe(true);
     expect(readiness.aiProvider).toBe("deepseek");
+    expect(readiness.paymentProvider).toBe("creem");
+    expect(readiness.creemCheckoutConfigured).toBe(true);
     expect(readiness.blockers).toEqual([]);
   });
 
   it("accepts DeepSeek provider with a key stored as OPENAI_API_KEY", () => {
     process.env.DATABASE_URL = "postgres://example";
+    process.env.PAYMENT_PROVIDER = "stripe";
     process.env.STRIPE_SECRET_KEY = "sk_test_example";
     process.env.STRIPE_PRICE_ID = "price_example";
     process.env.STRIPE_WEBHOOK_SECRET = "whsec_example";
@@ -72,6 +84,21 @@ describe("deployment readiness", () => {
 
     expect(readiness.ok).toBe(true);
     expect(readiness.aiConfigured).toBe(true);
+  });
+
+  it("allows Creem webhook secret to be empty in non-production test setup", () => {
+    process.env.DATABASE_URL = "postgres://example";
+    process.env.PAYMENT_PROVIDER = "creem";
+    process.env.CREEM_API_KEY = "creem_test_example";
+    process.env.CREEM_PRODUCT_ID = "prod_example";
+    delete process.env.CREEM_WEBHOOK_SECRET;
+    process.env.OPENAI_API_KEY = "sk_test_ai";
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.fountersaying.com";
+
+    const readiness = getDeploymentReadiness();
+
+    expect(readiness.ok).toBe(true);
+    expect(readiness.creemWebhookConfigured).toBe(false);
   });
 
   it("blocks local file storage in Vercel runtime without a database", () => {

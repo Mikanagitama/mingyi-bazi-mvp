@@ -2,7 +2,7 @@
 
 ## Design Principle
 
-P1 should strengthen the existing P0 flow without changing the core product shape. The site remains a bilingual Bazi report product: free preview first, one-time Stripe payment second, full AI report after payment. Each improvement must make the current full-report purchase easier to understand, easier to trust, or easier to recover.
+Commercial launch readiness should strengthen the existing P1 flow without changing the core product shape. The site remains a bilingual Bazi report product: free preview first, one-time secure checkout second, full AI report after payment. Creem is the commercial payment provider, while Stripe remains available as a fallback/testing provider.
 
 ## User Journey
 
@@ -10,8 +10,8 @@ P1 should strengthen the existing P0 flow without changing the core product shap
 2. Visitor understands the offer in about 10 seconds: a structured Chinese Four Pillars reading explained by AI.
 3. Visitor enters birth details. Birth place is optional, true solar time is explained, and unknown birth time is allowed.
 4. Visitor receives a free preview with basic chart evidence and locked full-report modules.
-5. Visitor clicks unlock and pays through Stripe Checkout.
-6. Stripe returns to `/reading/[id]/full?session_id={CHECKOUT_SESSION_ID}`.
+5. Visitor clicks unlock and pays through the configured secure checkout provider.
+6. Creem returns to `/reading/[id]/full` with checkout parameters; Stripe fallback returns to `/reading/[id]/full?session_id={CHECKOUT_SESSION_ID}`.
 7. The full-report page shows payment confirmation and generation progress if the report is not ready.
 8. The page automatically updates when the paid report is ready.
 9. User can refresh or revisit the reading link and still access the paid report.
@@ -70,6 +70,7 @@ Each stage must keep:
 - `npm run build` passing
 - `npm run smoke:p0` passing
 - preview/full access boundaries intact
-- Stripe webhook signature verification intact
+- Creem webhook signature verification intact when `CREEM_WEBHOOK_SECRET` is configured
+- Stripe webhook signature verification intact for fallback/testing
 
-Manual checks are required for Stripe test-card return flow and mobile layout because they involve browser state and external provider behavior.
+Manual checks are required for Creem test checkout, Stripe fallback test-card return flow, and mobile layout because they involve browser state and external provider behavior.

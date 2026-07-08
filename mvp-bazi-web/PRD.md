@@ -2,7 +2,7 @@
 
 ## Product Goal
 
-Bring Mingyi from a verified P0 MVP to a P1-ready commercial prototype for English-speaking users. The product remains a one-time paid Bazi digital report: users generate a free preview, then pay once through Stripe Checkout to unlock a full AI-written report grounded in deterministic Bazi chart data.
+Bring Mingyi / Founter Saying from a verified P1 MVP to a small-scale commercial launch candidate for English-speaking users. The product remains a one-time paid Bazi digital report: users generate a free preview, then pay once through the configured secure checkout provider to unlock a full AI-written report grounded in deterministic Bazi chart data.
 
 ## Current P0 Evidence
 
@@ -10,10 +10,11 @@ Bring Mingyi from a verified P0 MVP to a P1-ready commercial prototype for Engli
 - DeepSeek is the default AI provider.
 - OpenAI remains an optional fallback through `AI_PROVIDER=openai`.
 - `npm run smoke:p0` has passed against production.
-- Signed Stripe webhook smoke has passed.
+- Signed Stripe webhook smoke has passed and Stripe remains available as a test/fallback provider.
+- Creem is the target commercial payment provider through `PAYMENT_PROVIDER=creem`.
 - Paid full report generation uses AI and returns 8 fixed sections.
 - Free preview does not expose `fullReport`.
-- Stripe webhook unlock works.
+- Provider-neutral paid unlock works through `paymentStatus=paid`.
 - True solar time works online.
 - Trust pages are accessible.
 
@@ -103,7 +104,8 @@ Do not add in this goal:
 
 P1 keeps one product: Full Bazi Report.
 
-- Price is managed in Stripe through `STRIPE_PRICE_ID`.
+- Commercial checkout is managed by Creem through `CREEM_PRODUCT_ID`.
+- Stripe test checkout remains available through `PAYMENT_PROVIDER=stripe`.
 - Checkout remains a one-time payment.
 - The website must clearly say there is no recurring charge.
 - Refund messaging should cover paid-access failures, not subjective accuracy claims.
@@ -113,8 +115,9 @@ P1 keeps one product: Full Bazi Report.
 - Birth details are used only to generate the report.
 - Full report must not be returned for unpaid readings.
 - Secrets must remain in environment variables.
-- Frontend must not expose Stripe secret key, webhook secret, Supabase service role, `DATABASE_URL`, DeepSeek key, or OpenAI key.
-- Stripe webhooks must remain signed and verified.
+- Frontend must not expose Creem API key, Creem webhook secret, Stripe secret key, webhook secret, Supabase service role, `DATABASE_URL`, DeepSeek key, or OpenAI key.
+- Creem webhooks must be signed and verified when `CREEM_WEBHOOK_SECRET` is configured.
+- Stripe webhooks must remain signed and verified for fallback/testing.
 - Supabase RLS must remain enabled.
 
 ## Final P1 Acceptance
@@ -123,8 +126,9 @@ P1 is complete only when these pass:
 
 - `npm run build`
 - `npm run smoke:p0`
-- signed Stripe webhook smoke
-- manual Stripe test-card flow
+- signed Creem webhook smoke where possible
+- signed Stripe webhook smoke for fallback
+- manual Creem test checkout flow
 - preview does not leak full report
 - unpaid full report access is blocked
 - paid access works

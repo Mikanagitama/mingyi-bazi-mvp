@@ -34,7 +34,7 @@ export const en = {
     steps: [
       ["Enter Your Details", "Provide your birth date, time, and optional gender."],
       ["Generate Preview", "See your Four Pillars and free interpretation."],
-      ["Unlock Full Reading", "Use secure Stripe Checkout for one-time access to the full report."]
+      ["Unlock Full Reading", "Use secure checkout for one-time access to the full report."]
     ],
     methodTitle: "Why Mingyi Feels Different",
     method: [
@@ -42,7 +42,7 @@ export const en = {
       ["AI interpretation second", "AI turns the structured chart into calm, plain-language guidance."],
       ["True solar time supported", "When location is recognized, birth time can be adjusted by longitude."],
       ["Private birth data", "Your details are used only to generate your report."],
-      ["Secure checkout", "Payment is handled by Stripe Checkout."],
+      ["Secure checkout", "Payment is handled by a secure payment provider."],
       ["One-time payment", "No subscription or recurring charge for the full report."]
     ],
     futureTitle: "Future Report Editions",
@@ -89,8 +89,8 @@ export const en = {
     lockedTitle: "Unlock the full report",
     lockedText: "Career, wealth, relationships, current energy, yearly timing, and practical advice are available after payment.",
     unlock: "Unlock Full Reading — JP¥500",
-    secure: "One-time payment. Secure checkout by Stripe. Instant digital access. No recurring charge.",
-    trustBullets: ["One-time payment", "Secure checkout by Stripe", "Instant digital access", "No recurring charge"],
+    secure: "One-time payment. Secure checkout. Instant digital access. No recurring charge.",
+    trustBullets: ["One-time payment", "Secure checkout", "Instant digital access", "No recurring charge"],
     privacyReassurance: "Your birth details are used only to generate your report. We do not sell your personal information.",
     refundReassurance: "If you paid but cannot access your report, contact support and we will help or refund.",
     paid: "Payment confirmed",

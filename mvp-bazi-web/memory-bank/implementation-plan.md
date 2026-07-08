@@ -1,10 +1,53 @@
-# Mingyi P1-Ready Implementation Plan
+# Mingyi Commercial Launch Implementation Plan
 
 > This plan must be executed one stage at a time. Do not start a later stage until the current stage is implemented, verified, committed, pushed, and recorded in `memory-bank/progress.md`.
 
 ## Current Gate
 
-P0.7 implementation is deployed and smoke-checked. The next implementation stage is P0.8: Stability, Logging, Anti-Abuse, Recovery.
+P1 verification is complete. The next implementation stage is commercial launch readiness: official domain canonicalization, Creem payment provider integration, launch documentation, and security verification.
+
+## Stage C1: Official Domain + Creem Launch Readiness
+
+### Objective
+
+Make `https://www.fountersaying.com` the canonical production domain and use Creem as the commercial payment provider while preserving Stripe as a test/fallback provider.
+
+### Planned Files
+
+- Update `PRD.md`, `memory-bank/design-document.md`, `memory-bank/tech-stack.md`, `memory-bank/architecture.md`, and this plan to reflect Creem commercial launch readiness.
+- Modify `src/lib/config.ts` and `src/lib/site-links.ts` for official domain and payment provider configuration.
+- Add Creem helpers under `src/lib/payments/creem.ts`.
+- Add a provider-neutral payment entry under `src/lib/payments/provider.ts` or equivalent.
+- Add `/api/creem/create-checkout-session` and `/api/creem/webhook`.
+- Keep `/api/checkout` as the frontend-compatible provider router.
+- Extend `src/lib/db/schema.sql`, local store types, and `markReadingPaid` to store provider-neutral payment data while keeping Stripe fields.
+- Update readiness, preflight, smoke, and tests for Creem default plus Stripe fallback.
+- Add launch docs such as `RELEASE_CHECKLIST.md` and `LAUNCH_QA.md`.
+
+### Steps
+
+- [x] Confirm official-domain URL handling uses `NEXT_PUBLIC_SITE_URL` with `https://www.fountersaying.com` as production fallback.
+- [x] Update contact email and public trust copy to `support@fountersaying.com` and provider-neutral secure checkout language.
+- [x] Add Creem config, checkout creation, redirect URL, and metadata/request_id handling.
+- [x] Add Creem webhook verification with optional secret in test setup and required verification when configured.
+- [x] Make payment persistence provider-neutral and idempotent for both Creem and Stripe.
+- [x] Add tests for Creem checkout, webhook unlock, duplicate webhook idempotency, readiness, and Stripe fallback.
+- [x] Update schema docs and launch checklist.
+- [x] Run `npm test`.
+- [x] Run `npm run build`.
+- [ ] Run `npm run smoke:p0` or provider-aware equivalent.
+- [ ] Verify production official domain `/api/health`, sitemap, robots, and public pages.
+- [ ] Document manual Creem webhook setup and remaining user tasks.
+
+### Acceptance
+
+- `PAYMENT_PROVIDER=creem` creates a Creem checkout without exposing `CREEM_API_KEY`.
+- `checkout.completed` Creem webhooks unlock the correct reading and do not duplicate unlock/report generation.
+- Stripe test fallback still works when `PAYMENT_PROVIDER=stripe`.
+- Official canonical metadata/sitemap/robots point to `https://www.fountersaying.com`.
+- Public UI uses `support@fountersaying.com` and provider-neutral trust copy.
+- Preview still does not leak full report; paid access still uses `paymentStatus=paid`.
+- DeepSeek remains the default AI provider and 8 fixed report sections remain intact.
 
 ## Stage P0.5: Payment-to-Full-Report UX Polish
 

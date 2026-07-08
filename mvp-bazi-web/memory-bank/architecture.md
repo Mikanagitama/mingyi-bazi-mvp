@@ -14,15 +14,21 @@ flowchart TD
   D --> E["Free preview stored"]
   E --> F["Preview page /reading/[id]"]
   F --> G["POST /api/checkout"]
-  G --> H["Stripe Checkout"]
-  H --> I["Stripe webhook"]
-  I --> J["markReadingPaid"]
-  J --> K["AI or fallback full report"]
-  H --> L["Return to /reading/[id]/full"]
-  L --> M["Render full report if paid"]
-  C --> N["Event logging and rate-limit checks"]
-  I --> N
-  J --> N
+  G --> H["Payment provider router"]
+  H --> I["Creem Checkout"]
+  H --> J["Stripe Checkout fallback"]
+  I --> K["Creem webhook"]
+  J --> L["Stripe webhook"]
+  K --> M["markReadingPaid"]
+  L --> M
+  M --> N["AI or fallback full report"]
+  I --> O["Return to /reading/[id]/full"]
+  J --> O
+  O --> P["Render full report if paid"]
+  C --> Q["Event logging and rate-limit checks"]
+  K --> Q
+  L --> Q
+  M --> Q
 ```
 
 ## Boundaries
@@ -34,7 +40,9 @@ flowchart TD
 - `src/lib/db/readings.ts`: reading persistence, public/private reading shaping, payment marking, full-report storage.
 - `src/lib/db/events.ts`: best-effort event logging to Supabase `app_events` or local JSON store.
 - `src/lib/db/rate-limit.ts`: basic rate-limit counters backed by Supabase `app_rate_limits`, local JSON store, or in-memory fallback.
-- `src/lib/payments/stripe.ts`: Stripe Checkout and webhook verification.
+- `src/lib/payments/provider.ts`: active checkout provider selection.
+- `src/lib/payments/creem.ts`: Creem Checkout creation, webhook signature verification, and event application.
+- `src/lib/payments/stripe.ts`: Stripe Checkout and webhook verification for fallback/testing.
 - `src/lib/payments/webhook.ts`: Stripe event application.
 - `src/components/*`: landing, form, preview, locked modules, and full report rendering.
 
@@ -43,7 +51,8 @@ flowchart TD
 - `getInternalReading` may return full data for server-side trusted code.
 - `getReading` returns public data and strips `fullReport` unless `paymentStatus` is `paid`.
 - Preview APIs and pages must not expose paid report content for unpaid readings.
-- Stripe webhook is the trusted unlock path.
+- Creem webhook is the commercial trusted unlock path when `PAYMENT_PROVIDER=creem`.
+- Stripe webhook remains the fallback/testing trusted unlock path when `PAYMENT_PROVIDER=stripe`.
 
 ## P1 Architecture Direction
 

@@ -16,7 +16,9 @@ function readSchema() {
     "create table if not exists readings",
     "create table if not exists payments",
     "payment_status",
-    "stripe_session_id"
+    "stripe_session_id",
+    "provider_checkout_id",
+    "provider_event_id"
   ];
 
   for (const fragment of requiredFragments) {

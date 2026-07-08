@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { metadata } from "@/app/layout";
-import { contactLinks } from "@/lib/site-links";
+import { contactLinks, siteUrl } from "@/lib/site-links";
 
 describe("P1.5 SEO and social links", () => {
   it("defines homepage SEO, Open Graph, and Twitter metadata", () => {
@@ -12,6 +12,7 @@ describe("P1.5 SEO and social links", () => {
       title: "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading"
     });
     expect(metadata.twitter).toMatchObject({ card: "summary_large_image" });
+    expect(siteUrl).toBe("https://www.fountersaying.com");
   });
 
   it("keeps configured contact/social links professional and hides empty placeholders", () => {
@@ -23,7 +24,7 @@ describe("P1.5 SEO and social links", () => {
       "Xiaohongshu",
       "Douyin"
     ]);
-    expect(contactLinks.find((link) => link.label === "Email")?.href).toBe("mailto:support@your-domain.com");
+    expect(contactLinks.find((link) => link.label === "Email")?.href).toBe("mailto:support@fountersaying.com");
     expect(contactLinks.every((link) => link.href.length > 0)).toBe(true);
   });
 

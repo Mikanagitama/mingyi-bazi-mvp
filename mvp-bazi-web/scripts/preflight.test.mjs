@@ -5,11 +5,12 @@ const result = spawnSync(process.execPath, ["scripts/preflight.mjs"], {
   env: {
     ...process.env,
     DATABASE_URL: "postgres://example",
-    STRIPE_SECRET_KEY: "sk_test_example",
-    STRIPE_PRICE_ID: "price_example",
-    STRIPE_WEBHOOK_SECRET: "whsec_example",
+    PAYMENT_PROVIDER: "creem",
+    CREEM_API_KEY: "creem_test_example",
+    CREEM_PRODUCT_ID: "prod_example",
+    CREEM_WEBHOOK_SECRET: "whsec_creem",
     OPENAI_API_KEY: "sk_test_example_ai",
-    NEXT_PUBLIC_SITE_URL: "https://example.vercel.app"
+    NEXT_PUBLIC_SITE_URL: "https://www.fountersaying.com"
   },
   encoding: "utf8"
 });

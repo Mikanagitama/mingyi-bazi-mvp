@@ -1,6 +1,9 @@
 export const config = {
   get siteUrl() {
-    return cleanEnv(process.env.NEXT_PUBLIC_SITE_URL) || "http://localhost:3000";
+    return canonicalUrl(cleanEnv(process.env.NEXT_PUBLIC_SITE_URL));
+  },
+  get paymentProvider() {
+    return cleanEnv(process.env.PAYMENT_PROVIDER) || "stripe";
   },
   get stripePriceId() {
     return cleanEnv(process.env.STRIPE_PRICE_ID);
@@ -10,6 +13,18 @@ export const config = {
   },
   get stripeWebhookSecret() {
     return cleanEnv(process.env.STRIPE_WEBHOOK_SECRET);
+  },
+  get creemApiKey() {
+    return cleanEnv(process.env.CREEM_API_KEY);
+  },
+  get creemProductId() {
+    return cleanEnv(process.env.CREEM_PRODUCT_ID);
+  },
+  get creemWebhookSecret() {
+    return cleanEnv(process.env.CREEM_WEBHOOK_SECRET);
+  },
+  get creemBaseUrl() {
+    return cleanEnv(process.env.CREEM_API_BASE_URL) || "https://test-api.creem.io";
   },
   get databaseUrl() {
     return cleanEnv(process.env.DATABASE_URL);
@@ -36,6 +51,17 @@ export const config = {
 
 function cleanEnv(value: string | undefined) {
   return (value || "").trim();
+}
+
+function normalizeUrl(value: string) {
+  return (value.startsWith("http://") || value.startsWith("https://") ? value : `https://${value}`).replace(/\/$/, "");
+}
+
+function canonicalUrl(value: string) {
+  const normalized = value ? normalizeUrl(value) : "";
+  return !normalized || normalized.includes("mingyi-bazi-mvp.vercel.app")
+    ? "https://www.fountersaying.com"
+    : normalized;
 }
 
 export function requiredServerConfig(name: keyof typeof config) {

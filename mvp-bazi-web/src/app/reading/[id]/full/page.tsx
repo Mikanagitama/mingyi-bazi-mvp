@@ -9,11 +9,12 @@ export default async function FullReadingPage({
   searchParams
 }: {
   params: Promise<{ id: string }>;
-  searchParams?: Promise<{ session_id?: string | string[] }>;
+  searchParams?: Promise<{ session_id?: string | string[]; checkout_id?: string | string[] }>;
 }) {
   const { id } = await params;
   const query = searchParams ? await searchParams : {};
   const sessionId = Array.isArray(query.session_id) ? query.session_id[0] : query.session_id;
+  const checkoutId = Array.isArray(query.checkout_id) ? query.checkout_id[0] : query.checkout_id;
   const reading = await getReading(id);
   if (!reading) {
     return (
@@ -40,8 +41,8 @@ export default async function FullReadingPage({
       </header>
       <FullReportStatus
         initialReading={reading}
-        initialStatus={buildReadingStatus(reading, Boolean(sessionId))}
-        sessionId={sessionId}
+        initialStatus={buildReadingStatus(reading, Boolean(sessionId || checkoutId))}
+        sessionId={sessionId || checkoutId}
       />
     </main>
   );

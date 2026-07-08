@@ -24,11 +24,16 @@ export async function applyStripeEvent(event: Stripe.Event) {
   await markReadingPaid({
     readingId,
     email: session.customer_details?.email || session.customer_email || undefined,
+    provider: "stripe",
+    providerCheckoutId: session.id,
+    providerEventId: event.id,
+    providerCustomerId: typeof session.customer === "string" ? session.customer : undefined,
     stripeSessionId: session.id,
     stripeEventId: event.id,
     stripePaymentIntent: typeof session.payment_intent === "string" ? session.payment_intent : undefined,
     amount: session.amount_total || 500,
-    currency: session.currency || "jpy"
+    currency: session.currency || "jpy",
+    rawEvent: event as unknown as Record<string, unknown>
   });
 
   return { handled: true, readingId };

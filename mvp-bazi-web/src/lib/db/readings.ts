@@ -16,6 +16,10 @@ function intEnv(name: string, fallback: number) {
   return Number.isFinite(value) && value > 0 ? value : fallback;
 }
 
+function toJsonRecord(value?: Record<string, unknown>) {
+  return value ? JSON.parse(JSON.stringify(value)) as Record<string, unknown> : {};
+}
+
 function toPublic(record: ReadingRecord): PublicReading {
   if (record.paymentStatus === "paid") {
     if (record.fullReport?.generation?.fallbackReason) {
@@ -212,14 +216,38 @@ export async function saveFullReport(id: string, report: FullReport) {
 export async function markReadingPaid(params: {
   readingId: string;
   email?: string;
+  provider?: "stripe" | "creem";
+  providerCheckoutId?: string;
+  providerEventId?: string;
+  providerCustomerId?: string;
   stripeSessionId?: string;
   stripeEventId?: string;
   stripePaymentIntent?: string;
   amount: number;
   currency: string;
+  rawEvent?: Record<string, unknown>;
 }) {
+  const provider = params.provider || "stripe";
+  const providerEventId = params.providerEventId || params.stripeEventId;
+  const providerCheckoutId = params.providerCheckoutId || params.stripeSessionId;
   if (hasDatabaseUrl()) {
     const db = sql();
+    if (providerEventId) {
+      const rows = await db`
+        select id from payments
+        where provider = ${provider} and provider_event_id = ${providerEventId}
+        limit 1
+      `;
+      if (rows[0]) return;
+    }
+    if (providerCheckoutId) {
+      const rows = await db`
+        select id from payments
+        where provider = ${provider} and provider_checkout_id = ${providerCheckoutId}
+        limit 1
+      `;
+      if (rows[0]) return;
+    }
     if (params.stripeEventId) {
       const rows = await db`select id from payments where stripe_event_id = ${params.stripeEventId} limit 1`;
       if (rows[0]) return;
@@ -237,8 +265,16 @@ export async function markReadingPaid(params: {
         where id = ${params.readingId}
       `;
       await tx`
-        insert into payments (reading_id, stripe_session_id, stripe_event_id, stripe_payment_intent, amount, currency, status)
-        values (${params.readingId}, ${params.stripeSessionId || null}, ${params.stripeEventId || null}, ${params.stripePaymentIntent || null}, ${params.amount}, ${params.currency}, 'paid')
+        insert into payments (
+          reading_id, provider, provider_checkout_id, provider_event_id, provider_customer_id,
+          stripe_session_id, stripe_event_id, stripe_payment_intent,
+          amount, currency, status, raw_event_json, updated_at
+        )
+        values (
+          ${params.readingId}, ${provider}, ${providerCheckoutId || null}, ${providerEventId || null}, ${params.providerCustomerId || null},
+          ${params.stripeSessionId || null}, ${params.stripeEventId || null}, ${params.stripePaymentIntent || null},
+          ${params.amount}, ${params.currency}, 'paid', ${tx.json(toJsonRecord(params.rawEvent) as never)}, ${now()}
+        )
         on conflict do nothing
       `;
     });
@@ -247,7 +283,7 @@ export async function markReadingPaid(params: {
       readingId: params.readingId,
       stripeEventId: params.stripeEventId,
       stripeSessionId: params.stripeSessionId,
-      metadata: { amount: params.amount, currency: params.currency }
+      metadata: { amount: params.amount, currency: params.currency, provider, providerCheckoutId, providerEventId }
     });
     return;
   }
@@ -259,6 +295,8 @@ export async function markReadingPaid(params: {
   }
   const duplicatePayment = store.payments.some((payment) => {
     return (
+      (providerEventId && payment.provider === provider && payment.providerEventId === providerEventId) ||
+      (providerCheckoutId && payment.provider === provider && payment.providerCheckoutId === providerCheckoutId) ||
       (params.stripeEventId && payment.stripeEventId === params.stripeEventId) ||
       (params.stripeSessionId && payment.stripeSessionId === params.stripeSessionId)
     );
@@ -279,13 +317,19 @@ export async function markReadingPaid(params: {
   store.payments.push({
     id: crypto.randomUUID(),
     readingId: params.readingId,
+    provider,
+    providerCheckoutId,
+    providerEventId,
+    providerCustomerId: params.providerCustomerId,
     stripeSessionId: params.stripeSessionId,
     stripeEventId: params.stripeEventId,
     stripePaymentIntent: params.stripePaymentIntent,
     amount: params.amount,
     currency: params.currency,
     status: "paid",
-    createdAt: now()
+    rawEvent: params.rawEvent,
+    createdAt: now(),
+    updatedAt: now()
   });
   writeLocalStore(store);
   await logEvent({
@@ -293,7 +337,7 @@ export async function markReadingPaid(params: {
     readingId: params.readingId,
     stripeEventId: params.stripeEventId,
     stripeSessionId: params.stripeSessionId,
-    metadata: { amount: params.amount, currency: params.currency }
+    metadata: { amount: params.amount, currency: params.currency, provider, providerCheckoutId, providerEventId }
   });
 }
 

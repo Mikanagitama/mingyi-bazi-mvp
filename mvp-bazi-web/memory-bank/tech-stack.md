@@ -26,12 +26,17 @@
 
 ## Payments
 
-- Provider: Stripe Checkout
+- Commercial provider: Creem Checkout through `PAYMENT_PROVIDER=creem`
+- Fallback/testing provider: Stripe Checkout through `PAYMENT_PROVIDER=stripe`
 - Product model: one-time Full Bazi Report payment
+- Provider router: `src/lib/payments/provider.ts`
 - Checkout creation: `src/app/api/checkout/route.ts`
+- Creem checkout alias: `src/app/api/creem/create-checkout-session/route.ts`
+- Creem helper and webhook application: `src/lib/payments/creem.ts`
+- Creem webhook: `src/app/api/creem/webhook/route.ts`
 - Stripe helper: `src/lib/payments/stripe.ts`
-- Signed webhook: `src/app/api/stripe/webhook/route.ts`
-- Webhook application: `src/lib/payments/webhook.ts`
+- Stripe signed webhook: `src/app/api/stripe/webhook/route.ts`
+- Stripe webhook application: `src/lib/payments/webhook.ts`
 
 ## Database
 
@@ -62,7 +67,8 @@
 ## Deployment
 
 - Hosting: Vercel
-- Production URL: `https://mingyi-bazi-mvp.vercel.app`
+- Canonical production URL: `https://www.fountersaying.com`
+- Vercel fallback URL: `https://mingyi-bazi-mvp.vercel.app`
 - GitHub repository: `Mikanagitama/mingyi-bazi-mvp`
 - Working app directory: `D:\文档\算命\mvp-bazi-web`
 
@@ -71,6 +77,11 @@
 These values must stay server-side only:
 
 - `DATABASE_URL`
+- `PAYMENT_PROVIDER`
+- `CREEM_API_KEY`
+- `CREEM_PRODUCT_ID`
+- `CREEM_WEBHOOK_SECRET`
+- `CREEM_API_BASE_URL`
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
 - `STRIPE_PRICE_ID`

@@ -24,12 +24,18 @@ create table if not exists readings (
 create table if not exists payments (
   id uuid primary key default gen_random_uuid(),
   reading_id uuid not null references readings(id),
+  provider text not null default 'stripe',
+  provider_checkout_id text,
+  provider_event_id text,
+  provider_customer_id text,
   stripe_session_id text unique,
   stripe_event_id text unique,
   stripe_payment_intent text,
   amount integer not null,
   currency text not null default 'usd',
   status text not null,
+  raw_event_json jsonb not null default '{}'::jsonb,
+  updated_at timestamptz not null default now(),
   created_at timestamptz not null default now()
 );
 
@@ -38,7 +44,15 @@ alter table readings add column if not exists timezone text;
 alter table readings add column if not exists true_solar_time boolean not null default false;
 alter table readings add column if not exists user_question text;
 alter table payments add column if not exists stripe_event_id text unique;
+alter table payments add column if not exists provider text not null default 'stripe';
+alter table payments add column if not exists provider_checkout_id text;
+alter table payments add column if not exists provider_event_id text;
+alter table payments add column if not exists provider_customer_id text;
+alter table payments add column if not exists raw_event_json jsonb not null default '{}'::jsonb;
+alter table payments add column if not exists updated_at timestamptz not null default now();
 create unique index if not exists payments_stripe_event_id_idx on payments(stripe_event_id);
+create unique index if not exists payments_provider_event_id_idx on payments(provider, provider_event_id) where provider_event_id is not null;
+create unique index if not exists payments_provider_checkout_id_idx on payments(provider, provider_checkout_id) where provider_checkout_id is not null;
 
 create table if not exists users (
   id uuid primary key default gen_random_uuid(),

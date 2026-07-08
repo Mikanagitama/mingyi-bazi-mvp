@@ -1,4 +1,4 @@
-# P0/P1 AI Provider Vercel Setup
+# P0/P1 AI + Payment Vercel Setup
 
 Mingyi production uses DeepSeek by default. OpenAI remains supported only as an optional fallback when `AI_PROVIDER=openai`.
 
@@ -22,6 +22,31 @@ P0 has already been verified with DeepSeek on production. Keep these settings st
 7. Select `Production`, `Preview`, and `Development` if Vercel asks which environments should receive the value.
 8. Save.
 9. Redeploy the latest production deployment.
+
+## Add Commercial Launch Variables
+
+For the Founter Saying launch, also add:
+
+- `NEXT_PUBLIC_SITE_URL`: `https://www.fountersaying.com`
+- `PAYMENT_PROVIDER`: `creem`
+- `CREEM_API_KEY`: Creem API key
+- `CREEM_PRODUCT_ID`: Full Bazi Reading product id
+- `CREEM_WEBHOOK_SECRET`: copy this from Creem after creating the webhook endpoint
+- `CREEM_API_BASE_URL`: `https://test-api.creem.io` while testing; use `https://api.creem.io` only after Creem live approval/KYC is ready
+
+Keep Stripe variables only for fallback/testing:
+
+- `STRIPE_SECRET_KEY`
+- `STRIPE_PRICE_ID`
+- `STRIPE_WEBHOOK_SECRET`
+
+Creem webhook URL:
+
+```text
+https://www.fountersaying.com/api/creem/webhook
+```
+
+Select the `checkout.completed` event in Creem.
 
 ## P1 Rules
 

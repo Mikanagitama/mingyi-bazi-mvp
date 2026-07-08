@@ -1,7 +1,18 @@
-export const siteUrl = "https://mingyi-bazi-mvp.vercel.app";
+function normalizeSiteUrl(value: string) {
+  return (value.startsWith("http://") || value.startsWith("https://") ? value : `https://${value}`).replace(/\/$/, "");
+}
+
+function canonicalSiteUrl(value?: string) {
+  const normalized = value ? normalizeSiteUrl(value) : "";
+  return !normalized || normalized.includes("mingyi-bazi-mvp.vercel.app")
+    ? "https://www.fountersaying.com"
+    : normalized;
+}
+
+export const siteUrl = canonicalSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const contactLinks = [
-  { label: "Email", href: "mailto:support@your-domain.com" },
+  { label: "Email", href: "mailto:support@fountersaying.com" },
   { label: "X", href: "https://x.com/mingyi_bazi" },
   { label: "TikTok", href: "https://www.tiktok.com/@mingyi.bazi" },
   { label: "Instagram", href: "https://www.instagram.com/mingyi.bazi" },

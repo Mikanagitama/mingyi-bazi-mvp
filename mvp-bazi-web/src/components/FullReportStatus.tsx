@@ -36,7 +36,7 @@ function stepCopy(language: PublicReading["language"]) {
       delay: "你的报告仍在准备中。请保持此页面打开，或稍后刷新查看。",
       error: "准备报告时出现了一点问题。",
       retry: "重试",
-      support: "请联系 support@your-domain.com，我们会帮你恢复访问或处理退款。",
+      support: "请联系 support@fountersaying.com，我们会帮你恢复访问或处理退款。",
       fallback: "AI 解析暂时不可用，当前展示的是结构化备用报告。",
       steps: ["确认付款", "准备八字命盘", "撰写完整报告", "解锁结果"]
     };
@@ -46,7 +46,7 @@ function stepCopy(language: PublicReading["language"]) {
     delay: "Your report is still being prepared. Please keep this page open or refresh later.",
     error: "Something went wrong while preparing your report.",
     retry: "Retry",
-    support: "Contact support@your-domain.com and we will help restore access or review a refund.",
+    support: "Contact support@fountersaying.com and we will help restore access or review a refund.",
     fallback: "AI writing was temporarily unavailable, so this structured fallback report is ready instead.",
     steps: ["Confirming payment", "Preparing your Bazi chart", "Writing your full report", "Unlocking your result"]
   };

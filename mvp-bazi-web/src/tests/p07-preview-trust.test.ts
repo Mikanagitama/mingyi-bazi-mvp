@@ -32,7 +32,7 @@ describe("P0.7 preview and trust conversion", () => {
   it("defines trust, privacy, and access reassurance near checkout", () => {
     expect(en.reading.trustBullets).toEqual([
       "One-time payment",
-      "Secure checkout by Stripe",
+      "Secure checkout",
       "Instant digital access",
       "No recurring charge"
     ]);

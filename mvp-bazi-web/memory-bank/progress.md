@@ -2,6 +2,34 @@
 
 ## 2026-07-07
 
+### 2026-07-08 Commercial Launch Notes
+
+- Added official canonical-domain support for `https://www.fountersaying.com`, with URL normalization when env values omit `https://`.
+- Added Creem as the commercial payment provider through `PAYMENT_PROVIDER=creem`.
+- Preserved Stripe as fallback/testing provider through `PAYMENT_PROVIDER=stripe`.
+- Added Creem checkout creation, `/api/creem/create-checkout-session`, and `/api/creem/webhook`.
+- Added Creem webhook handling for `checkout.completed`, optional signature verification during test setup, required configured-secret behavior for commercial readiness, provider-neutral paid unlocks, and duplicate event/checkout idempotency.
+- Extended payment persistence with provider-neutral fields while preserving Stripe fields.
+- Updated public contact email to `support@fountersaying.com`.
+- Updated public trust and privacy copy to say secure checkout/payment provider instead of Stripe-only language.
+- Added `RELEASE_CHECKLIST.md` and `LAUNCH_QA.md`.
+
+### 2026-07-08 Verification
+
+- `npm test -- src/tests/creem-payment.test.ts src/tests/deployment-readiness.test.ts src/tests/p07-preview-trust.test.ts src/tests/p15-seo-social.test.ts` passed: 14 tests.
+- `npm run preflight:smoke` passed.
+- `npm test` passed: 15 files, 46 tests.
+- `npm test -- src/tests/creem-payment.test.ts src/tests/stripe-webhook.test.ts src/tests/p08-stability.test.ts` passed: 9 tests.
+- `npm run build` passed and included `/api/creem/create-checkout-session`, `/api/creem/webhook`, and `/reading/[id]/preview`.
+
+### 2026-07-08 Remaining Launch Tasks
+
+- Add `CREEM_WEBHOOK_SECRET` in Vercel after creating the Creem webhook endpoint.
+- Run `npm run db:setup` against Supabase so provider-neutral payment columns exist in production.
+- Deploy the branch, then verify `https://www.fountersaying.com/api/health` reports `ok:true`.
+- Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading.
+- Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
+
 ### Completed
 
 - Confirmed P0 was previously verified with production health, DeepSeek default AI, P0 smoke, signed Stripe webhook smoke, paid AI report generation, full-report 8-section contract, preview access protection, Stripe unlock, true solar time, and trust pages.

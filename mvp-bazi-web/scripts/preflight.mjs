@@ -12,6 +12,8 @@ const requiredFiles = [
   "src/app/reading/new/page.tsx",
   "src/app/api/readings/route.ts",
   "src/app/api/checkout/route.ts",
+  "src/app/api/creem/create-checkout-session/route.ts",
+  "src/app/api/creem/webhook/route.ts",
   "src/app/api/stripe/webhook/route.ts",
   "src/app/api/health/route.ts",
   "src/lib/db/schema.sql",
@@ -20,14 +22,12 @@ const requiredFiles = [
 
 const requiredEnv = [
   "DATABASE_URL",
-  "STRIPE_SECRET_KEY",
-  "STRIPE_PRICE_ID",
-  "STRIPE_WEBHOOK_SECRET",
   "NEXT_PUBLIC_SITE_URL"
 ];
 
 const requiredOneOfEnv = [["OPENAI_API_KEY", "DEEPSEEK_API_KEY"]];
 const optionalEnv = ["OPENAI_MODEL", "DEEPSEEK_MODEL", "DEEPSEEK_BASE_URL", "AI_PROVIDER"];
+const paymentProvider = (process.env.PAYMENT_PROVIDER || "stripe").toLowerCase() === "creem" ? "creem" : "stripe";
 
 function exists(relativePath) {
   return fs.existsSync(path.join(root, relativePath));
@@ -62,6 +62,19 @@ for (const name of requiredEnv) {
   printStatus(name, ok);
   if (!ok) failed = true;
 }
+
+const requiredPaymentEnv = paymentProvider === "creem"
+  ? ["CREEM_API_KEY", "CREEM_PRODUCT_ID"]
+  : ["STRIPE_SECRET_KEY", "STRIPE_PRICE_ID", "STRIPE_WEBHOOK_SECRET"];
+
+for (const name of requiredPaymentEnv) {
+  const ok = isSet(name);
+  printStatus(name, ok, `required for ${paymentProvider} checkout`);
+  if (!ok) failed = true;
+}
+
+printStatus("PAYMENT_PROVIDER", true, paymentProvider);
+printStatus("CREEM_WEBHOOK_SECRET", isSet("CREEM_WEBHOOK_SECRET"), "required before commercial Creem launch", true);
 
 for (const group of requiredOneOfEnv) {
   const ok = group.some(isSet);

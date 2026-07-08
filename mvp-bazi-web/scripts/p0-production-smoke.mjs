@@ -1,4 +1,4 @@
-const siteUrl = (process.env.MINGYI_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || "https://mingyi-bazi-mvp.vercel.app").replace(/\/$/, "");
+const siteUrl = (process.env.MINGYI_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || "https://www.fountersaying.com").replace(/\/$/, "");
 
 function log(message) {
   console.log(message);
@@ -31,8 +31,12 @@ async function main() {
   assert(healthResult.response.ok, `/api/health returned ${healthResult.response.status}: ${healthResult.text}`);
   const health = JSON.parse(healthResult.text);
   assert(health.databaseConfigured, "DATABASE_URL is not configured in production.");
-  assert(health.stripeCheckoutConfigured, "Stripe Checkout is not configured in production.");
-  assert(health.stripeWebhookConfigured, "Stripe webhook is not configured in production.");
+  if (health.paymentProvider === "creem") {
+    assert(health.creemCheckoutConfigured, "Creem checkout is not configured in production.");
+  } else {
+    assert(health.stripeCheckoutConfigured, "Stripe Checkout is not configured in production.");
+    assert(health.stripeWebhookConfigured, "Stripe webhook is not configured in production.");
+  }
   assert(health.siteUrlConfigured, "NEXT_PUBLIC_SITE_URL is not configured in production.");
   assert(health.aiConfigured, `OPENAI_API_KEY is not configured in production. Blockers: ${(health.blockers || []).join(" | ")}`);
   assert(health.ok, `Production health is not OK. Blockers: ${(health.blockers || []).join(" | ")}`);
@@ -78,8 +82,14 @@ async function main() {
   });
   assert(checkoutResult.response.ok, `/api/checkout returned ${checkoutResult.response.status}: ${checkoutResult.text}`);
   const checkout = JSON.parse(checkoutResult.text);
-  assert(typeof checkout.url === "string" && checkout.url.includes("checkout.stripe.com"), "Checkout response did not include a Stripe Checkout URL.");
-  log("OK /api/checkout");
+  assert(typeof checkout.url === "string", "Checkout response did not include a checkout URL.");
+  if (health.paymentProvider === "creem") {
+    assert(checkout.provider === "creem", "Checkout response did not use Creem provider.");
+    assert(checkout.url.includes("creem"), "Checkout response did not include a Creem checkout URL.");
+  } else {
+    assert(checkout.url.includes("checkout.stripe.com"), "Checkout response did not include a Stripe Checkout URL.");
+  }
+  log(`OK /api/checkout ${checkout.provider || health.paymentProvider || "stripe"}`);
 
   log("P0 production smoke passed.");
 }
