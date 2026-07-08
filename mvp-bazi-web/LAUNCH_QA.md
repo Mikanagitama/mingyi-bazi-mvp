@@ -11,6 +11,7 @@ npm run db:setup:dry
 npm run preflight:smoke
 npm run smoke:p0
 npm run smoke:creem
+npm run smoke:creem-webhook
 ```
 
 `npm run smoke:p0` is provider-aware. When production health reports `paymentProvider=creem`, the checkout URL must be a Creem checkout URL. When `paymentProvider=stripe`, the checkout URL must be a Stripe Checkout URL.
@@ -20,6 +21,8 @@ npm run smoke:creem
 - `paymentProvider=creem`
 - `creemCheckoutConfigured=true`
 - `creemWebhookConfigured=true`
+
+`npm run smoke:creem-webhook` sends a signed `checkout.completed` event to production using the local `CREEM_WEBHOOK_SECRET`, verifies the matching reading is marked paid, and confirms the paid report contains 8 sections.
 
 ## Creem Webhook Smoke
 

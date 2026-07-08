@@ -14,6 +14,7 @@
 - Updated public trust and privacy copy to say secure checkout/payment provider instead of Stripe-only language.
 - Added `RELEASE_CHECKLIST.md` and `LAUNCH_QA.md`.
 - Added `npm run smoke:creem` for strict production verification after Vercel is switched to Creem.
+- Added `npm run smoke:creem-webhook` for a signed production Creem webhook unlock smoke.
 
 ### 2026-07-08 Verification
 
@@ -42,6 +43,10 @@
 - `npm run build` passed after the Creem dashboard test-event handling update.
 - Post-deploy `npm run smoke:creem` passed against `https://www.fountersaying.com`.
 - Creem dashboard `checkout.completed` test event delivered successfully with HTTP 200 after the unknown-ID handling fix.
+- `npm run smoke:creem-webhook` passed against `https://www.fountersaying.com`: created unpaid reading `7008e41f-65d8-4d57-860e-18c8c8c9cfee`, sent signed `checkout.completed`, received handled response, and confirmed paid unlock with an 8-section full report.
+- `npm test` passed: 15 files, 49 tests.
+- `npm run build` passed after adding the signed Creem webhook smoke script.
+- `npm run smoke:creem` passed after adding the signed Creem webhook smoke script.
 - A manual Creem checkout flow was opened in test mode, but Creem's hosted checkout required a billing address validation step before showing card fields; full manual paid-return unlock remains a browser/manual checkout item.
 
 ### 2026-07-08 Remaining Launch Tasks

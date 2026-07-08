@@ -38,8 +38,9 @@ Make `https://www.fountersaying.com` the canonical production domain and use Cre
 - [x] Run `npm run smoke:p0` or provider-aware equivalent.
 - [x] Verify production official domain `/api/health`, sitemap, robots, and public pages.
 - [x] Document manual Creem webhook setup and remaining user tasks.
-- [ ] Set Vercel production env to `PAYMENT_PROVIDER=creem`, add Creem env vars, redeploy, and rerun `npm run smoke:creem`.
-- [ ] Complete a manual Creem test checkout and confirm the webhook unlocks the correct reading.
+- [x] Set Vercel production env to `PAYMENT_PROVIDER=creem`, add Creem env vars, redeploy, and rerun `npm run smoke:creem`.
+- [x] Run signed Creem webhook smoke to confirm `checkout.completed` unlocks the correct reading and produces an 8-section full report.
+- [ ] Complete a manual Creem hosted checkout in the browser; the checkout page currently requires billing address validation before showing card fields.
 
 ### Acceptance
 
