@@ -47,11 +47,11 @@
 - `npm test` passed: 15 files, 49 tests.
 - `npm run build` passed after adding the signed Creem webhook smoke script.
 - `npm run smoke:creem` passed after adding the signed Creem webhook smoke script.
-- A manual Creem checkout flow was opened in test mode, but Creem's hosted checkout required a billing address validation step before showing card fields; full manual paid-return unlock remains a browser/manual checkout item.
+- Manual Creem hosted checkout passed in test mode for reading `975d4a98-7008-4f61-ae22-22ed28847948`: Creem returned to `https://www.fountersaying.com/reading/975d4a98-7008-4f61-ae22-22ed28847948/full?...`, the production API reported `paymentStatus=paid`, `paymentProvider=creem`, `reportState=ready`, and an 8-section full report.
 
 ### 2026-07-08 Remaining Launch Tasks
 
-- Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading; the checkout page currently validates billing address before showing card fields.
+- Switch Creem from test mode to live mode after the account/product/KYC are approved, then replace Vercel Creem env vars with live values and repeat the checkout smoke.
 - Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
 
 ### Completed
