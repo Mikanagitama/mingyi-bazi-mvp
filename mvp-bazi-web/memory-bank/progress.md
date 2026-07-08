@@ -40,10 +40,12 @@
 - Added an existence check before treating Creem `request_id` as an unlockable reading id, so Creem dashboard sample events with unknown IDs are acknowledged as ignored instead of causing foreign-key errors.
 - `npm test -- src/tests/creem-payment.test.ts` passed: 6 tests.
 - `npm run build` passed after the Creem dashboard test-event handling update.
+- Post-deploy `npm run smoke:creem` passed against `https://www.fountersaying.com`.
+- Creem dashboard `checkout.completed` test event delivered successfully with HTTP 200 after the unknown-ID handling fix.
+- A manual Creem checkout flow was opened in test mode, but Creem's hosted checkout required a billing address validation step before showing card fields; full manual paid-return unlock remains a browser/manual checkout item.
 
 ### 2026-07-08 Remaining Launch Tasks
 
-- Commit, push, redeploy, and re-test the Creem dashboard sample event after the ignored-test-event webhook update.
 - Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading; the checkout page currently validates billing address before showing card fields.
 - Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
 
