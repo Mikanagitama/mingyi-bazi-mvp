@@ -35,6 +35,7 @@
 - Redeployed production from `main` after saving the Creem env vars; Vercel reported the deployment `Ready` and assigned `www.fountersaying.com`.
 - `npm run smoke:creem` passed against `https://www.fountersaying.com`.
 - Updated Creem webhook handling so Creem dashboard sample `checkout.completed` events without `reading_id` are acknowledged as ignored instead of failing the endpoint, while real checkout events with metadata still unlock the matching reading.
+- Normalized whitespace in the `creem-signature` header before HMAC comparison because Creem documentation examples show spaced hexadecimal signatures.
 - `npm test -- src/tests/creem-payment.test.ts` passed: 5 tests.
 - `npm run build` passed after the Creem dashboard test-event handling update.
 

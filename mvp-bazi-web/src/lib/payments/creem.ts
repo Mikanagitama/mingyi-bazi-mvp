@@ -73,7 +73,7 @@ export function verifyCreemWebhook(body: string, signature: string | null) {
     throw new Error("Missing Creem signature.");
   }
   const expected = crypto.createHmac("sha256", config.creemWebhookSecret).update(body).digest("hex");
-  const received = signature.trim();
+  const received = signature.replace(/\s+/g, "").trim().toLowerCase();
   const expectedBuffer = Buffer.from(expected, "hex");
   const receivedBuffer = Buffer.from(received, "hex");
   if (expectedBuffer.length !== receivedBuffer.length || !crypto.timingSafeEqual(expectedBuffer, receivedBuffer)) {

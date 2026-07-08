@@ -173,8 +173,10 @@ describe("Creem payment provider", () => {
     process.env.CREEM_WEBHOOK_SECRET = "whsec_creem_test";
     const body = JSON.stringify(creemCompletedEvent("reading_123"));
     const signature = crypto.createHmac("sha256", process.env.CREEM_WEBHOOK_SECRET).update(body).digest("hex");
+    const spacedSignature = signature.match(/.{1,8}/g)?.join(" ") || signature;
 
     expect(() => verifyCreemWebhook(body, signature)).not.toThrow();
+    expect(() => verifyCreemWebhook(body, spacedSignature)).not.toThrow();
     expect(() => verifyCreemWebhook(body, "00")).toThrow("Invalid Creem signature.");
   });
 });
