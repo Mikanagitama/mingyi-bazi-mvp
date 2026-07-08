@@ -35,9 +35,11 @@ Make `https://www.fountersaying.com` the canonical production domain and use Cre
 - [x] Update schema docs and launch checklist.
 - [x] Run `npm test`.
 - [x] Run `npm run build`.
-- [ ] Run `npm run smoke:p0` or provider-aware equivalent.
-- [ ] Verify production official domain `/api/health`, sitemap, robots, and public pages.
-- [ ] Document manual Creem webhook setup and remaining user tasks.
+- [x] Run `npm run smoke:p0` or provider-aware equivalent.
+- [x] Verify production official domain `/api/health`, sitemap, robots, and public pages.
+- [x] Document manual Creem webhook setup and remaining user tasks.
+- [ ] Set Vercel production env to `PAYMENT_PROVIDER=creem`, add Creem env vars, redeploy, and rerun `npm run smoke:creem`.
+- [ ] Complete a manual Creem test checkout and confirm the webhook unlocks the correct reading.
 
 ### Acceptance
 

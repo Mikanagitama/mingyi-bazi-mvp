@@ -23,13 +23,18 @@
 - `npm test -- src/tests/creem-payment.test.ts src/tests/stripe-webhook.test.ts src/tests/p08-stability.test.ts` passed: 9 tests.
 - `npm run build` passed and included `/api/creem/create-checkout-session`, `/api/creem/webhook`, and `/reading/[id]/preview`.
 - Production `/api/health` on `https://www.fountersaying.com` currently reports `paymentProvider=stripe`, so commercial Creem launch verification is still blocked on Vercel env configuration.
+- Added local `CREEM_API_BASE_URL=https://test-api.creem.io` in `.env.local` for Creem test mode.
+- Rechecked local Creem env presence without printing secrets: `PAYMENT_PROVIDER=creem`, `CREEM_API_KEY` set, `CREEM_PRODUCT_ID` set, `CREEM_WEBHOOK_SECRET` blank, `CREEM_API_BASE_URL=https://test-api.creem.io`.
+- `npm run preflight:smoke` passed after the local env update.
+- `npm run smoke:p0` passed against `https://www.fountersaying.com`; production still used Stripe checkout because Vercel reports `paymentProvider=stripe`.
+- `npm run smoke:creem` failed as expected with `Expected paymentProvider=creem, got stripe.`
+- `https://www.fountersaying.com/sitemap.xml` uses the official domain.
 
 ### 2026-07-08 Remaining Launch Tasks
 
 - Add `CREEM_WEBHOOK_SECRET` in Vercel after creating the Creem webhook endpoint.
 - Set Vercel `PAYMENT_PROVIDER=creem`, `CREEM_API_KEY`, and `CREEM_PRODUCT_ID`, then redeploy.
-- Run `npm run db:setup` against Supabase so provider-neutral payment columns exist in production.
-- Deploy the branch, then verify `https://www.fountersaying.com/api/health` reports `ok:true`.
+- Ensure Vercel has `CREEM_API_BASE_URL=https://test-api.creem.io` while the Creem account/product is in test mode.
 - Run `npm run smoke:creem`; it should pass only when production reports Creem checkout and webhook configuration.
 - Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading.
 - Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
