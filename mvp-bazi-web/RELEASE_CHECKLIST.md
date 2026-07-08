@@ -21,6 +21,10 @@ Canonical production URL:
 
 ## Creem Webhook Setup
 
+Step-by-step setup guide:
+
+- `docs/creem-vercel-setup.md`
+
 1. Open Creem Dashboard.
 2. Go to Developers / Webhooks.
 3. Create a webhook endpoint.

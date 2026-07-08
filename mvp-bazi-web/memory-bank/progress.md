@@ -29,6 +29,7 @@
 - `npm run smoke:p0` passed against `https://www.fountersaying.com`; production still used Stripe checkout because Vercel reports `paymentProvider=stripe`.
 - `npm run smoke:creem` failed as expected with `Expected paymentProvider=creem, got stripe.`
 - `https://www.fountersaying.com/sitemap.xml` uses the official domain.
+- Added `docs/creem-vercel-setup.md` with exact Vercel env, Creem webhook, redeploy, and verification steps.
 
 ### 2026-07-08 Remaining Launch Tasks
 
