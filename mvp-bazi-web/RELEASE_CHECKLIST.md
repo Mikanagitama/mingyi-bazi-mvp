@@ -56,19 +56,20 @@ If Cloudflare Email Routing is not configured yet:
 3. Birth form works.
 4. Free preview generates.
 5. Full report is locked before payment.
-6. Creem checkout opens from the unlock button.
-7. Successful Creem test payment returns to `/reading/[id]/full`.
-8. Webhook unlocks the correct reading.
-9. Full report waits or generates if needed.
-10. Full report unlocks and survives refresh.
-11. Mobile layout has no horizontal overflow.
-12. Trust pages work.
-13. Sample report works.
-14. SEO pages work.
-15. `/sitemap.xml` and `/robots.txt` use `https://www.fountersaying.com`.
-16. Footer links work.
-17. No secret key appears in the frontend bundle.
-18. Stripe test fallback works when `PAYMENT_PROVIDER=stripe`.
+6. `npm run smoke:creem` passes against `https://www.fountersaying.com`.
+7. Creem checkout opens from the unlock button.
+8. Successful Creem test payment returns to `/reading/[id]/full`.
+9. Webhook unlocks the correct reading.
+10. Full report waits or generates if needed.
+11. Full report unlocks and survives refresh.
+12. Mobile layout has no horizontal overflow.
+13. Trust pages work.
+14. Sample report works.
+15. SEO pages work.
+16. `/sitemap.xml` and `/robots.txt` use `https://www.fountersaying.com`.
+17. Footer links work.
+18. No secret key appears in the frontend bundle.
+19. Stripe test fallback works when `PAYMENT_PROVIDER=stripe`.
 
 ## Known Launch Gate
 

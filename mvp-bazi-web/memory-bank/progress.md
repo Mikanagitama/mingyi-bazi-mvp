@@ -13,6 +13,7 @@
 - Updated public contact email to `support@fountersaying.com`.
 - Updated public trust and privacy copy to say secure checkout/payment provider instead of Stripe-only language.
 - Added `RELEASE_CHECKLIST.md` and `LAUNCH_QA.md`.
+- Added `npm run smoke:creem` for strict production verification after Vercel is switched to Creem.
 
 ### 2026-07-08 Verification
 
@@ -21,12 +22,15 @@
 - `npm test` passed: 15 files, 46 tests.
 - `npm test -- src/tests/creem-payment.test.ts src/tests/stripe-webhook.test.ts src/tests/p08-stability.test.ts` passed: 9 tests.
 - `npm run build` passed and included `/api/creem/create-checkout-session`, `/api/creem/webhook`, and `/reading/[id]/preview`.
+- Production `/api/health` on `https://www.fountersaying.com` currently reports `paymentProvider=stripe`, so commercial Creem launch verification is still blocked on Vercel env configuration.
 
 ### 2026-07-08 Remaining Launch Tasks
 
 - Add `CREEM_WEBHOOK_SECRET` in Vercel after creating the Creem webhook endpoint.
+- Set Vercel `PAYMENT_PROVIDER=creem`, `CREEM_API_KEY`, and `CREEM_PRODUCT_ID`, then redeploy.
 - Run `npm run db:setup` against Supabase so provider-neutral payment columns exist in production.
 - Deploy the branch, then verify `https://www.fountersaying.com/api/health` reports `ok:true`.
+- Run `npm run smoke:creem`; it should pass only when production reports Creem checkout and webhook configuration.
 - Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading.
 - Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
 

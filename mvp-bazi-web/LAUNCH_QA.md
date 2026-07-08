@@ -10,9 +10,16 @@ npm run build
 npm run db:setup:dry
 npm run preflight:smoke
 npm run smoke:p0
+npm run smoke:creem
 ```
 
 `npm run smoke:p0` is provider-aware. When production health reports `paymentProvider=creem`, the checkout URL must be a Creem checkout URL. When `paymentProvider=stripe`, the checkout URL must be a Stripe Checkout URL.
+
+`npm run smoke:creem` is stricter and should pass before commercial launch. It requires production `/api/health` to report:
+
+- `paymentProvider=creem`
+- `creemCheckoutConfigured=true`
+- `creemWebhookConfigured=true`
 
 ## Creem Webhook Smoke
 
