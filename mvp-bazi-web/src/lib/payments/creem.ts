@@ -73,12 +73,34 @@ export function verifyCreemWebhook(body: string, signature: string | null) {
     throw new Error("Missing Creem signature.");
   }
   const expected = crypto.createHmac("sha256", config.creemWebhookSecret).update(body).digest("hex");
-  const received = signature.replace(/\s+/g, "").trim().toLowerCase();
+  const candidates = signatureCandidates(signature);
   const expectedBuffer = Buffer.from(expected, "hex");
-  const receivedBuffer = Buffer.from(received, "hex");
-  if (expectedBuffer.length !== receivedBuffer.length || !crypto.timingSafeEqual(expectedBuffer, receivedBuffer)) {
-    throw new Error("Invalid Creem signature.");
+  for (const received of candidates) {
+    const receivedBuffer = Buffer.from(received, "hex");
+    if (expectedBuffer.length === receivedBuffer.length && crypto.timingSafeEqual(expectedBuffer, receivedBuffer)) {
+      return;
+    }
   }
+  throw new Error("Invalid Creem signature.");
+}
+
+function signatureCandidates(signature: string) {
+  const candidates = new Set<string>();
+  const add = (value: string) => {
+    const normalized = value.replace(/\s+/g, "").trim().toLowerCase();
+    if (/^[a-f0-9]{64}$/.test(normalized)) {
+      candidates.add(normalized);
+    }
+  };
+
+  add(signature);
+  for (const part of signature.split(/[;,]/)) {
+    add(part.includes("=") ? part.slice(part.indexOf("=") + 1) : part);
+  }
+  for (const match of signature.replace(/\s+/g, "").matchAll(/[a-f0-9]{64}/gi)) {
+    add(match[0]);
+  }
+  return [...candidates];
 }
 
 function objectValue(record: Record<string, unknown> | undefined, key: string) {

@@ -177,6 +177,8 @@ describe("Creem payment provider", () => {
 
     expect(() => verifyCreemWebhook(body, signature)).not.toThrow();
     expect(() => verifyCreemWebhook(body, spacedSignature)).not.toThrow();
+    expect(() => verifyCreemWebhook(body, `sha256=${signature}`)).not.toThrow();
+    expect(() => verifyCreemWebhook(body, `t=1783498000,v1=${signature}`)).not.toThrow();
     expect(() => verifyCreemWebhook(body, "00")).toThrow("Invalid Creem signature.");
   });
 });
