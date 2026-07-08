@@ -2,7 +2,7 @@ import crypto from "node:crypto";
 import { config } from "../config";
 import type { ReadingRecord } from "../bazi/types";
 import { logEvent } from "../db/events";
-import { markReadingPaid } from "../db/readings";
+import { getInternalReading, markReadingPaid } from "../db/readings";
 
 type CreemCheckoutResponse = {
   id?: string;
@@ -142,6 +142,15 @@ export async function applyCreemEvent(event: CreemWebhookEvent) {
       metadata: { type: eventType, provider: "creem", ignored: true, reason: "missing_reading_id" }
     });
     return { handled: false, ignored: true, reason: "missing_reading_id" };
+  }
+  const existingReading = await getInternalReading(readingId);
+  if (!existingReading) {
+    await logEvent({
+      name: "webhook_received",
+      stripeEventId: event.id,
+      metadata: { type: eventType, provider: "creem", ignored: true, reason: "unknown_reading_id", readingId }
+    });
+    return { handled: false, ignored: true, reason: "unknown_reading_id" };
   }
 
   const order = objectValue(checkout, "order");

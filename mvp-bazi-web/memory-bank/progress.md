@@ -37,7 +37,8 @@
 - Updated Creem webhook handling so Creem dashboard sample `checkout.completed` events without `reading_id` are acknowledged as ignored instead of failing the endpoint, while real checkout events with metadata still unlock the matching reading.
 - Normalized whitespace in the `creem-signature` header before HMAC comparison because Creem documentation examples show spaced hexadecimal signatures.
 - Extended Creem signature parsing to support bare hex, spaced hex, `sha256=...`, and timestamped `v1=...` style headers while still requiring a valid HMAC match.
-- `npm test -- src/tests/creem-payment.test.ts` passed: 5 tests.
+- Added an existence check before treating Creem `request_id` as an unlockable reading id, so Creem dashboard sample events with unknown IDs are acknowledged as ignored instead of causing foreign-key errors.
+- `npm test -- src/tests/creem-payment.test.ts` passed: 6 tests.
 - `npm run build` passed after the Creem dashboard test-event handling update.
 
 ### 2026-07-08 Remaining Launch Tasks

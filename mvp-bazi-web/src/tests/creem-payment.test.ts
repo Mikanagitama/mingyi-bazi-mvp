@@ -169,6 +169,26 @@ describe("Creem payment provider", () => {
     ).toBe(true);
   });
 
+  it("acknowledges Creem dashboard test events with unknown sample reading ids", async () => {
+    const result = await applyCreemEvent({
+      id: "evt_creem_unknown_reading_test",
+      eventType: "checkout.completed",
+      object: {
+        id: "ch_dashboard_test",
+        object: "checkout",
+        request_id: "reading_id_from_creem_sample_payload",
+        status: "completed"
+      }
+    });
+    const store = readLocalStore();
+
+    expect(result).toEqual({ handled: false, ignored: true, reason: "unknown_reading_id" });
+    expect(store.payments).toHaveLength(0);
+    expect(
+      store.events.some((eventLog) => eventLog.name === "webhook_received" && eventLog.metadata?.reason === "unknown_reading_id")
+    ).toBe(true);
+  });
+
   it("verifies Creem webhook signatures when a secret is configured", () => {
     process.env.CREEM_WEBHOOK_SECRET = "whsec_creem_test";
     const body = JSON.stringify(creemCompletedEvent("reading_123"));
