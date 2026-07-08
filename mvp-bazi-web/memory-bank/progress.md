@@ -56,6 +56,8 @@
 - Added `LIVE_COMMERCIAL_READINESS.md`.
 - Final local verification passed: `npm test` (16 files, 51 tests) and `npm run build`.
 - Final production smoke passed before deploy: `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook`; the signed Creem webhook smoke unlocked reading `4d8390f8-2610-4f7f-8c58-7e9615e9955f` with an 8-section full report.
+- Post-deploy production verification passed: `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook`; the signed Creem webhook smoke unlocked reading `9f569273-e586-4f7a-9470-0363e2ffec9d` with an 8-section full report.
+- Post-deploy direct URL checks passed for `https://www.fountersaying.com`, `https://fountersaying.com`, `/api/health`, `/sitemap.xml`, `/robots.txt`, `/og/founter-saying-og.png`, `/og/founter-saying-square.png`, `/og/founter-saying-vertical.png`, `/favicon.svg`, trust pages, sample report, SEO pages, and `/api/events`.
 
 ### 2026-07-08 Remaining Launch Tasks
 

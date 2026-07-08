@@ -78,7 +78,7 @@ Prepare Mingyi Bazi / Founter Saying for cautious public marketing without addin
 - [x] Document funnel events and basic queries.
 - [x] Create live commercial readiness document that separates marketing readiness from real-money readiness.
 - [x] Run final verification: `npm test`, `npm run build`, `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook`.
-- [ ] Verify live official URL, health, sitemap, robots, OG image paths, footer/legal links, and Creem flow after deployment.
+- [x] Verify live official URL, health, sitemap, robots, OG image paths, footer/legal links, and Creem flow after deployment.
 
 ### Acceptance
 
