@@ -114,7 +114,12 @@ export async function applyCreemEvent(event: CreemWebhookEvent) {
   const checkout = event.object;
   const readingId = extractReadingId(checkout);
   if (!readingId) {
-    throw new Error("Creem checkout missing reading_id metadata.");
+    await logEvent({
+      name: "webhook_received",
+      stripeEventId: event.id,
+      metadata: { type: eventType, provider: "creem", ignored: true, reason: "missing_reading_id" }
+    });
+    return { handled: false, ignored: true, reason: "missing_reading_id" };
   }
 
   const order = objectValue(checkout, "order");

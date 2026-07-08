@@ -30,14 +30,18 @@
 - `npm run smoke:creem` failed as expected with `Expected paymentProvider=creem, got stripe.`
 - `https://www.fountersaying.com/sitemap.xml` uses the official domain.
 - Added `docs/creem-vercel-setup.md` with exact Vercel env, Creem webhook, redeploy, and verification steps.
+- Added Creem variables in Vercel for Production and Preview: `PAYMENT_PROVIDER`, `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, `CREEM_API_BASE_URL`, and `CREEM_WEBHOOK_SECRET`.
+- Created the Creem test-mode webhook `Founter Saying production checkout` for `https://www.fountersaying.com/api/creem/webhook` with only `checkout.completed` enabled.
+- Redeployed production from `main` after saving the Creem env vars; Vercel reported the deployment `Ready` and assigned `www.fountersaying.com`.
+- `npm run smoke:creem` passed against `https://www.fountersaying.com`.
+- Updated Creem webhook handling so Creem dashboard sample `checkout.completed` events without `reading_id` are acknowledged as ignored instead of failing the endpoint, while real checkout events with metadata still unlock the matching reading.
+- `npm test -- src/tests/creem-payment.test.ts` passed: 5 tests.
+- `npm run build` passed after the Creem dashboard test-event handling update.
 
 ### 2026-07-08 Remaining Launch Tasks
 
-- Add `CREEM_WEBHOOK_SECRET` in Vercel after creating the Creem webhook endpoint.
-- Set Vercel `PAYMENT_PROVIDER=creem`, `CREEM_API_KEY`, and `CREEM_PRODUCT_ID`, then redeploy.
-- Ensure Vercel has `CREEM_API_BASE_URL=https://test-api.creem.io` while the Creem account/product is in test mode.
-- Run `npm run smoke:creem`; it should pass only when production reports Creem checkout and webhook configuration.
-- Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading.
+- Commit, push, redeploy, and re-test the Creem dashboard sample event after the ignored-test-event webhook update.
+- Complete a Creem test checkout manually and confirm the webhook unlocks the correct reading; the checkout page currently validates billing address before showing card fields.
 - Configure Cloudflare Email Routing for `support@fountersaying.com` if not already active.
 
 ### Completed

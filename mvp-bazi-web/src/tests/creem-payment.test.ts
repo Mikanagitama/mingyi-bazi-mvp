@@ -150,6 +150,25 @@ describe("Creem payment provider", () => {
     expect(store.events.filter((eventLog) => eventLog.name === "full_generation_started")).toHaveLength(1);
   });
 
+  it("acknowledges Creem dashboard test events without reading metadata", async () => {
+    const result = await applyCreemEvent({
+      id: "evt_creem_dashboard_test",
+      eventType: "checkout.completed",
+      object: {
+        id: "ch_dashboard_test",
+        object: "checkout",
+        status: "completed"
+      }
+    });
+    const store = readLocalStore();
+
+    expect(result).toEqual({ handled: false, ignored: true, reason: "missing_reading_id" });
+    expect(store.payments).toHaveLength(0);
+    expect(
+      store.events.some((eventLog) => eventLog.name === "webhook_received" && eventLog.metadata?.ignored === true)
+    ).toBe(true);
+  });
+
   it("verifies Creem webhook signatures when a secret is configured", () => {
     process.env.CREEM_WEBHOOK_SECRET = "whsec_creem_test";
     const body = JSON.stringify(creemCompletedEvent("reading_123"));
