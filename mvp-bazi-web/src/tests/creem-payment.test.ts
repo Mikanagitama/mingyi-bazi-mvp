@@ -150,6 +150,26 @@ describe("Creem payment provider", () => {
     expect(store.events.filter((eventLog) => eventLog.name === "full_generation_started")).toHaveLength(1);
   });
 
+  it("rejects Creem completed events that do not match the official $2.99 USD price", async () => {
+    const reading = await createReading({
+      birthDate: "1988-11-20",
+      birthTime: "21:15",
+      birthTimeUnknown: false,
+      language: "en",
+      gender: "unspecified"
+    });
+    const event = creemCompletedEvent(reading.id, "evt_creem_wrong_amount", "ch_creem_wrong_amount");
+    event.object.order.amount = 500;
+    event.object.order.currency = "JPY";
+
+    await expect(applyCreemEvent(event)).rejects.toThrow("Creem checkout amount does not match Full Bazi Reading price.");
+
+    const unpaid = await getReading(reading.id);
+    const store = readLocalStore();
+    expect(unpaid?.paymentStatus).toBe("free");
+    expect(store.payments).toHaveLength(0);
+  });
+
   it("acknowledges Creem dashboard test events without reading metadata", async () => {
     const result = await applyCreemEvent({
       id: "evt_creem_dashboard_test",

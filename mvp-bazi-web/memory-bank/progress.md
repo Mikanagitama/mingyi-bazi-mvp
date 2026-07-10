@@ -1,5 +1,44 @@
 # Mingyi Progress
 
+## 2026-07-10 Pre-Launch Bug Bash
+
+### Scope
+
+- Current goal is bug discovery/fixes, privacy/security QA, price consistency, real-user flow simulation, and launch readiness decision.
+- Product scope remains the existing one-time Full Bazi Reading only.
+- Official launch price is `Full Bazi Reading: $2.99 USD, one-time payment, no subscription, no recurring charge`.
+
+### Fixes Completed
+
+- Added `src/lib/product.ts` as the single price/copy source for the Full Bazi Reading price and primary paid CTA.
+- Replaced retired launch-test public copy with `$2.99`.
+- Updated sample report top and bottom CTA areas so the page is not a dead end:
+  - with `reading_id`, it can start checkout for the active reading
+  - without `reading_id`, it explains that a free preview is needed first
+- Updated preview sample-report link to preserve reading context through `?reading_id=...`.
+- Added Creem webhook amount/currency validation for `$2.99 USD`.
+- Added public analytics endpoint rate limiting with `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE`.
+- Created:
+  - `BUG_BASH_SECURITY_QA.md`
+  - `PRIVACY_DATA_MAP.md`
+  - `SECURITY_AUDIT.md`
+
+### Verification So Far
+
+- `npm test -- src/tests/p11-sample-report.test.ts src/tests/price-consistency.test.ts` passed.
+- `npm test -- src/tests/creem-payment.test.ts` passed.
+- `npm test -- src/tests/analytics-events.test.ts` passed.
+- Retired launch-test pricing search only finds test-only guardrails.
+
+### Remaining Before Launch Decision
+
+- Full `npm test`.
+- `npm run build`.
+- Production smokes: `npm run smoke:p0`, `npm run smoke:creem`, `npm run smoke:creem-webhook`.
+- Browser flow QA for homepage -> form -> preview -> sample -> unlock/cancel/full.
+- Mobile re-check after the sample CTA change.
+- User-approved small real Creem payment test and Creem dashboard order confirmation.
+
 ## 2026-07-07
 
 ### 2026-07-08 Commercial Launch Notes

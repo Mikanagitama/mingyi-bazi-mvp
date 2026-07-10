@@ -1,3 +1,5 @@
+import { FULL_REPORT_PRICE_LABEL } from "@/lib/product";
+
 export const zh = {
   lang: "zh" as const,
   nav: {
@@ -88,7 +90,7 @@ export const zh = {
     accuracy: "准确度说明",
     lockedTitle: "解锁完整报告",
     lockedText: "事业、财运、感情、未来30天能量、年度节奏和实用建议将在付费后开放。",
-    unlock: "解锁完整报告 — 500 日元",
+    unlock: `解锁完整报告 — ${FULL_REPORT_PRICE_LABEL}`,
     secure: "一次性付费。安全支付。即时数字访问。不会重复扣费。",
     trustBullets: ["一次性付费", "安全支付", "即时数字访问", "不会重复扣费"],
     privacyReassurance: "你的出生资料只用于生成报告。我们不会出售你的个人信息。",

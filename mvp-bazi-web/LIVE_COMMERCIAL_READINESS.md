@@ -15,11 +15,15 @@
 - First-party funnel events are documented and trackable without report-content logging.
 - OG, square, vertical, favicon, and app icon assets exist.
 - Launch content kit exists for small-scale public marketing.
+- Official displayed price is `Full Bazi Reading: $2.99 USD`, one-time payment.
+- Sample report CTA dead end has been fixed in code and needs post-deploy browser verification.
+- Creem completed webhooks now validate amount/currency against `$2.99 USD`.
+- Public analytics events are rate limited.
 
 ## Manual Business Tasks Before Real-Money Launch
 
-- Complete Creem live/KYC approval.
-- Create or confirm the live Creem Full Bazi Reading product.
+- Confirm Creem live/KYC approval remains active.
+- Confirm the live Creem Full Bazi Reading product price is exactly `$2.99 USD`.
 - Replace Vercel test values with live values:
   - `CREEM_API_KEY`
   - `CREEM_PRODUCT_ID`
@@ -31,11 +35,12 @@
 - Redeploy Vercel after live env changes.
 - Confirm `support@fountersaying.com` receives email.
 - Run one small real payment test after live approval.
+- Confirm the Creem dashboard order amount/currency and that the paid report unlocks 8 sections.
 - Confirm tax/accounting obligations with an accountant before broad paid traffic.
 
 ## Do Not Claim Yet
 
-- Do not claim real payments are live until Creem live/KYC approval and a small real payment test pass.
+- Do not claim real payments are live until Creem live env verification and a small real payment test pass.
 - Do not claim tax compliance is solved without accountant confirmation.
 - Do not present reports as medical, legal, financial, investment, or psychological advice.
 - Do not claim guaranteed predictions, guaranteed wealth, guaranteed relationship outcomes, or health outcomes.
@@ -44,18 +49,21 @@
 
 - [ ] Creem live mode enabled.
 - [ ] Live Creem product ID configured in Vercel.
+- [ ] Live Creem product price confirmed as `$2.99 USD`.
 - [ ] Live Creem webhook secret configured in Vercel.
 - [ ] Vercel redeployed after live env updates.
 - [ ] `npm run smoke:creem` passes against production.
 - [ ] `npm run smoke:creem-webhook` passes if Creem live webhook testing supports it safely.
 - [ ] One small real payment test passes.
+- [ ] Creem dashboard order shows `$2.99 USD`.
 - [ ] Paid report unlocks after the real payment.
 - [ ] Refund/contact email works.
+- [ ] Post-deploy sample report CTA flow passes from preview and direct `/sample-report`.
 - [x] Mobile final check passed locally for launch-polish build.
 - [x] Public marketing materials are prepared.
 
 ## Readiness Answer
 
-Small-scale public marketing: ready for cautious traffic and feedback collection.
+Small-scale public marketing: pending the current pre-launch bug bash verification after the sample CTA and price/security fixes deploy.
 
-Real-money launch: not ready until Creem live/KYC approval, live env update, support email routing, and one small real payment test are complete.
+Real-money launch: not ready until live Creem env verification, support email routing, one small real payment test, and paid report unlock confirmation are complete.

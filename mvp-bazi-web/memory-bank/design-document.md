@@ -52,6 +52,7 @@ P1 visualization should sit around this contract, not replace it. The structured
 - Full report: report shell with chart evidence, visual summaries, and readable sections.
 - Trust pages: plain, transparent, and non-sensational.
 - Sample report: fake data only and clearly labeled as sample content.
+- Sample report conversion: if opened from a real preview, preserve `reading_id` so users can return to the paid unlock flow; if opened directly, explain that checkout needs a free preview first.
 
 ## Error Handling
 
@@ -89,3 +90,5 @@ Commercial readiness is split into two states:
 
 - Public marketing readiness: suitable for cautious traffic and feedback once tests and mobile QA pass.
 - Real-money readiness: requires Creem live/KYC approval, live env values, support email routing, and a small real payment test.
+
+Pre-launch bug bash adds one more gate: the official price must be consistent everywhere as `$2.99 USD`, the sample report must not be a conversion dead end, and security/privacy documents must be current before the readiness answer is final.

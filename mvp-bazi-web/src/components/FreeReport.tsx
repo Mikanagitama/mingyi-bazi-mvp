@@ -70,7 +70,7 @@ export function FreeReport({ reading }: { reading: PublicReading }) {
         </div>
         <p className="finePrint">{copy.reading.privacyReassurance}</p>
         <p className="finePrint">{copy.reading.refundReassurance}</p>
-        <Link className="sampleLink" href="/sample-report">
+        <Link className="sampleLink" href={`/sample-report?reading_id=${encodeURIComponent(reading.id)}`}>
           {reading.language === "zh" ? "先看样例报告" : "View a sample full report"}
         </Link>
         <CheckoutButton readingId={reading.id} label={copy.reading.unlock} secureText={copy.reading.secure} />

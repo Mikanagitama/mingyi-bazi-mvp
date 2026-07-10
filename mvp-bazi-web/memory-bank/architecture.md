@@ -43,6 +43,7 @@ flowchart TD
 - `src/components/AnalyticsTracker.tsx`: page view, trust page, sample report, and homepage CTA tracking.
 - `src/lib/client-events.ts`: browser helper for `sendBeacon`/`fetch` event delivery.
 - `src/lib/db/rate-limit.ts`: basic rate-limit counters backed by Supabase `app_rate_limits`, local JSON store, or in-memory fallback.
+- `src/lib/product.ts`: official Full Bazi Reading product name, `$2.99 USD` price, paid CTA, and one-time payment copy.
 - `src/lib/payments/provider.ts`: active checkout provider selection.
 - `src/lib/payments/creem.ts`: Creem Checkout creation, webhook signature verification, and event application.
 - `src/lib/payments/stripe.ts`: Stripe Checkout and webhook verification for fallback/testing.
@@ -56,6 +57,8 @@ flowchart TD
 - Preview APIs and pages must not expose paid report content for unpaid readings.
 - Creem webhook is the commercial trusted unlock path when `PAYMENT_PROVIDER=creem`.
 - Stripe webhook remains the fallback/testing trusted unlock path when `PAYMENT_PROVIDER=stripe`.
+- Creem completed events must match the official `$2.99 USD` price before marking a reading paid.
+- Sample report links from preview preserve purchase context with `?reading_id=...`; direct sample report visits must send users to free preview before checkout.
 
 ## P1 Architecture Direction
 
@@ -129,6 +132,7 @@ flowchart TD
 ```
 
 The event endpoint accepts only whitelisted event names and small primitive metadata. It does not accept full report content, card data, raw birth form text, or secrets.
+The event endpoint is rate limited per client IP through `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE`.
 
 ## Architecture Constraints
 

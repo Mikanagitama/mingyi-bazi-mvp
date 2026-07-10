@@ -3,6 +3,7 @@ import { config } from "../config";
 import type { ReadingRecord } from "../bazi/types";
 import { logEvent } from "../db/events";
 import { getInternalReading, markReadingPaid } from "../db/readings";
+import { FULL_REPORT_PRICE_CENTS, FULL_REPORT_PRICE_CURRENCY } from "../product";
 
 type CreemCheckoutResponse = {
   id?: string;
@@ -126,6 +127,17 @@ function extractReadingId(checkout: Record<string, unknown> | undefined) {
   return stringValue(metadata, "reading_id") || stringValue(metadata, "referenceId") || stringValue(checkout, "request_id");
 }
 
+function validateOfficialPrice(order: Record<string, unknown> | undefined) {
+  const amount = numberValue(order, "amount");
+  const currency = stringValue(order, "currency");
+  if (
+    (amount !== undefined && amount !== FULL_REPORT_PRICE_CENTS) ||
+    (currency !== undefined && currency.toLowerCase() !== FULL_REPORT_PRICE_CURRENCY.toLowerCase())
+  ) {
+    throw new Error("Creem checkout amount does not match Full Bazi Reading price.");
+  }
+}
+
 export async function applyCreemEvent(event: CreemWebhookEvent) {
   const eventType = event.eventType || event.type;
   await logEvent({ name: "webhook_received", stripeEventId: event.id, metadata: { type: eventType, provider: "creem" } });
@@ -155,12 +167,13 @@ export async function applyCreemEvent(event: CreemWebhookEvent) {
 
   const order = objectValue(checkout, "order");
   const customer = objectValue(checkout, "customer");
+  validateOfficialPrice(order);
   const checkoutId = stringValue(checkout, "id");
   const eventId = event.id;
   const customerId = stringValue(customer, "id") || stringValue(order, "customer");
   const email = stringValue(customer, "email");
-  const amount = numberValue(order, "amount") || 299;
-  const currency = stringValue(order, "currency") || "usd";
+  const amount = numberValue(order, "amount") || FULL_REPORT_PRICE_CENTS;
+  const currency = stringValue(order, "currency") || FULL_REPORT_PRICE_CURRENCY.toLowerCase();
 
   await logEvent({
     name: "checkout_completed",
