@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { AnalyticsTracker } from "@/components/AnalyticsTracker";
+import { FULL_REPORT_PRICE, FULL_REPORT_PRICE_CURRENCY } from "@/lib/product";
 import { SiteFooter } from "@/components/SiteFooter";
 import { siteUrl } from "@/lib/site-links";
 import "../styles/globals.css";
@@ -38,8 +39,8 @@ export const structuredData = [
     url: siteUrl,
     offers: {
       "@type": "Offer",
-      price: "2.99",
-      priceCurrency: "USD",
+      price: FULL_REPORT_PRICE,
+      priceCurrency: FULL_REPORT_PRICE_CURRENCY,
       availability: "https://schema.org/InStock"
     }
   }

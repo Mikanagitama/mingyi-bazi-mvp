@@ -8,6 +8,7 @@ Mingyi uses first-party event logging through `app_events`. Events are best effo
 - Do not store card details, payment provider secrets, API keys, or raw birth form text in analytics events.
 - `readingId` may be stored to connect funnel steps for one report.
 - Metadata should stay small and operational: path, provider, report state, language, amount, currency, and coarse status.
+- Public browser event submissions are rate limited per IP with `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE` to reduce event-spam cost.
 
 ## Event Map
 

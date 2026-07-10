@@ -1,8 +1,42 @@
 import Link from "next/link";
+import { CheckoutButton } from "@/components/CheckoutButton";
 import { elementLabel } from "@/lib/bazi/chart";
+import { FULL_REPORT_CTA, PAYMENT_TRUST_COPY } from "@/lib/product";
 import { sampleReportReading } from "@/lib/reports/sample-report";
 
-export default function SampleReportPage() {
+function cleanReadingId(value: string | string[] | undefined) {
+  const id = Array.isArray(value) ? value[0] : value;
+  return id && /^[a-z0-9-]{8,80}$/i.test(id) ? id : "";
+}
+
+export function SampleReportCtas({ readingId }: { readingId: string }) {
+  return (
+    <div className="sampleCta">
+      <p className="finePrint">
+        This is a sample report. Your paid report is generated from your own birth details.
+      </p>
+      {readingId ? (
+        <CheckoutButton readingId={readingId} label={FULL_REPORT_CTA} secureText={PAYMENT_TRUST_COPY} />
+      ) : (
+        <div className="checkoutBox">
+          <Link className="primaryButton" href="/reading/new">{FULL_REPORT_CTA}</Link>
+          <p className="finePrint">Generate your free preview first so checkout can unlock the right report.</p>
+        </div>
+      )}
+      <Link className="secondaryButton" href={readingId ? `/reading/${encodeURIComponent(readingId)}` : "/reading/new"}>
+        Generate My Free Preview
+      </Link>
+    </div>
+  );
+}
+
+export default async function SampleReportPage({
+  searchParams
+}: {
+  searchParams?: Promise<{ reading_id?: string | string[] }>;
+}) {
+  const query = searchParams ? await searchParams : {};
+  const readingId = cleanReadingId(query.reading_id);
   const reading = sampleReportReading;
   const report = reading.fullReport!;
 
@@ -26,6 +60,7 @@ export default function SampleReportPage() {
           <p className="sampleNotice">
             This is a sample report. It is not based on your birth details.
           </p>
+          <SampleReportCtas readingId={readingId} />
         </div>
 
         <div className="sampleProfile">
@@ -73,9 +108,7 @@ export default function SampleReportPage() {
         </div>
 
         <p className="disclaimer">{report.disclaimer}</p>
-        <div className="sampleCta">
-          <Link className="primaryButton" href="/reading/new">Generate My Free Preview</Link>
-        </div>
+        <SampleReportCtas readingId={readingId} />
       </section>
     </main>
   );

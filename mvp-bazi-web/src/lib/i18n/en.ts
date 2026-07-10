@@ -1,3 +1,5 @@
+import { FULL_REPORT_CTA, PAYMENT_TRUST_COPY } from "@/lib/product";
+
 export const en = {
   lang: "en" as const,
   nav: {
@@ -88,8 +90,8 @@ export const en = {
     accuracy: "Accuracy note",
     lockedTitle: "Unlock the full report",
     lockedText: "Career, wealth, relationships, current energy, yearly timing, and practical advice are available after payment.",
-    unlock: "Unlock Full Reading — JP¥500",
-    secure: "One-time payment. Secure checkout. Instant digital access. No recurring charge.",
+    unlock: FULL_REPORT_CTA,
+    secure: PAYMENT_TRUST_COPY,
     trustBullets: ["One-time payment", "Secure checkout", "Instant digital access", "No recurring charge"],
     privacyReassurance: "Your birth details are used only to generate your report. We do not sell your personal information.",
     refundReassurance: "If you paid but cannot access your report, contact support and we will help restore access or review a refund.",

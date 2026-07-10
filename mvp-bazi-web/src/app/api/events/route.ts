@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { logEvent, type EventName } from "@/lib/db/events";
+import { assertRateLimit, RateLimitError } from "@/lib/db/rate-limit";
 
 const allowedEvents = new Set<EventName>([
   "page_view",
@@ -16,6 +17,16 @@ const allowedEvents = new Set<EventName>([
 
 function safeString(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.slice(0, maxLength) : undefined;
+}
+
+function intEnv(name: string, fallback: number) {
+  const value = Number(process.env[name]);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function clientIp(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
+  return forwarded || request.headers.get("x-real-ip") || "unknown";
 }
 
 function safeMetadata(input: unknown) {
@@ -39,20 +50,33 @@ function safeMetadata(input: unknown) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null);
-  const name = safeString(body?.name, 80) as EventName | undefined;
-  if (!name || !allowedEvents.has(name)) {
-    return NextResponse.json({ error: "Unsupported event." }, { status: 400 });
-  }
-
-  await logEvent({
-    name,
-    readingId: safeString(body?.readingId, 80),
-    metadata: {
-      path: safeString(body?.path, 180),
-      ...safeMetadata(body?.metadata)
+  try {
+    await assertRateLimit(
+      `events:ip:${clientIp(request)}`,
+      intEnv("MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE", 120),
+      60,
+      "Too many analytics events. Please try again later."
+    );
+    const body = await request.json().catch(() => null);
+    const name = safeString(body?.name, 80) as EventName | undefined;
+    if (!name || !allowedEvents.has(name)) {
+      return NextResponse.json({ error: "Unsupported event." }, { status: 400 });
     }
-  });
 
-  return NextResponse.json({ ok: true });
+    await logEvent({
+      name,
+      readingId: safeString(body?.readingId, 80),
+      metadata: {
+        path: safeString(body?.path, 180),
+        ...safeMetadata(body?.metadata)
+      }
+    });
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    if (error instanceof RateLimitError) {
+      return NextResponse.json({ error: error.message, resetAt: error.resetAt }, { status: 429 });
+    }
+    return NextResponse.json({ error: "Unable to record event." }, { status: 400 });
+  }
 }

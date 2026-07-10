@@ -67,3 +67,14 @@ Representative screenshot paths:
 - The QA used the current local build state, including final launch-polish changes.
 - Creem hosted checkout itself remains an external provider UI. The app-side Creem return page was checked through `/reading/[id]/full?checkout_id=...`.
 - A real Creem live-mode payment still requires Creem live/KYC approval before it can be tested with real money.
+
+## 2026-07-10 Re-Check Needed
+
+The sample report CTA was changed after this run. Before public launch, repeat at least the homepage -> form -> preview -> sample report -> unlock path at:
+
+- `360x800`
+- `390x844`
+- `430x932`
+- `768x1024`
+
+Required result: no clipped CTA, no horizontal overflow, and the sample report must show a clear `Unlock Full Report — $2.99` path plus `Generate My Free Preview`.

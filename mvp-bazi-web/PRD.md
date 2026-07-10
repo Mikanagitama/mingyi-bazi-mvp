@@ -113,9 +113,14 @@ P1 keeps one product: Full Bazi Report.
 
 - Commercial checkout is managed by Creem through `CREEM_PRODUCT_ID`.
 - Stripe test checkout remains available through `PAYMENT_PROVIDER=stripe`.
+- Official launch price is `$2.99 USD`.
 - Checkout remains a one-time payment.
 - The website must clearly say there is no recurring charge.
 - Refund messaging should cover paid-access failures, not subjective accuracy claims.
+
+## Pre-Launch Bug Bash Gate
+
+Before public launch, the product must pass a focused bug bash covering price consistency, sample-report conversion paths, privacy/security QA, real-user flow simulation, and mobile re-checks. Do not add subscriptions, credits, AI chat, compatibility reports, Ziwei, Western astrology, apps, admin dashboards, or extra payment products during this gate.
 
 ## Privacy And Safety
 

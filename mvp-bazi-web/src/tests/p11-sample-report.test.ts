@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { readFileSync } from "node:fs";
 import { sampleReportReading } from "@/lib/reports/sample-report";
 import { en } from "@/lib/i18n/en";
 
@@ -25,10 +26,14 @@ describe("P1.1 sample report", () => {
     const samplePage = await import("@/app/sample-report/page");
     const landing = await import("@/components/LandingPage");
     const preview = await import("@/components/FreeReport");
+    const sampleSource = readFileSync("src/app/sample-report/page.tsx", "utf8");
 
     expect(samplePage.default.toString()).toContain("This is a sample report");
+    expect(sampleSource).toContain("FULL_REPORT_CTA");
+    expect(sampleSource).toContain("CheckoutButton");
+    expect(sampleSource).toContain("reading_id");
     expect(en.nav.sample).toBe("Sample Report");
     expect(landing.LandingPage.toString()).toContain("/sample-report");
-    expect(preview.FreeReport.toString()).toContain("/sample-report");
+    expect(preview.FreeReport.toString()).toContain("reading_id");
   });
 });

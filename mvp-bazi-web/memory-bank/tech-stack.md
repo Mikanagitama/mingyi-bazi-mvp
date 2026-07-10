@@ -29,6 +29,7 @@
 - Commercial provider: Creem Checkout through `PAYMENT_PROVIDER=creem`
 - Fallback/testing provider: Stripe Checkout through `PAYMENT_PROVIDER=stripe`
 - Product model: one-time Full Bazi Report payment
+- Official launch price source: `src/lib/product.ts` (`$2.99 USD`)
 - Provider router: `src/lib/payments/provider.ts`
 - Checkout creation: `src/app/api/checkout/route.ts`
 - Creem checkout alias: `src/app/api/creem/create-checkout-session/route.ts`
@@ -55,6 +56,7 @@
 - Preview limit env: `MINGYI_PREVIEW_RATE_LIMIT_PER_HOUR`
 - Reading/session limit env: `MINGYI_READING_RATE_LIMIT_PER_DAY`
 - Full generation limit env: `MINGYI_FULL_REPORT_REGEN_LIMIT_PER_DAY`
+- Browser event limit env: `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE`
 - AI timeout/retry/fallback: `src/lib/reports/ai-report.ts`
 
 ## Verification
@@ -69,6 +71,9 @@
 - Marketing kit: `docs/marketing/launch-content-kit.md`
 - Funnel docs: `docs/analytics/funnel-events.md`
 - Live readiness doc: `LIVE_COMMERCIAL_READINESS.md`
+- Pre-launch bug bash: `BUG_BASH_SECURITY_QA.md`
+- Privacy data map: `PRIVACY_DATA_MAP.md`
+- Security audit: `SECURITY_AUDIT.md`
 
 ## Deployment
 

@@ -24,6 +24,18 @@ npm run smoke:creem-webhook
 
 `npm run smoke:creem-webhook` sends a signed `checkout.completed` event to production using the local `CREEM_WEBHOOK_SECRET`, verifies the matching reading is marked paid, and confirms the paid report contains 8 sections.
 
+## Official Price Check
+
+Full Bazi Reading: `$2.99 USD`, one-time payment.
+
+Required before launch:
+
+- Public paid CTA text: `Unlock Full Report — $2.99`
+- Payment explanation: `One-time payment. Secure checkout. No recurring charge.`
+- No public UI/docs show retired launch-test price or currency copy.
+- Creem live product price must match `$2.99 USD`.
+- Sample report, preview page, and locked full-report state must all show the same price.
+
 ## Creem Webhook Smoke
 
 Use a Creem `checkout.completed` test event or complete a test checkout in the Creem dashboard. Confirm:
@@ -66,6 +78,8 @@ Functional checks:
 - true solar time works for a recognized city such as Tokyo
 - full report still has exactly 8 fixed sections
 - mobile paid full report has no horizontal overflow
+- sample report does not become a CTA dead end
+- public analytics endpoint is rate limited
 
 ## Domain And Asset Checks
 

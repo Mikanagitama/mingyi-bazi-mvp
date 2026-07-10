@@ -4,7 +4,46 @@
 
 ## Current Gate
 
-P1 verification is complete. The next implementation stage is commercial launch readiness: official domain canonicalization, Creem payment provider integration, launch documentation, and security verification.
+Pre-launch bug bash is in progress. Do not start broader product expansion. The only current work is price consistency, sample-report funnel repair, privacy/security QA, real-user flow simulation, and launch readiness decision for the existing one-time Full Bazi Reading product.
+
+## Stage C3: Pre-Launch Bug Bash + Privacy/Security QA
+
+### Objective
+
+Prove the current Founter Saying / Mingyi Bazi MVP is ready for small public traffic and identify any blockers before real-money launch.
+
+### Planned Files
+
+- Update `BUG_BASH_SECURITY_QA.md`, `PRIVACY_DATA_MAP.md`, and `SECURITY_AUDIT.md`.
+- Update `LAUNCH_QA.md`, `LIVE_COMMERCIAL_READINESS.md`, `MOBILE_QA.md`, `docs/analytics/funnel-events.md`, and memory-bank docs.
+- Fix only critical/high launch bugs in existing flows.
+
+### Steps
+
+- [x] Centralize Full Bazi Reading price at `$2.99 USD`.
+- [x] Remove retired launch-test pricing from public UI/copy.
+- [x] Fix sample report CTA dead end and preserve reading context through `reading_id`.
+- [x] Validate Creem completed webhook amount/currency against `$2.99 USD`.
+- [x] Add rate limiting to the public analytics endpoint.
+- [x] Create privacy data map and security audit docs.
+- [ ] Run `npm test`.
+- [ ] Run `npm run build`.
+- [ ] Run `npm run smoke:p0`.
+- [ ] Run `npm run smoke:creem`.
+- [ ] Run `npm run smoke:creem-webhook`.
+- [ ] Browser QA homepage -> form -> preview -> sample -> unlock/cancel/full flow.
+- [ ] Mobile QA at 360x800, 390x844, 430x932, and 768x1024 after sample CTA changes.
+- [ ] User-approved small real Creem payment test after live env is verified.
+
+### Acceptance
+
+- No public page shows retired launch-test pricing.
+- Preview, sample report, and locked full report CTAs consistently show `Unlock Full Report — $2.99`.
+- Sample report is not a dead end and does not confuse sample content with a user report.
+- Creem checkout/webhook price is consistent with `$2.99 USD`.
+- Privacy and security docs identify collected data, storage, external transmission, and remaining manual gates.
+- Critical/high issues are fixed before launch; medium issues are documented.
+- All required tests, build, smokes, browser QA, and mobile QA pass before the launch decision.
 
 ## Stage C1: Official Domain + Creem Launch Readiness
 
