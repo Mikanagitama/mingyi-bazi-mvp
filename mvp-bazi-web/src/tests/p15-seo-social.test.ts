@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { metadata } from "@/app/layout";
+import { metadata, structuredData } from "@/app/layout";
 import { contactLinks, siteUrl } from "@/lib/site-links";
 
 describe("P1.5 SEO and social links", () => {
@@ -23,7 +23,29 @@ describe("P1.5 SEO and social links", () => {
       icon: expect.arrayContaining([expect.objectContaining({ url: "/favicon.svg" })]),
       apple: expect.arrayContaining([expect.objectContaining({ url: "/apple-touch-icon.png" })])
     });
+    expect(metadata.alternates).toMatchObject({
+      canonical: "/",
+      languages: { "en-US": "/", "zh-CN": "/zh", "x-default": "/" }
+    });
+    expect(metadata.robots).toMatchObject({ index: true, follow: true });
+    expect(metadata.keywords).toEqual(expect.arrayContaining(["Founter Saying", "www.fountersaying.com"]));
     expect(siteUrl).toBe("https://www.fountersaying.com");
+  });
+
+  it("publishes structured data for search engines", () => {
+    expect(structuredData).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ "@type": "Organization", url: "https://www.fountersaying.com" }),
+        expect.objectContaining({
+          "@type": "WebSite",
+          alternateName: expect.arrayContaining(["www.fountersaying.com"])
+        }),
+        expect.objectContaining({
+          "@type": "WebApplication",
+          offers: expect.objectContaining({ price: "2.99", priceCurrency: "USD" })
+        })
+      ])
+    );
   });
 
   it("keeps configured contact/social links professional and hides empty placeholders", () => {
