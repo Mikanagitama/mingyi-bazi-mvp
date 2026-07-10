@@ -1,6 +1,7 @@
 import type Stripe from "stripe";
 import { logEvent } from "../db/events";
 import { markReadingPaid } from "../db/readings";
+import { FULL_REPORT_PRICE_CENTS, FULL_REPORT_PRICE_CURRENCY } from "../product";
 
 export async function applyStripeEvent(event: Stripe.Event) {
   await logEvent({ name: "webhook_received", stripeEventId: event.id, metadata: { type: event.type } });
@@ -18,7 +19,10 @@ export async function applyStripeEvent(event: Stripe.Event) {
     readingId,
     stripeEventId: event.id,
     stripeSessionId: session.id,
-    metadata: { amount: session.amount_total || 500, currency: session.currency || "jpy" }
+    metadata: {
+      amount: session.amount_total || FULL_REPORT_PRICE_CENTS,
+      currency: session.currency || FULL_REPORT_PRICE_CURRENCY.toLowerCase()
+    }
   });
 
   await markReadingPaid({
@@ -31,8 +35,8 @@ export async function applyStripeEvent(event: Stripe.Event) {
     stripeSessionId: session.id,
     stripeEventId: event.id,
     stripePaymentIntent: typeof session.payment_intent === "string" ? session.payment_intent : undefined,
-    amount: session.amount_total || 500,
-    currency: session.currency || "jpy",
+    amount: session.amount_total || FULL_REPORT_PRICE_CENTS,
+    currency: session.currency || FULL_REPORT_PRICE_CURRENCY.toLowerCase(),
     rawEvent: event as unknown as Record<string, unknown>
   });
 
