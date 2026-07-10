@@ -20,6 +20,12 @@ function toJsonRecord(value?: Record<string, unknown>) {
   return value ? JSON.parse(JSON.stringify(value)) as Record<string, unknown> : {};
 }
 
+const READING_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+export function isValidReadingId(id: string) {
+  return READING_ID_PATTERN.test(id);
+}
+
 function toPublic(record: ReadingRecord): PublicReading {
   if (record.paymentStatus === "paid") {
     if (record.fullReport?.generation?.fallbackReason) {
@@ -166,6 +172,10 @@ export async function getReading(id: string): Promise<PublicReading | null> {
 }
 
 export async function getInternalReading(id: string): Promise<ReadingRecord | null> {
+  if (!isValidReadingId(id)) {
+    return null;
+  }
+
   if (hasDatabaseUrl()) {
     const db = sql();
     const rows = await db`select * from readings where id = ${id} limit 1`;

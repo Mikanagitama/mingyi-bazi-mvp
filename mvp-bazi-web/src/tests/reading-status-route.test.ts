@@ -40,6 +40,16 @@ describe("reading status route", () => {
     expect(data.reading.fullReport).toBeUndefined();
   });
 
+  it("returns 404 for invalid reading ids before querying storage", async () => {
+    const response = await GET(new Request("https://example.test/api/readings/not-a-real-reading-id"), {
+      params: Promise.resolve({ id: "not-a-real-reading-id" })
+    });
+    const data = await response.json();
+
+    expect(response.status).toBe(404);
+    expect(data.error).toBe("Reading not found.");
+  });
+
   it("returns confirming status when a checkout session id is present but payment is not yet marked paid", async () => {
     const reading = await createReading({
       birthDate: "1990-02-03",
