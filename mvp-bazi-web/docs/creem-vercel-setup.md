@@ -25,6 +25,18 @@ CREEM_PRODUCT_ID=your_full_bazi_reading_product_id
 CREEM_API_BASE_URL=https://test-api.creem.io
 ```
 
+Required for Creem live mode:
+
+```text
+NEXT_PUBLIC_SITE_URL=https://www.fountersaying.com
+PAYMENT_PROVIDER=creem
+CREEM_API_KEY=your_creem_live_api_key
+CREEM_PRODUCT_ID=your_live_full_bazi_reading_product_id
+CREEM_API_BASE_URL=https://api.creem.io
+```
+
+Creem test and production environments are isolated. Test keys/products must use `https://test-api.creem.io`; live keys/products must use `https://api.creem.io`. If these are mixed, checkout creation can fail with `Invalid API Key`.
+
 Required after creating the Creem webhook:
 
 ```text
@@ -110,6 +122,15 @@ If `creemWebhookConfigured` is `false`, check:
 
 - `CREEM_WEBHOOK_SECRET`
 
+If `/api/health` says Creem checkout is configured but `/api/checkout` returns `Invalid API Key`, check this exact pairing:
+
+| Mode | API key | Product ID | API base URL |
+| --- | --- | --- | --- |
+| Test | Test-mode key | Test-mode product ID | `https://test-api.creem.io` |
+| Live | Live/production key | Live product ID | `https://api.creem.io` |
+
+After changing any of these values in Vercel, redeploy production before running smoke tests again.
+
 ## 5. Manual Checkout Test
 
 After `npm run smoke:creem` passes:
@@ -136,5 +157,4 @@ Only switch to live mode when you have:
 - live Creem API key
 - live Creem product ID
 - live webhook secret
-- live API base URL, if Creem provides a separate live endpoint
-
+- live API base URL: `https://api.creem.io`

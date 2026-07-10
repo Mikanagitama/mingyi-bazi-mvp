@@ -1,4 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
+import { config } from "@/lib/config";
 import { assertPersistentStorageAvailable, getDeploymentReadiness } from "@/lib/deploy/readiness";
 
 describe("deployment readiness", () => {
@@ -7,6 +8,7 @@ describe("deployment readiness", () => {
     "PAYMENT_PROVIDER",
     "CREEM_API_KEY",
     "CREEM_PRODUCT_ID",
+    "CREEM_API_BASE_URL",
     "CREEM_WEBHOOK_SECRET",
     "STRIPE_SECRET_KEY",
     "STRIPE_PRICE_ID",
@@ -99,6 +101,18 @@ describe("deployment readiness", () => {
 
     expect(readiness.ok).toBe(true);
     expect(readiness.creemWebhookConfigured).toBe(false);
+  });
+
+  it("defaults Creem API base URL to test locally and production on Vercel", () => {
+    delete process.env.CREEM_API_BASE_URL;
+    delete process.env.VERCEL;
+    expect(config.creemBaseUrl).toBe("https://test-api.creem.io");
+
+    process.env.VERCEL = "1";
+    expect(config.creemBaseUrl).toBe("https://api.creem.io");
+
+    process.env.CREEM_API_BASE_URL = "https://custom-creem.example";
+    expect(config.creemBaseUrl).toBe("https://custom-creem.example");
   });
 
   it("blocks local file storage in Vercel runtime without a database", () => {
