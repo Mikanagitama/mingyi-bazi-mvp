@@ -68,13 +68,34 @@ Representative screenshot paths:
 - Creem hosted checkout itself remains an external provider UI. The app-side Creem return page was checked through `/reading/[id]/full?checkout_id=...`.
 - A real Creem live-mode payment still requires Creem live/KYC approval before it can be tested with real money.
 
-## 2026-07-10 Re-Check Needed
+## 2026-07-10 Sample CTA Re-Check
 
-The sample report CTA was changed after this run. Before public launch, repeat at least the homepage -> form -> preview -> sample report -> unlock path at:
+The sample report CTA was changed after the original run, so production was rechecked with a headless Edge/Chrome browser through the Chrome DevTools Protocol.
+
+Checked viewports:
 
 - `360x800`
 - `390x844`
 - `430x932`
 - `768x1024`
 
-Required result: no clipped CTA, no horizontal overflow, and the sample report must show a clear `Unlock Full Report — $2.99` path plus `Generate My Free Preview`.
+Checked production pages:
+
+- Homepage
+- Birth form
+- `/sample-report`
+- `/sample-report?reading_id=80c10212-8fad-41be-b637-645832ec2fa5`
+- Invalid full-report URL
+
+Result: `20 / 20` page and viewport combinations passed.
+
+Failures: `0`.
+
+Confirmed:
+
+- No horizontal overflow.
+- Sample report shows `Unlock Full Report — $2.99`.
+- Sample report shows one-time/no-recurring payment copy.
+- Sample report keeps the free-preview path.
+- Sample report with a reading id links back to the same reading.
+- Invalid full-report URL shows a friendly not-found page with support email and does not leak report content.

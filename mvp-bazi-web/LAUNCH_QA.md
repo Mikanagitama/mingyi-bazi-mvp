@@ -24,6 +24,14 @@ npm run smoke:creem-webhook
 
 `npm run smoke:creem-webhook` sends a signed `checkout.completed` event to production using the local `CREEM_WEBHOOK_SECRET`, verifies the matching reading is marked paid, and confirms the paid report contains 8 sections.
 
+Current 2026-07-10 status:
+
+- `npm test` passes.
+- `npm run build` passes.
+- `npm run smoke:creem-webhook` passes.
+- `npm run smoke:p0` and `npm run smoke:creem` fail at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
+- Before real-money launch, correct the Vercel `CREEM_API_KEY`/`CREEM_API_BASE_URL`/live product pairing, redeploy, and rerun both checkout smokes.
+
 ## Official Price Check
 
 Full Bazi Reading: `$2.99 USD`, one-time payment.
@@ -80,6 +88,7 @@ Functional checks:
 - mobile paid full report has no horizontal overflow
 - sample report does not become a CTA dead end
 - public analytics endpoint is rate limited
+- invalid reading ids return safe not-found responses instead of 500
 
 ## Domain And Asset Checks
 

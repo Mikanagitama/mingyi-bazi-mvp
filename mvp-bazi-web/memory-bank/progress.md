@@ -12,10 +12,14 @@
 
 - Added `src/lib/product.ts` as the single price/copy source for the Full Bazi Reading price and primary paid CTA.
 - Replaced retired launch-test public copy with `$2.99`.
+- Removed retired price defaults from Stripe fallback/webhook tests so old 500-style values remain only in negative guardrail tests.
 - Updated sample report top and bottom CTA areas so the page is not a dead end:
   - with `reading_id`, it can start checkout for the active reading
   - without `reading_id`, it explains that a free preview is needed first
+- Added one-time/no-recurring payment copy to direct `/sample-report` CTA areas.
 - Updated preview sample-report link to preserve reading context through `?reading_id=...`.
+- Added invalid reading id validation so production no longer returns 500 for non-UUID reading ids.
+- Added a friendly not-found page with support email for missing readings.
 - Added Creem webhook amount/currency validation for `$2.99 USD`.
 - Added public analytics endpoint rate limiting with `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE`.
 - Created:
@@ -25,19 +29,22 @@
 
 ### Verification So Far
 
-- `npm test -- src/tests/p11-sample-report.test.ts src/tests/price-consistency.test.ts` passed.
-- `npm test -- src/tests/creem-payment.test.ts` passed.
-- `npm test -- src/tests/analytics-events.test.ts` passed.
-- Retired launch-test pricing search only finds test-only guardrails.
+- `npm test` passed: 17 files, 57 tests.
+- `npm run build` passed.
+- `npm run smoke:creem-webhook` passed against production and unlocked an 8-section paid report.
+- Production `/api/health` returned `ok=true`, `paymentProvider=creem`, `creemCheckoutConfigured=true`, `creemWebhookConfigured=true`, `aiProvider=deepseek`.
+- Production `/robots.txt` and `/sitemap.xml` use `https://www.fountersaying.com` and do not reference `vercel.app`.
+- Production preview flow check created reading `80c10212-8fad-41be-b637-645832ec2fa5`; preview preserved `/sample-report?reading_id=...`, sample report linked back to the same reading, and preview did not leak a full report.
+- Production invalid reading API now returns 404; invalid full-report page returns friendly not found with `support@fountersaying.com` and no report leak.
+- Mobile/browser QA checked 20 page/viewport combinations across `360x800`, `390x844`, `430x932`, and `768x1024`; failures: 0.
+- Retired launch-test pricing search only finds test-only negative guardrails.
 
 ### Remaining Before Launch Decision
 
-- Full `npm test`.
-- `npm run build`.
-- Production smokes: `npm run smoke:p0`, `npm run smoke:creem`, `npm run smoke:creem-webhook`.
-- Browser flow QA for homepage -> form -> preview -> sample -> unlock/cancel/full.
-- Mobile re-check after the sample CTA change.
-- User-approved small real Creem payment test and Creem dashboard order confirmation.
+- `npm run smoke:p0` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
+- `npm run smoke:creem` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
+- Real Creem checkout cancel/success cannot be verified until the Vercel `CREEM_API_KEY`/live-test base URL pairing is corrected and redeployed.
+- User-approved small real Creem payment test and Creem dashboard order confirmation remain blocked by checkout creation.
 
 ## 2026-07-07
 

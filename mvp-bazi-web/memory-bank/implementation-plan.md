@@ -26,14 +26,16 @@ Prove the current Founter Saying / Mingyi Bazi MVP is ready for small public tra
 - [x] Validate Creem completed webhook amount/currency against `$2.99 USD`.
 - [x] Add rate limiting to the public analytics endpoint.
 - [x] Create privacy data map and security audit docs.
-- [ ] Run `npm test`.
-- [ ] Run `npm run build`.
-- [ ] Run `npm run smoke:p0`.
-- [ ] Run `npm run smoke:creem`.
-- [ ] Run `npm run smoke:creem-webhook`.
-- [ ] Browser QA homepage -> form -> preview -> sample -> unlock/cancel/full flow.
-- [ ] Mobile QA at 360x800, 390x844, 430x932, and 768x1024 after sample CTA changes.
-- [ ] User-approved small real Creem payment test after live env is verified.
+- [x] Fix invalid reading ids returning production 500s.
+- [x] Remove retired 500-style fallback amounts from payment tests/fallback code.
+- [x] Run `npm test`.
+- [x] Run `npm run build`.
+- [x] Run `npm run smoke:creem-webhook`.
+- [x] Browser QA homepage -> form -> preview -> sample -> invalid URL flow.
+- [x] Mobile QA at 360x800, 390x844, 430x932, and 768x1024 after sample CTA changes.
+- [ ] Run `npm run smoke:p0` successfully. Current blocker: production Creem `/api/checkout` returns `Invalid API Key`.
+- [ ] Run `npm run smoke:creem` successfully. Current blocker: production Creem `/api/checkout` returns `Invalid API Key`.
+- [ ] User-approved small real Creem payment test after live checkout creation is fixed.
 
 ### Acceptance
 
