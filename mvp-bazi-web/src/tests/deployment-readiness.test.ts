@@ -69,6 +69,7 @@ describe("deployment readiness", () => {
     expect(readiness.aiProvider).toBe("deepseek");
     expect(readiness.paymentProvider).toBe("creem");
     expect(readiness.creemCheckoutConfigured).toBe(true);
+    expect(readiness.creemApiEnvironment).toBe("test");
     expect(readiness.blockers).toEqual([]);
   });
 
@@ -113,6 +114,25 @@ describe("deployment readiness", () => {
 
     process.env.CREEM_API_BASE_URL = "https://custom-creem.example";
     expect(config.creemBaseUrl).toBe("https://custom-creem.example");
+  });
+
+  it("reports the configured Creem API environment without exposing secrets", () => {
+    process.env.DATABASE_URL = "postgres://example";
+    process.env.PAYMENT_PROVIDER = "creem";
+    process.env.CREEM_API_KEY = "creem_example";
+    process.env.CREEM_PRODUCT_ID = "prod_example";
+    process.env.CREEM_WEBHOOK_SECRET = "whsec_creem";
+    process.env.OPENAI_API_KEY = "sk_test_ai";
+    process.env.NEXT_PUBLIC_SITE_URL = "https://www.fountersaying.com";
+
+    process.env.CREEM_API_BASE_URL = "https://api.creem.io";
+    expect(getDeploymentReadiness().creemApiEnvironment).toBe("live");
+
+    process.env.CREEM_API_BASE_URL = "https://test-api.creem.io";
+    expect(getDeploymentReadiness().creemApiEnvironment).toBe("test");
+
+    process.env.CREEM_API_BASE_URL = "https://payments.example";
+    expect(getDeploymentReadiness().creemApiEnvironment).toBe("custom");
   });
 
   it("blocks local file storage in Vercel runtime without a database", () => {
