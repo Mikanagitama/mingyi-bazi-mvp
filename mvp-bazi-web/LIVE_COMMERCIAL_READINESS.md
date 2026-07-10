@@ -28,7 +28,8 @@ Production Creem checkout creation currently fails:
 
 - `npm run smoke:p0` reaches `/api/checkout` and receives `400 {"error":"Invalid API Key"}`.
 - `npm run smoke:creem` reaches `/api/checkout` and receives `400 {"error":"Invalid API Key"}`.
-- `/api/health` still reports Creem env vars as present, so the likely issue is that the Vercel `CREEM_API_KEY` value, live/test mode, or `CREEM_API_BASE_URL` does not match the active Creem product/account.
+- `/api/health` reports `creemApiEnvironment=live`, so production is now using the live Creem API endpoint.
+- The remaining likely issue is that the Vercel live `CREEM_API_KEY` is invalid, expired, copied from the wrong dashboard mode/account, or does not match the configured live `CREEM_PRODUCT_ID`.
 
 This blocks real checkout cancel/success testing and any real-money public launch.
 
@@ -62,7 +63,9 @@ This blocks real checkout cancel/success testing and any real-money public launc
 - [ ] Creem live mode enabled.
 - [ ] Live Creem product ID configured in Vercel.
 - [ ] Live Creem product price confirmed as `$2.99 USD`.
-- [ ] Vercel `CREEM_API_KEY` confirmed valid for the same live/test mode as the configured product and API base URL.
+- [ ] Vercel `CREEM_API_KEY` confirmed valid for live Creem mode.
+- [ ] Vercel `CREEM_PRODUCT_ID` confirmed live-mode and from the same Creem account as the API key.
+- [x] Production Creem API environment reports `live` from `/api/health`.
 - [ ] Live Creem webhook secret configured in Vercel.
 - [ ] Vercel redeployed after live env updates.
 - [ ] `npm run smoke:p0` passes against production.
@@ -80,4 +83,4 @@ This blocks real checkout cancel/success testing and any real-money public launc
 
 Small-scale public marketing: safe for cautious non-payment traffic, content review, SEO/social testing, and user feedback. Avoid paid conversion pushes until checkout creation passes.
 
-Real-money launch: not ready. Fix the production Creem `Invalid API Key` checkout blocker, redeploy, rerun `npm run smoke:p0` and `npm run smoke:creem`, then complete one small user-approved real payment and confirm the Creem dashboard order plus paid report unlock.
+Real-money launch: not ready. Replace/fix the production Creem live API key and live product pairing in Vercel, redeploy, rerun `npm run smoke:p0` and `npm run smoke:creem`, then complete one small user-approved real payment and confirm the Creem dashboard order plus paid report unlock.

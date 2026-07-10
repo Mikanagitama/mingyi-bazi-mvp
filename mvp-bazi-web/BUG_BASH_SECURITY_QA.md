@@ -23,7 +23,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | BB-003 | High | Payment consistency | Creem webhook accepted completed events even when amount/currency did not match the official $2.99 USD product price. | Fixed | `src/lib/payments/creem.ts`, `src/tests/creem-payment.test.ts` |
 | BB-004 | Medium | Abuse protection | Public analytics endpoint sanitized metadata but had no per-IP rate limit. | Fixed | `src/app/api/events/route.ts`, `src/tests/analytics-events.test.ts` |
 | BB-005 | Medium | Product scope cleanup | `schema.sql` still contains unused credits/subscriptions tables from earlier planning. They are RLS-enabled and not surfaced in UI/API, but they create scope noise. | Deferred | Remove in a separate DB cleanup after confirming no production references |
-| BB-006 | Critical | Live checkout | Production Creem checkout creation returns `400 {"error":"Invalid API Key"}` even though `/api/health` reports Creem env vars present. | Blocker | `npm run smoke:p0`, `npm run smoke:creem` fail at `/api/checkout`; Vercel `CREEM_API_KEY` must be corrected and redeployed |
+| BB-006 | Critical | Live checkout | Production Creem checkout creation returns `400 {"error":"Invalid API Key"}`. `/api/health` now confirms `creemApiEnvironment=live`, so the request is reaching live Creem; the Vercel live API key/product/account pairing still needs correction. | Blocker | `npm run smoke:creem` fails at `/api/checkout`; Vercel live `CREEM_API_KEY` and `CREEM_PRODUCT_ID` must be corrected and redeployed |
 | BB-007 | High | Invalid direct URLs | Invalid reading ids returned 500 from production API/page because Postgres expected UUID ids. | Fixed | `src/lib/db/readings.ts`, `src/app/not-found.tsx`, `src/tests/reading-status-route.test.ts`; production API now 404 and page shows friendly not found |
 | BB-008 | Medium | Direct sample report trust copy | Direct `/sample-report` showed unlock price but did not show one-time/no-recurring copy without a `reading_id`. | Fixed | `src/app/sample-report/page.tsx`, `src/tests/p11-sample-report.test.ts` |
 | BB-009 | Medium | Retired price cleanup | Stripe fallback tests/webhook defaults still used old 500-style test amount. | Fixed | `src/lib/payments/webhook.ts`, Stripe/stability/access tests now use official price constants or 299 USD |
@@ -57,8 +57,8 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | 23 | AI unsafe claims | Pass with guard | Prompt + `assertSafeReportText`; not a substitute for manual spot-check. |
 | 24 | AI markdown/JSON artifacts | Pass by parser | AI response is strict JSON and rendered as section text. |
 | 25 | Long report breaks mobile | Pending re-check | Prior mobile QA passed. |
-| 26 | Creem live/test env mixed | Blocked | Production health reports `paymentProvider=creem`, but checkout API key is rejected by Creem. Confirm live/test key and base URL pair. |
-| 27 | Wrong API base URL | Needs env check | Error is consistent with wrong/expired/mismatched live/test API key or base URL. |
+| 26 | Creem live/test env mixed | Partially ruled out | Production health now reports `creemApiEnvironment=live`; verify the API key and product are also live-mode and from the same Creem account. |
+| 27 | Wrong API base URL | Pass | Production health reports live Creem API. Remaining failure is API key/product/account validity. |
 | 28 | Webhook secret mismatch | Pass | `npm run smoke:creem-webhook` passes against production. |
 | 29 | Rate limit blocks legitimate paid user | Pass | Full-generation rate limit is per reading and duplicate webhooks return before regeneration. |
 | 30 | Error messages expose stack traces | Pass | API routes return short messages, not stack traces. |
@@ -91,4 +91,4 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 
 - Safe to continue technical QA: yes.
 - Safe to start small public traffic: yes for non-payment traffic only, because homepage, preview, sample report, legal, SEO, mobile layout, and webhook unlock passed.
-- Ready for real-money public launch: no. Production checkout creation is blocked by Creem `Invalid API Key`; fix Vercel/Creem live API key or base URL, redeploy, then rerun `npm run smoke:p0`, `npm run smoke:creem`, a real checkout cancel/success test, and one small user-approved real payment.
+- Ready for real-money public launch: no. Production checkout creation is blocked by Creem `Invalid API Key`; production is already using live Creem API, so fix the Vercel live API key/product/account pairing, redeploy, then rerun `npm run smoke:p0`, `npm run smoke:creem`, a real checkout cancel/success test, and one small user-approved real payment.

@@ -33,6 +33,7 @@
 - `npm run build` passed.
 - `npm run smoke:creem-webhook` passed against production and unlocked an 8-section paid report.
 - Production `/api/health` returned `ok=true`, `paymentProvider=creem`, `creemCheckoutConfigured=true`, `creemWebhookConfigured=true`, `aiProvider=deepseek`.
+- Production `/api/health` now also reports `creemApiEnvironment=live`, proving the app is using the live Creem API endpoint.
 - Production `/robots.txt` and `/sitemap.xml` use `https://www.fountersaying.com` and do not reference `vercel.app`.
 - Production preview flow check created reading `80c10212-8fad-41be-b637-645832ec2fa5`; preview preserved `/sample-report?reading_id=...`, sample report linked back to the same reading, and preview did not leak a full report.
 - Production invalid reading API now returns 404; invalid full-report page returns friendly not found with `support@fountersaying.com` and no report leak.
@@ -43,7 +44,7 @@
 
 - `npm run smoke:p0` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
 - `npm run smoke:creem` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
-- Real Creem checkout cancel/success cannot be verified until the Vercel `CREEM_API_KEY`/live-test base URL pairing is corrected and redeployed.
+- Real Creem checkout cancel/success cannot be verified until the Vercel live `CREEM_API_KEY` and live `CREEM_PRODUCT_ID` pairing is corrected and redeployed.
 - User-approved small real Creem payment test and Creem dashboard order confirmation remain blocked by checkout creation.
 
 ## 2026-07-07
