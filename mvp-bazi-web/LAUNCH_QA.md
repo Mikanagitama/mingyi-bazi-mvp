@@ -30,7 +30,8 @@ Current 2026-07-10 status:
 - `npm run build` passes.
 - `npm run smoke:creem-webhook` passes.
 - `npm run smoke:p0` and `npm run smoke:creem` fail at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
-- Before real-money launch, correct the Vercel `CREEM_API_KEY`/`CREEM_API_BASE_URL`/live product pairing, redeploy, and rerun both checkout smokes.
+- `/api/health` reports `creemApiEnvironment=live`, so the live API endpoint is active.
+- Before real-money launch, correct the Vercel live `CREEM_API_KEY` and live `CREEM_PRODUCT_ID` pairing, redeploy, and rerun both checkout smokes.
 
 ## Official Price Check
 
