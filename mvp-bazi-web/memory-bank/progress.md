@@ -40,12 +40,21 @@
 - Mobile/browser QA checked 20 page/viewport combinations across `360x800`, `390x844`, `430x932`, and `768x1024`; failures: 0.
 - Retired launch-test pricing search only finds test-only negative guardrails.
 
+### 2026-07-10 Creem Live Env Redeploy
+
+- Overwrote Vercel production `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL` from the locally verified live `.env.local` values without printing secrets.
+- Redeployed production from Vercel after the environment update.
+- `/api/health` reports `paymentProvider=creem` and `creemApiEnvironment=live`.
+- `npm run smoke:creem` passed: production created a reading and returned Creem checkout URLs from both `/api/checkout` and `/api/creem/create-checkout-session`.
+- `npm run smoke:p0` passed against `https://www.fountersaying.com`.
+- `npm run smoke:creem-webhook` passed and unlocked reading `d8e0a459-2b82-4188-a020-5dc7678c2956` with an 8-section paid report.
+- Manual browser checkout abandon/cancel recovery passed for reading `85929332-2d9e-4548-b458-b15d22867291`: preview -> unlock -> Creem checkout -> browser Back returned to the same preview page with the unlock CTA still visible.
+- Creem checkout showed localized Chinese billing labels in this browser while product name, description, and `$2.99` price remained correct. Creem documents automatic checkout localization, so re-check with an English browser/profile before English-market paid ads.
+
 ### Remaining Before Launch Decision
 
-- `npm run smoke:p0` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
-- `npm run smoke:creem` fails at `/api/checkout` with `400 {"error":"Invalid API Key"}`.
-- Real Creem checkout cancel/success cannot be verified until the Vercel live `CREEM_API_KEY` and live `CREEM_PRODUCT_ID` pairing is corrected and redeployed.
-- User-approved small real Creem payment test and Creem dashboard order confirmation remain blocked by checkout creation.
+- User-approved small real Creem payment test remains required.
+- Creem dashboard order amount/currency must be confirmed as `$2.99 USD`.
 
 ## 2026-07-07
 
