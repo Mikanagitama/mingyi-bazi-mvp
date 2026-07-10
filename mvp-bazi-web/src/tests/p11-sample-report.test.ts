@@ -30,6 +30,7 @@ describe("P1.1 sample report", () => {
 
     expect(samplePage.default.toString()).toContain("This is a sample report");
     expect(sampleSource).toContain("FULL_REPORT_CTA");
+    expect(sampleSource).toContain("PAYMENT_TRUST_COPY");
     expect(sampleSource).toContain("CheckoutButton");
     expect(sampleSource).toContain("reading_id");
     expect(en.nav.sample).toBe("Sample Report");

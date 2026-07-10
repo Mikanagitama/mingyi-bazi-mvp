@@ -20,6 +20,7 @@ export function SampleReportCtas({ readingId }: { readingId: string }) {
       ) : (
         <div className="checkoutBox">
           <Link className="primaryButton" href="/reading/new">{FULL_REPORT_CTA}</Link>
+          <p className="finePrint">{PAYMENT_TRUST_COPY}</p>
           <p className="finePrint">Generate your free preview first so checkout can unlock the right report.</p>
         </div>
       )}
