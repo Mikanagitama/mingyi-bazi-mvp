@@ -53,6 +53,7 @@
 - Public page sweep passed for homepage, form, sample report, legal/trust pages, sitemap, robots, and health: all returned 2xx/3xx, no retired JPY/yen copy, no `vercel.app` leakage, and robots/sitemap use the official domain.
 - Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
 - Found `/favicon.ico` returning 404 while other icon/OG assets existed; fixed by generating `public/favicon.ico`, adding metadata, and extending SEO test coverage.
+- Post-deploy `main` verification passed after the favicon fix: `/favicon.ico`, OG image, Apple touch icon, and 512 app icon all return 200; `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook` passed against `https://www.fountersaying.com`. The signed Creem webhook smoke unlocked reading `ea5f69f0-44a0-41c7-ac3a-2a6f144deba0` with an 8-section report.
 
 ### Remaining Before Launch Decision
 
