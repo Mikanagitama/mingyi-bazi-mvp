@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { FreeReport } from "@/components/FreeReport";
 import { FullReport } from "@/components/FullReport";
 import { logEvent } from "@/lib/db/events";
@@ -10,12 +11,7 @@ export default async function ReadingPage({ params }: { params: Promise<{ id: st
   const { id } = await params;
   const reading = await getReading(id);
   if (!reading) {
-    return (
-      <main className="readingPage">
-        <p>{en.reading.notFound}</p>
-        <Link href="/reading/new">Start again</Link>
-      </main>
-    );
+    notFound();
   }
 
   const copy = reading.language === "zh" ? zh : en;
