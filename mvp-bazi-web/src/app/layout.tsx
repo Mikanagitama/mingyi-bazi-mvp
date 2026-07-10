@@ -7,12 +7,78 @@ import "../styles/globals.css";
 
 const ogImage = "/og/founter-saying-og.png";
 const squareImage = "/og/founter-saying-square.png";
+const siteDescription =
+  "Generate a personalized Bazi reading based on Chinese Four Pillars, Five Elements, and AI interpretation. For entertainment and self-reflection.";
+
+export const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Mingyi Bazi",
+    alternateName: "Founter Saying",
+    url: siteUrl,
+    logo: `${siteUrl}/icon-512.png`,
+    email: "support@fountersaying.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Mingyi Bazi",
+    alternateName: ["Founter Saying", "www.fountersaying.com"],
+    url: siteUrl,
+    inLanguage: ["en", "zh-CN"],
+    description: siteDescription
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "Mingyi Bazi",
+    applicationCategory: "LifestyleApplication",
+    operatingSystem: "Web",
+    url: siteUrl,
+    offers: {
+      "@type": "Offer",
+      price: "2.99",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock"
+    }
+  }
+];
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: "Mingyi Bazi",
   title: "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
-  description:
-    "Generate a personalized Bazi reading based on Chinese Four Pillars, Five Elements, and AI interpretation. For entertainment and self-reflection.",
+  description: siteDescription,
+  keywords: [
+    "Mingyi Bazi",
+    "Founter Saying",
+    "www.fountersaying.com",
+    "Bazi reading",
+    "Chinese astrology",
+    "Four Pillars of Destiny",
+    "Day Master",
+    "Five Elements"
+  ],
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "zh-CN": "/zh",
+      "x-default": "/"
+    }
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -22,11 +88,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
-    description:
-      "Generate a personalized Bazi reading based on Chinese Four Pillars, Five Elements, and AI interpretation. For entertainment and self-reflection.",
+    description: siteDescription,
     url: siteUrl,
     siteName: "Mingyi Bazi",
     type: "website",
+    locale: "en_US",
+    alternateLocale: ["zh_CN"],
     images: [
       {
         url: ogImage,
@@ -45,8 +112,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mingyi Bazi | AI-Powered Chinese Four Pillars Reading",
-    description:
-      "Generate a personalized Bazi reading based on Chinese Four Pillars, Five Elements, and AI interpretation. For entertainment and self-reflection.",
+    description: siteDescription,
     images: [ogImage]
   }
 };
@@ -58,6 +124,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Suspense fallback={null}>
           <AnalyticsTracker />
         </Suspense>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+        />
         {children}
         <SiteFooter />
       </body>
