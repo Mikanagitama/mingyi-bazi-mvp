@@ -26,6 +26,8 @@
 - Manual browser cancel recovery passed: preview -> unlock -> Creem checkout -> browser Back returns to the same preview page.
 - Public page/asset QA passed for homepage, form, sample report, legal/trust pages, robots, sitemap, OG images, Apple touch icon, app icon, and default `/favicon.ico`.
 - Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
+- Browser console QA passed with 0 errors on homepage, form, sample report, free preview, and paid full report.
+- Latest 390px browser QA passed with no horizontal overflow and 0 console errors on homepage, form, sample report, free preview, and paid full report.
 
 ## Resolved Blocker
 
@@ -80,6 +82,8 @@ This unblocks checkout creation. Real-money launch still needs a user-approved s
 - [x] Mobile final check passed for launch-polish build and 2026-07-10 sample CTA re-check.
 - [x] Public marketing materials are prepared.
 - [x] Default `/favicon.ico` returns a real icon asset after the favicon fix is deployed.
+- [x] Browser console check passes on the main non-payment and paid-report surfaces.
+- [x] 390px mobile browser check passes on the main non-payment and paid-report surfaces.
 
 ## Readiness Answer
 

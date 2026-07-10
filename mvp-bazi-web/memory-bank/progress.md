@@ -54,6 +54,10 @@
 - Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
 - Found `/favicon.ico` returning 404 while other icon/OG assets existed; fixed by generating `public/favicon.ico`, adding metadata, and extending SEO test coverage.
 - Post-deploy `main` verification passed after the favicon fix: `/favicon.ico`, OG image, Apple touch icon, and 512 app icon all return 200; `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook` passed against `https://www.fountersaying.com`. The signed Creem webhook smoke unlocked reading `ea5f69f0-44a0-41c7-ac3a-2a6f144deba0` with an 8-section report.
+- Browser console QA found 0 errors on homepage, form, sample report, free preview, and paid full report.
+- 390px browser QA found no horizontal overflow and 0 console errors on homepage, form, sample report, free preview, and paid full report.
+- Repeated production smoke runs temporarily hit the preview-generation rate limit for the tester IP (`429 Too many preview requests`), confirming the cost-protection limit is active. Rerun after the `resetAt` timestamp before using smoke status as final proof.
+- After the rate-limit reset, production smokes passed again: `npm run smoke:p0` created reading `86f781b6-3c5d-46eb-aa11-daabf7ed4e69`, `npm run smoke:creem` created reading `8f34ac66-9025-499f-ac42-11d86ef3d42e`, and `npm run smoke:creem-webhook` unlocked reading `51c11e9c-a950-4f39-96cc-a36410fd1c6a` with an 8-section paid report.
 
 ### Remaining Before Launch Decision
 

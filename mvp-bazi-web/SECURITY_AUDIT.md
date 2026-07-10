@@ -108,12 +108,12 @@ Do not print actual secret values in logs or docs.
 
 - Official domain redirects HTTP to HTTPS through Vercel.
 - `robots.txt` and `sitemap.xml` use official domain.
-- Header check: Vercel HSTS is present on homepage, form, and sample report. `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and CSP were not expanded in this pass. Consider adding them after launch analytics/payment flows stabilize.
+- Header check: Vercel HSTS is present on homepage, form, and sample report. Browser console checks found 0 errors on homepage, form, sample report, free preview, and paid full report. `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and CSP were not expanded in this pass. Consider adding them after launch analytics/payment flows stabilize.
 
 ## Manual Checks Required
 
-- Browser console on homepage, form, preview, sample report, checkout return, and full report.
-- Mobile 360/390/430/768 after the sample report CTA change: passed in the 2026-07-10 re-check.
+- Browser console on homepage, form, preview, sample report, checkout return, and full report: passed for homepage, form, sample report, free preview, and paid full report; real checkout return still waits for a user-approved payment.
+- Mobile 360/390/430/768 after the sample report CTA change: passed in the 2026-07-10 re-check. Latest 390px check also passed with no overflow and no console errors.
 - Live Creem checkout creates a non-test checkout for $2.99 USD: passed by production smoke; dashboard amount still needs manual confirmation.
 - Real small payment, with user approval, unlocks one 8-section report.
 - Creem dashboard order amount/currency match `$2.99 USD`.

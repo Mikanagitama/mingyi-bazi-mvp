@@ -58,11 +58,11 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | 22 | Timezone missing/incorrect | Pass in smoke | Production smoke created Tokyo reading with true solar time applied. |
 | 23 | AI unsafe claims | Pass with guard | Prompt + `assertSafeReportText`; not a substitute for manual spot-check. |
 | 24 | AI markdown/JSON artifacts | Pass by parser | AI response is strict JSON and rendered as section text. |
-| 25 | Long report breaks mobile | Pending re-check | Prior mobile QA passed. |
+| 25 | Long report breaks mobile | Pass | 390px browser check covered homepage, form, sample, preview, and paid full report with no overflow and no console errors. |
 | 26 | Creem live/test env mixed | Pass by health + smoke | Production health reports `creemApiEnvironment=live`, and production Creem checkout smoke passes after env correction. |
 | 27 | Wrong API base URL | Pass | Vercel production `CREEM_API_BASE_URL` was overwritten to the verified live API base and `npm run smoke:creem` passes. |
 | 28 | Webhook secret mismatch | Pass | `npm run smoke:creem-webhook` passes against production. |
-| 29 | Rate limit blocks legitimate paid user | Pass | Full-generation rate limit is per reading and duplicate webhooks return before regeneration. |
+| 29 | Rate limit blocks legitimate paid user | Pass with QA note | Full-generation rate limit is per reading and duplicate webhooks return before regeneration. Repeated production smoke tests can temporarily hit preview-generation 429s for the tester IP; wait for reset before rerunning. |
 | 30 | Error messages expose stack traces | Pass | API routes return short messages, not stack traces. |
 | 31 | Vercel logs leak sensitive data | Pass by code review | No raw request bodies are logged; event logger logs only error message on logging failure. |
 | 32 | Supabase events store sensitive raw payload | Pass | Public event endpoint allowlists small primitive metadata only. |
@@ -70,7 +70,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | 34 | User can spam `/api/events` | Fixed | `MINGYI_EVENTS_RATE_LIMIT_PER_MINUTE`, default 120/min/IP. |
 | 35 | User can spam report generation | Pass | Preview and full-generation rate limits exist. |
 | 36 | 404/500 pages look broken | Fixed | Invalid reading API now returns 404; invalid reading page shows friendly not found with support email and no report leak. |
-| 37 | Browser console errors | Not fully checked | Headless browser DOM/layout checks passed; console-log collection was not part of this run. |
+| 37 | Browser console errors | Pass | Browser console checks found 0 errors on homepage, form, sample report, free preview, and paid full report. 390px mobile pass also found 0 errors. |
 | 38 | SEO canonical broken | Pass | Public metadata, robots, and sitemap use `https://www.fountersaying.com`; checked live pages after Creem env fix. |
 | 39 | Robots/sitemap point to vercel.app | Pass | Current live robots/sitemap use official domain. |
 | 40 | Brand naming inconsistent | Pass | Founter Saying domain/company, Mingyi Bazi product. |
@@ -87,7 +87,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | A: homepage -> form -> preview -> sample -> unlock -> checkout -> cancel/success -> full report | Mostly pass | Production checkout creation, browser-back cancel recovery, and signed webhook unlock pass; real-money success still requires a user-approved payment check. |
 | B: direct sample report -> preview -> unlock | Pass through checkout creation | Direct sample report shows unlock/free-preview paths and one-time copy; production Creem checkout creation now passes. |
 | C: unpaid/paid/invalid direct full-report URLs | Pass | Unpaid remains locked, signed webhook paid unlock works, invalid direct URL is friendly 404/not found. |
-| D: mobile 360/390/430/768 flows | Pass | Browser QA checked homepage, form, sample, sample-with-reading, and invalid full URL with no overflow and no CTA failures. |
+| D: mobile 360/390/430/768 flows | Pass | Browser QA checked homepage, form, sample, sample-with-reading, and invalid full URL with no overflow and no CTA failures. Latest 390px pass covered homepage, form, sample report, preview, and paid full report with 0 console errors. |
 
 ## Current Launch Decision
 
