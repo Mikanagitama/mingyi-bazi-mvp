@@ -1,8 +1,8 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { FullReportStatus } from "@/components/FullReportStatus";
 import { logEvent } from "@/lib/db/events";
 import { buildReadingStatus, getReading } from "@/lib/db/readings";
-import { en } from "@/lib/i18n/en";
 
 export default async function FullReadingPage({
   params,
@@ -17,12 +17,7 @@ export default async function FullReadingPage({
   const checkoutId = Array.isArray(query.checkout_id) ? query.checkout_id[0] : query.checkout_id;
   const reading = await getReading(id);
   if (!reading) {
-    return (
-      <main className="readingPage">
-        <p>{en.reading.notFound}</p>
-        <Link href="/reading/new">Start again</Link>
-      </main>
-    );
+    notFound();
   }
   if (reading.paymentStatus === "paid" && reading.fullReport) {
     await logEvent({ name: "full_report_viewed", readingId: reading.id, metadata: { path: "full" } });
