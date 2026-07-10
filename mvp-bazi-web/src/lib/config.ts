@@ -24,7 +24,11 @@ export const config = {
     return cleanEnv(process.env.CREEM_WEBHOOK_SECRET);
   },
   get creemBaseUrl() {
-    return cleanEnv(process.env.CREEM_API_BASE_URL) || "https://test-api.creem.io";
+    const configured = cleanEnv(process.env.CREEM_API_BASE_URL);
+    if (configured) {
+      return configured;
+    }
+    return isProductionRuntime() ? "https://api.creem.io" : "https://test-api.creem.io";
   },
   get databaseUrl() {
     return cleanEnv(process.env.DATABASE_URL);
@@ -51,6 +55,10 @@ export const config = {
 
 function cleanEnv(value: string | undefined) {
   return (value || "").trim();
+}
+
+function isProductionRuntime() {
+  return process.env.NODE_ENV === "production" || Boolean(process.env.VERCEL);
 }
 
 function normalizeUrl(value: string) {
