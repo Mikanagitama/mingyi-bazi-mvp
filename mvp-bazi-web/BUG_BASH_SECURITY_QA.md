@@ -28,6 +28,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | BB-008 | Medium | Direct sample report trust copy | Direct `/sample-report` showed unlock price but did not show one-time/no-recurring copy without a `reading_id`. | Fixed | `src/app/sample-report/page.tsx`, `src/tests/p11-sample-report.test.ts` |
 | BB-009 | Medium | Retired price cleanup | Stripe fallback tests/webhook defaults still used old 500-style test amount. | Fixed | `src/lib/payments/webhook.ts`, Stripe/stability/access tests now use official price constants or 299 USD |
 | BB-010 | Low | External checkout locale | Creem checkout displayed localized Chinese billing labels in this browser while product name, description, and `$2.99` price remained correct. Creem docs describe automatic checkout localization, so this is expected for some buyer locales. | Observed | Not a site translation leak; re-check with an English browser/profile before English-market paid ads. |
+| BB-011 | Low | Social/share assets | `/favicon.ico` returned 404 even though SVG, Apple touch icon, app icon, and OG images existed. | Fixed | Added `public/favicon.ico`, metadata entry, and SEO test coverage. |
 
 ## Marketplace / SaaS Checklist
 
@@ -47,7 +48,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | 12 | Browser back creates broken state | Pending manual | Needs browser flow pass. |
 | 13 | Direct full report URL leaks content | Pass by tests | `getReading` strips `fullReport` unless paid. |
 | 14 | Preview source/API leaks full report | Pass by tests | Smoke/tests assert no unpaid `fullReport`. |
-| 15 | Metadata/OG broken | Previously pass | Re-check after deploy. |
+| 15 | Metadata/OG broken | Fixed | OG images, Apple touch icon, 512 app icon, and `/favicon.ico` are covered; `/favicon.ico` was added after a 404 was found. |
 | 16 | Footer links broken | Previously pass | Re-check during browser QA. |
 | 17 | Support email missing | Pass | Footer/contact/refund/failure copy reference `support@fountersaying.com`. |
 | 18 | Sample report confused with real report | Pass | Notice says sample is not based on user birth details. |
@@ -70,7 +71,7 @@ Scope: bug discovery, focused bug fixes, privacy/security QA, price consistency,
 | 35 | User can spam report generation | Pass | Preview and full-generation rate limits exist. |
 | 36 | 404/500 pages look broken | Fixed | Invalid reading API now returns 404; invalid reading page shows friendly not found with support email and no report leak. |
 | 37 | Browser console errors | Not fully checked | Headless browser DOM/layout checks passed; console-log collection was not part of this run. |
-| 38 | SEO canonical broken | Previously pass | Re-check after deploy. |
+| 38 | SEO canonical broken | Pass | Public metadata, robots, and sitemap use `https://www.fountersaying.com`; checked live pages after Creem env fix. |
 | 39 | Robots/sitemap point to vercel.app | Pass | Current live robots/sitemap use official domain. |
 | 40 | Brand naming inconsistent | Pass | Founter Saying domain/company, Mingyi Bazi product. |
 | 41 | Price/currency inconsistent | Fixed | `$2.99` source centralized. |

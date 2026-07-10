@@ -35,6 +35,8 @@ Prove the current Founter Saying / Mingyi Bazi MVP is ready for small public tra
 - [x] Mobile QA at 360x800, 390x844, 430x932, and 768x1024 after sample CTA changes.
 - [x] Run `npm run smoke:p0` successfully after correcting Vercel live Creem env.
 - [x] Run `npm run smoke:creem` successfully after correcting Vercel live Creem env.
+- [x] Run public page/asset sweep for official domain, retired price copy, robots/sitemap, OG images, app icons, and default favicon.
+- [x] Run static public bundle scan for configured payment/database secrets.
 - [ ] User-approved small real Creem payment test.
 
 ### Acceptance

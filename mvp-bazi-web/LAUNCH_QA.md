@@ -33,6 +33,9 @@ Current 2026-07-10 status:
 - `npm run smoke:creem` passes.
 - `/api/health` reports `creemApiEnvironment=live`, so the live API endpoint is active.
 - The Vercel live `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL` pairing was corrected and production was redeployed.
+- Public page sweep passes for homepage, form, sample report, legal/trust pages, sitemap, robots, and health.
+- Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
+- `/favicon.ico` was added after a 404 was found during asset QA.
 - Before broad real-money launch, complete one small user-approved live payment and confirm the Creem dashboard order shows `$2.99 USD`.
 
 ## Official Price Check

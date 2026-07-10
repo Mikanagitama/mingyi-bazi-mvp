@@ -50,6 +50,9 @@
 - `npm run smoke:creem-webhook` passed and unlocked reading `d8e0a459-2b82-4188-a020-5dc7678c2956` with an 8-section paid report.
 - Manual browser checkout abandon/cancel recovery passed for reading `85929332-2d9e-4548-b458-b15d22867291`: preview -> unlock -> Creem checkout -> browser Back returned to the same preview page with the unlock CTA still visible.
 - Creem checkout showed localized Chinese billing labels in this browser while product name, description, and `$2.99` price remained correct. Creem documents automatic checkout localization, so re-check with an English browser/profile before English-market paid ads.
+- Public page sweep passed for homepage, form, sample report, legal/trust pages, sitemap, robots, and health: all returned 2xx/3xx, no retired JPY/yen copy, no `vercel.app` leakage, and robots/sitemap use the official domain.
+- Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
+- Found `/favicon.ico` returning 404 while other icon/OG assets existed; fixed by generating `public/favicon.ico`, adding metadata, and extending SEO test coverage.
 
 ### Remaining Before Launch Decision
 

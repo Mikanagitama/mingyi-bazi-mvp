@@ -24,6 +24,8 @@
 - Production Creem checkout creation now passes after correcting Vercel live `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL`.
 - `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook` pass against `https://www.fountersaying.com`.
 - Manual browser cancel recovery passed: preview -> unlock -> Creem checkout -> browser Back returns to the same preview page.
+- Public page/asset QA passed for homepage, form, sample report, legal/trust pages, robots, sitemap, OG images, Apple touch icon, app icon, and default `/favicon.ico`.
+- Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
 
 ## Resolved Blocker
 
@@ -47,6 +49,7 @@ This unblocks checkout creation. Real-money launch still needs a user-approved s
 - Confirm the Creem dashboard order amount/currency and that the paid report unlocks 8 sections.
 - Re-check Creem checkout language from an English browser/profile before English-market paid ads; Creem localizes checkout automatically.
 - Confirm tax/accounting obligations with an accountant before broad paid traffic.
+- Consider adding CSP, `X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy` after launch analytics/payment flows stabilize; Vercel HSTS is already present.
 
 ## Do Not Claim Yet
 
@@ -76,6 +79,7 @@ This unblocks checkout creation. Real-money launch still needs a user-approved s
 - [x] Post-deploy sample report CTA flow passes from preview and direct `/sample-report`.
 - [x] Mobile final check passed for launch-polish build and 2026-07-10 sample CTA re-check.
 - [x] Public marketing materials are prepared.
+- [x] Default `/favicon.ico` returns a real icon asset after the favicon fix is deployed.
 
 ## Readiness Answer
 
