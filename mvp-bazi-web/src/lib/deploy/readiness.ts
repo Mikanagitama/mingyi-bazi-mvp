@@ -9,6 +9,7 @@ export type DeploymentReadiness = {
   stripeWebhookConfigured: boolean;
   creemCheckoutConfigured: boolean;
   creemWebhookConfigured: boolean;
+  creemApiEnvironment: "live" | "test" | "custom" | null;
   siteUrlConfigured: boolean;
   aiConfigured: boolean;
   aiProvider: string | null;
@@ -26,6 +27,7 @@ export function getDeploymentReadiness(): DeploymentReadiness {
   const stripeWebhookConfigured = Boolean(config.stripeWebhookSecret);
   const creemCheckoutConfigured = Boolean(config.creemApiKey && config.creemProductId);
   const creemWebhookConfigured = Boolean(config.creemWebhookSecret);
+  const creemApiEnvironment = paymentProvider === "creem" ? getCreemApiEnvironment() : null;
   const siteUrlConfigured = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
   const aiProvider = config.aiProvider.toLowerCase() || "deepseek";
   const aiConfigured = aiProvider === "deepseek"
@@ -53,11 +55,27 @@ export function getDeploymentReadiness(): DeploymentReadiness {
     stripeWebhookConfigured,
     creemCheckoutConfigured,
     creemWebhookConfigured,
+    creemApiEnvironment,
     siteUrlConfigured,
     aiConfigured,
     aiProvider: aiConfigured ? aiProvider : null,
     blockers
   };
+}
+
+function getCreemApiEnvironment(): "live" | "test" | "custom" {
+  try {
+    const hostname = new URL(config.creemBaseUrl).hostname;
+    if (hostname === "api.creem.io") {
+      return "live";
+    }
+    if (hostname === "test-api.creem.io") {
+      return "test";
+    }
+  } catch {
+    return "custom";
+  }
+  return "custom";
 }
 
 export function assertPersistentStorageAvailable() {
