@@ -30,7 +30,7 @@ function checkoutCompletedEvent(readingId: string, eventId = "evt_p08_once", ses
         id: sessionId,
         object: "checkout.session",
         metadata: { reading_id: readingId, product: "full_bazi_reading", language: "en" },
-        amount_total: 500,
+        amount_total: 299,
         currency: "usd",
         payment_intent: "pi_p08_once",
         customer_details: { email: "p08@example.com" }

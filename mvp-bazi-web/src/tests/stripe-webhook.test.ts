@@ -36,8 +36,8 @@ describe("Stripe webhook application", () => {
           id: "cs_test_paid",
           object: "checkout.session",
           metadata: { reading_id: reading.id, product: "full_bazi_reading", language: "en" },
-          amount_total: 500,
-          currency: "jpy",
+          amount_total: 299,
+          currency: "usd",
           payment_intent: "pi_test_paid",
           customer_details: { email: "reader@example.com" }
         }
@@ -82,8 +82,8 @@ describe("Stripe webhook application", () => {
           id: "cs_test_retry",
           object: "checkout.session",
           metadata: { reading_id: reading.id, product: "full_bazi_reading", language: "en" },
-          amount_total: 500,
-          currency: "jpy",
+          amount_total: 299,
+          currency: "usd",
           payment_intent: "pi_test_retry"
         }
       }

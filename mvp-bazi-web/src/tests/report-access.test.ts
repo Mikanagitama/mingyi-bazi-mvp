@@ -121,8 +121,8 @@ describe("reading access control", () => {
       readingId: reading.id,
       stripeSessionId: "cs_test_access",
       stripePaymentIntent: "pi_test_access",
-      amount: 500,
-      currency: "jpy"
+      amount: 299,
+      currency: "usd"
     });
 
     const publicReading = await getReading(reading.id);
