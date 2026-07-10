@@ -20,7 +20,10 @@ describe("P1.5 SEO and social links", () => {
     });
     expect(metadata.twitter).toMatchObject({ card: "summary_large_image", images: ["/og/founter-saying-og.png"] });
     expect(metadata.icons).toMatchObject({
-      icon: expect.arrayContaining([expect.objectContaining({ url: "/favicon.svg" })]),
+      icon: expect.arrayContaining([
+        expect.objectContaining({ url: "/favicon.ico" }),
+        expect.objectContaining({ url: "/favicon.svg" })
+      ]),
       apple: expect.arrayContaining([expect.objectContaining({ url: "/apple-touch-icon.png" })])
     });
     expect(metadata.alternates).toMatchObject({

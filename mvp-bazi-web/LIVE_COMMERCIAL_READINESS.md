@@ -21,35 +21,35 @@
 - Public analytics events are rate limited.
 - Invalid reading ids now return friendly not found instead of production 500s.
 - Signed Creem webhook unlock still produces an 8-section full report.
+- Production Creem checkout creation now passes after correcting Vercel live `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL`.
+- `npm run smoke:p0`, `npm run smoke:creem`, and `npm run smoke:creem-webhook` pass against `https://www.fountersaying.com`.
+- Manual browser cancel recovery passed: preview -> unlock -> Creem checkout -> browser Back returns to the same preview page.
+- Public page/asset QA passed for homepage, form, sample report, legal/trust pages, robots, sitemap, OG images, Apple touch icon, app icon, and default `/favicon.ico`.
+- Static public bundle scan found no configured payment/database secret values in `.next/static` or `public`.
 
-## Current Blocker
+## Resolved Blocker
 
-Production Creem checkout creation currently fails:
+Production Creem checkout creation previously failed:
 
-- `npm run smoke:p0` reaches `/api/checkout` and receives `400 {"error":"Invalid API Key"}`.
-- `npm run smoke:creem` reaches `/api/checkout` and receives `400 {"error":"Invalid API Key"}`.
-- `/api/health` reports `creemApiEnvironment=live`, so production is now using the live Creem API endpoint.
-- The remaining likely issue is that the Vercel live `CREEM_API_KEY` is invalid, expired, copied from the wrong dashboard mode/account, or does not match the configured live `CREEM_PRODUCT_ID`.
+- Cause: Vercel production env did not match the locally verified live Creem key/product/base URL pairing.
+- Action: Vercel `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL` were overwritten from the verified local env, then production was redeployed.
+- Result: `/api/health` reports `creemApiEnvironment=live`; `npm run smoke:p0` and `npm run smoke:creem` now pass.
 
-This blocks real checkout cancel/success testing and any real-money public launch.
+This unblocks checkout creation. Real-money launch still needs a user-approved small live payment and Creem dashboard order confirmation.
 
 ## Manual Business Tasks Before Real-Money Launch
 
 - Confirm Creem live/KYC approval remains active.
 - Confirm the live Creem Full Bazi Reading product price is exactly `$2.99 USD`.
-- Replace Vercel test values with live values:
-  - `CREEM_API_KEY`
-  - `CREEM_PRODUCT_ID`
-  - `CREEM_WEBHOOK_SECRET`
-  - `CREEM_API_BASE_URL` if Creem requires a different live endpoint
-- Configure live Creem webhook:
+- Configure/confirm live Creem webhook:
   - `https://www.fountersaying.com/api/creem/webhook`
   - event: `checkout.completed`
-- Redeploy Vercel after live env changes.
 - Confirm `support@fountersaying.com` receives email.
 - Run one small real payment test after live approval.
 - Confirm the Creem dashboard order amount/currency and that the paid report unlocks 8 sections.
+- Re-check Creem checkout language from an English browser/profile before English-market paid ads; Creem localizes checkout automatically.
 - Confirm tax/accounting obligations with an accountant before broad paid traffic.
+- Consider adding CSP, `X-Frame-Options`, `X-Content-Type-Options`, and `Referrer-Policy` after launch analytics/payment flows stabilize; Vercel HSTS is already present.
 
 ## Do Not Claim Yet
 
@@ -60,27 +60,29 @@ This blocks real checkout cancel/success testing and any real-money public launc
 
 ## Final Pre-Launch Checklist
 
-- [ ] Creem live mode enabled.
-- [ ] Live Creem product ID configured in Vercel.
+- [x] Creem live mode enabled.
+- [x] Live Creem product ID configured in Vercel.
 - [ ] Live Creem product price confirmed as `$2.99 USD`.
-- [ ] Vercel `CREEM_API_KEY` confirmed valid for live Creem mode.
-- [ ] Vercel `CREEM_PRODUCT_ID` confirmed live-mode and from the same Creem account as the API key.
+- [x] Vercel `CREEM_API_KEY` confirmed valid for live Creem mode by production checkout smoke.
+- [x] Vercel `CREEM_PRODUCT_ID` confirmed compatible with the live API key by production checkout smoke.
 - [x] Production Creem API environment reports `live` from `/api/health`.
-- [ ] Live Creem webhook secret configured in Vercel.
-- [ ] Vercel redeployed after live env updates.
-- [ ] `npm run smoke:p0` passes against production.
-- [ ] `npm run smoke:creem` passes against production.
+- [x] Live Creem webhook secret configured in Vercel.
+- [x] Vercel redeployed after live env updates.
+- [x] `npm run smoke:p0` passes against production.
+- [x] `npm run smoke:creem` passes against production.
 - [x] `npm run smoke:creem-webhook` passes against production.
 - [ ] One small real payment test passes.
 - [ ] Creem dashboard order shows `$2.99 USD`.
 - [ ] Paid report unlocks after the real payment.
+- [x] Checkout abandon/cancel recovery checked with browser Back.
 - [ ] Refund/contact email works.
 - [x] Post-deploy sample report CTA flow passes from preview and direct `/sample-report`.
 - [x] Mobile final check passed for launch-polish build and 2026-07-10 sample CTA re-check.
 - [x] Public marketing materials are prepared.
+- [x] Default `/favicon.ico` returns a real icon asset after the favicon fix is deployed.
 
 ## Readiness Answer
 
-Small-scale public marketing: safe for cautious non-payment traffic, content review, SEO/social testing, and user feedback. Avoid paid conversion pushes until checkout creation passes.
+Small-scale public marketing: safe for cautious traffic, content review, SEO/social testing, and user feedback. Checkout creation now passes, but keep spend low until the first real live payment is confirmed.
 
-Real-money launch: not ready. Replace/fix the production Creem live API key and live product pairing in Vercel, redeploy, rerun `npm run smoke:p0` and `npm run smoke:creem`, then complete one small user-approved real payment and confirm the Creem dashboard order plus paid report unlock.
+Real-money launch: close, but not fully proven. Complete one small user-approved real payment, confirm the Creem dashboard order shows `$2.99 USD`, confirm the return reaches the paid full report, and confirm the paid report remains accessible after refresh. Also spot-check checkout language in an English browser before scaling English-market ads.

@@ -33,9 +33,11 @@ Prove the current Founter Saying / Mingyi Bazi MVP is ready for small public tra
 - [x] Run `npm run smoke:creem-webhook`.
 - [x] Browser QA homepage -> form -> preview -> sample -> invalid URL flow.
 - [x] Mobile QA at 360x800, 390x844, 430x932, and 768x1024 after sample CTA changes.
-- [ ] Run `npm run smoke:p0` successfully. Current blocker: production Creem `/api/checkout` returns `Invalid API Key` against the live Creem API endpoint.
-- [ ] Run `npm run smoke:creem` successfully. Current blocker: production Creem `/api/checkout` returns `Invalid API Key` against the live Creem API endpoint.
-- [ ] User-approved small real Creem payment test after live checkout creation is fixed.
+- [x] Run `npm run smoke:p0` successfully after correcting Vercel live Creem env.
+- [x] Run `npm run smoke:creem` successfully after correcting Vercel live Creem env.
+- [x] Run public page/asset sweep for official domain, retired price copy, robots/sitemap, OG images, app icons, and default favicon.
+- [x] Run static public bundle scan for configured payment/database secrets.
+- [ ] User-approved small real Creem payment test.
 
 ### Acceptance
 

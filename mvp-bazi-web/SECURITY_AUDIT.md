@@ -6,13 +6,14 @@ Mode: pre-launch application security review for the existing Full Bazi Reading 
 
 ## Summary
 
-No critical exploitable code issue was confirmed in code review. One critical launch blocker is open: production Creem checkout creation returns `Invalid API Key`, so real-money launch cannot proceed until the Vercel/Creem live credentials are corrected and redeployed. Production health now confirms the live Creem API endpoint is being used, narrowing the blocker to the live API key/product/account pairing. Three launch-relevant code issues were fixed:
+No critical exploitable code issue was confirmed in code review. The earlier production Creem checkout `Invalid API Key` blocker is fixed: Vercel live `CREEM_API_KEY`, `CREEM_PRODUCT_ID`, and `CREEM_API_BASE_URL` were corrected and production checkout smoke now passes. Four launch-relevant code/issues were fixed:
 
 1. Sample report conversion dead end.
 2. Price/currency mismatch risk in public copy and Creem webhook application.
 3. Missing public analytics endpoint rate limit.
+4. Missing default `/favicon.ico` asset.
 
-Remaining manual launch gates are live Creem checkout verification, one small real payment, Creem dashboard order confirmation, and a browser console pass after checkout creation works.
+Remaining manual launch gates are one small user-approved real payment, Creem dashboard order confirmation, support email check, and browser console spot checks.
 
 ## Findings
 
@@ -21,7 +22,8 @@ Remaining manual launch gates are live Creem checkout verification, one small re
 | SEC-001 | High | 9/10 | Creem completed events with mismatched amount/currency could mark a reading paid if signature was valid. | Fixed by explicit $2.99 USD validation. |
 | SEC-002 | Medium | 9/10 | Public analytics endpoint accepted unlimited valid events. | Fixed with per-IP rate limiting. |
 | SEC-003 | Medium | 8/10 | Schema contains unused credits/subscriptions tables, expanding audit surface despite no UI/API usage. | Deferred cleanup. |
-| SEC-004 | Critical Launch Blocker | 10/10 | Production Creem checkout creation fails with `Invalid API Key` while health reports `creemApiEnvironment=live`. | External/env blocker; fix Vercel live `CREEM_API_KEY` and live `CREEM_PRODUCT_ID` account pairing before paid launch. |
+| SEC-004 | Critical Launch Blocker | 10/10 | Production Creem checkout creation failed with `Invalid API Key` while health reported `creemApiEnvironment=live`. | Fixed by correcting Vercel live Creem env and redeploying; `npm run smoke:p0` and `npm run smoke:creem` pass. |
+| SEC-005 | Low | 10/10 | `/favicon.ico` returned 404 even though SVG and PNG icons existed. | Fixed by adding `public/favicon.ico` and metadata coverage. |
 
 ## Access Control
 
@@ -44,7 +46,7 @@ Remaining manual launch gates are live Creem checkout verification, one small re
 - Pass: Creem webhook signature is verified when `CREEM_WEBHOOK_SECRET` is configured.
 - Pass: duplicate provider event/checkout ids are idempotent.
 - Fixed: Creem completed event amount/currency must match $2.99 USD.
-- Blocked: Production Creem checkout creation currently fails with `Invalid API Key` against live Creem API.
+- Pass: Production Creem checkout creation works against live Creem API after Vercel env correction.
 - Pass: Stripe fallback webhook uses Stripe signature verification.
 - Manual: confirm live Creem product dashboard price is exactly $2.99 USD.
 
@@ -67,6 +69,8 @@ rg -n "CREEM_API_KEY|CREEM_WEBHOOK_SECRET|STRIPE_SECRET_KEY|DATABASE_URL|DEEPSEE
 ```
 
 Do not print actual secret values in logs or docs.
+
+2026-07-10 static asset scan: locally built `.next/static` and `public` did not contain the configured `CREEM_API_KEY`, `CREEM_WEBHOOK_SECRET`, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, or `DATABASE_URL` values.
 
 ## Input Validation
 
@@ -104,13 +108,13 @@ Do not print actual secret values in logs or docs.
 
 - Official domain redirects HTTP to HTTPS through Vercel.
 - `robots.txt` and `sitemap.xml` use official domain.
-- Security headers beyond Vercel defaults were not expanded in this pass. Consider adding a CSP after launch analytics/payment flows stabilize.
+- Header check: Vercel HSTS is present on homepage, form, and sample report. `X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, and CSP were not expanded in this pass. Consider adding them after launch analytics/payment flows stabilize.
 
 ## Manual Checks Required
 
 - Browser console on homepage, form, preview, sample report, checkout return, and full report.
 - Mobile 360/390/430/768 after the sample report CTA change: passed in the 2026-07-10 re-check.
-- Live Creem checkout creates a non-test checkout for $2.99 USD.
+- Live Creem checkout creates a non-test checkout for $2.99 USD: passed by production smoke; dashboard amount still needs manual confirmation.
 - Real small payment, with user approval, unlocks one 8-section report.
 - Creem dashboard order amount/currency match `$2.99 USD`.
 
