@@ -2,26 +2,29 @@ import Link from "next/link";
 import { LanguageSwitch } from "./LanguageSwitch";
 import type { en } from "@/lib/i18n/en";
 import type { zh } from "@/lib/i18n/zh";
+import { homeHref, localizeHref } from "@/lib/i18n/routing";
 
 type Copy = typeof en | typeof zh;
 
 export function LandingPage({ copy }: { copy: Copy }) {
   const readingHref = copy.lang === "zh" ? "/reading/new?lang=zh" : "/reading/new";
+  const sampleHref = localizeHref("/sample-report", copy.lang);
+  const privacyHref = localizeHref("/privacy", copy.lang);
 
   return (
     <main className="site">
       <header className="nav">
-        <Link href={copy.lang === "zh" ? "/zh" : "/"} className="brand">
+        <Link href={homeHref(copy.lang)} className="brand">
           <span className="brandMark">命</span>
           <span>
             <strong>MINGYI</strong>
-            <small>Bazi Destiny</small>
+            <small>{copy.lang === "zh" ? "八字命理" : "Bazi Destiny"}</small>
           </span>
         </Link>
         <nav>
           <a href="#how">{copy.nav.how}</a>
-          <Link href="/sample-report">{copy.nav.sample}</Link>
-          <Link href="/privacy">{copy.nav.privacy}</Link>
+          <Link href={sampleHref}>{copy.nav.sample}</Link>
+          <Link href={privacyHref}>{copy.nav.privacy}</Link>
           <LanguageSwitch language={copy.lang} />
           <Link className="navCta" href={readingHref} data-track-event="homepage_cta_clicked">{copy.nav.cta}</Link>
         </nav>
@@ -34,7 +37,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
           <p className="subtitle">{copy.landing.subtitle}</p>
           <div className="heroActions">
             <Link className="primaryButton" href={readingHref} data-track-event="homepage_cta_clicked">{copy.landing.primary}</Link>
-            <Link className="secondaryButton" href="/sample-report">{copy.nav.sample}</Link>
+            <Link className="secondaryButton" href={sampleHref}>{copy.nav.sample}</Link>
             <span>{copy.landing.trust}</span>
           </div>
         </div>
@@ -90,7 +93,7 @@ export function LandingPage({ copy }: { copy: Copy }) {
       </section>
 
       <section className="section">
-        <p className="eyebrow">MINGYI METHOD</p>
+        <p className="eyebrow">{copy.lang === "zh" ? "MINGYI 方法" : "MINGYI METHOD"}</p>
         <h2>{copy.landing.methodTitle}</h2>
         <div className="methodGrid">
           {copy.landing.method.map(([title, body]) => (
@@ -103,13 +106,13 @@ export function LandingPage({ copy }: { copy: Copy }) {
       </section>
 
       <section className="section futureReports">
-        <p className="eyebrow">Coming Soon</p>
+        <p className="eyebrow">{copy.lang === "zh" ? "即将推出" : "Coming Soon"}</p>
         <h2>{copy.landing.futureTitle}</h2>
         <p className="sectionIntro">{copy.landing.futureSub}</p>
         <div className="futureGrid">
           {copy.landing.futureReports.map(([title, body]) => (
             <article key={title}>
-              <span>Coming Soon</span>
+              <span>{copy.lang === "zh" ? "即将推出" : "Coming Soon"}</span>
               <h3>{title}</h3>
               <p>{body}</p>
             </article>

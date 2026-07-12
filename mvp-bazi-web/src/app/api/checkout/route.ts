@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     await logEvent({ name: "checkout_started", readingId: record.id, metadata: { paymentStatus: record.paymentStatus } });
 
     if (record.paymentStatus === "paid") {
-      return NextResponse.json({ url: `/reading/${record.id}/full` });
+      return NextResponse.json({ url: record.language === "zh" ? `/reading/${record.id}/full?lang=zh` : `/reading/${record.id}/full` });
     }
 
     const origin = new URL(request.url).origin;

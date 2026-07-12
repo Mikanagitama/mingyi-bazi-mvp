@@ -32,11 +32,12 @@ export async function createCreemCheckout(record: ReadingRecord, origin: string)
   }
 
   const canonicalOrigin = config.siteUrl || origin;
+  const successLang = record.language === "zh" ? "?lang=zh" : "";
   const payload = {
     product_id: config.creemProductId,
     request_id: record.id,
     units: 1,
-    success_url: `${canonicalOrigin}/reading/${record.id}/full`,
+    success_url: `${canonicalOrigin}/reading/${record.id}/full${successLang}`,
     metadata: {
       reading_id: record.id,
       product_type: "full_bazi_report",

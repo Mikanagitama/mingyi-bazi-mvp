@@ -3,7 +3,17 @@
 import { useState } from "react";
 import { trackEvent } from "@/lib/client-events";
 
-export function CheckoutButton({ readingId, label, secureText }: { readingId: string; label: string; secureText: string }) {
+export function CheckoutButton({
+  readingId,
+  label,
+  secureText,
+  errorFallback = "Checkout is unavailable."
+}: {
+  readingId: string;
+  label: string;
+  secureText: string;
+  errorFallback?: string;
+}) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -19,7 +29,7 @@ export function CheckoutButton({ readingId, label, secureText }: { readingId: st
     const data = await response.json();
     setLoading(false);
     if (!response.ok) {
-      setError(data.error || "Checkout is unavailable.");
+      setError(data.error || errorFallback);
       return;
     }
     window.location.href = data.url;

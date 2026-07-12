@@ -821,6 +821,32 @@ meter {
   justify-items: start;
 }
 
+.unlockActions {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+  padding-top: 22px;
+}
+
+.sampleAction,
+.paymentAction {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.paymentAction {
+  border-top: 1px dashed var(--line);
+  padding-top: 18px;
+}
+
+.actionLabel {
+  color: var(--muted);
+  font-size: 14px;
+  margin: 0;
+}
+
 .trustList {
   display: flex;
   flex-wrap: wrap;
@@ -906,7 +932,7 @@ meter {
 
 .sampleLink {
   width: fit-content;
-  margin: 8px 0 6px;
+  margin: 0;
 }
 
 .waitingReport {

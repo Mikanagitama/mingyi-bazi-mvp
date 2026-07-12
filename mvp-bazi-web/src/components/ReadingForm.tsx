@@ -46,11 +46,11 @@ export function ReadingForm() {
     setLoading(false);
 
     if (!response.ok) {
-      setError(data.error || "Unable to create reading.");
+      setError(data.error || (language === "zh" ? "暂时无法创建解读。" : "Unable to create reading."));
       return;
     }
 
-    router.push(`/reading/${data.reading.id}`);
+    router.push(language === "zh" ? `/reading/${data.reading.id}?lang=zh` : `/reading/${data.reading.id}`);
   }
 
   return (

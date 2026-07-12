@@ -3,6 +3,7 @@ import Link from "next/link";
 import { elementLabel } from "@/lib/bazi/chart";
 import { en } from "@/lib/i18n/en";
 import { zh } from "@/lib/i18n/zh";
+import { localizeHref } from "@/lib/i18n/routing";
 import { CheckoutButton } from "./CheckoutButton";
 import { LockedSection } from "./LockedSection";
 
@@ -70,10 +71,23 @@ export function FreeReport({ reading }: { reading: PublicReading }) {
         </div>
         <p className="finePrint">{copy.reading.privacyReassurance}</p>
         <p className="finePrint">{copy.reading.refundReassurance}</p>
-        <Link className="sampleLink" href={`/sample-report?reading_id=${encodeURIComponent(reading.id)}`}>
-          {reading.language === "zh" ? "先看样例报告" : "View a sample full report"}
-        </Link>
-        <CheckoutButton readingId={reading.id} label={copy.reading.unlock} secureText={copy.reading.secure} />
+        <div className="unlockActions" aria-label={reading.language === "zh" ? "解锁操作" : "Unlock actions"}>
+          <div className="sampleAction">
+            <p className="actionLabel">{reading.language === "zh" ? "想先确认完整报告长什么样？" : "Want to inspect the full-report format first?"}</p>
+            <Link className="sampleLink" href={localizeHref(`/sample-report?reading_id=${encodeURIComponent(reading.id)}`, reading.language)}>
+              {reading.language === "zh" ? "先看样例报告" : "View a sample full report"}
+            </Link>
+          </div>
+          <div className="paymentAction">
+            <p className="actionLabel">{reading.language === "zh" ? "准备好了再一次性解锁你的个人报告。" : "Ready when you are: unlock your personal report once."}</p>
+            <CheckoutButton
+              readingId={reading.id}
+              label={copy.reading.unlock}
+              secureText={copy.reading.secure}
+              errorFallback={reading.language === "zh" ? "暂时无法打开支付页面。" : "Checkout is unavailable."}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

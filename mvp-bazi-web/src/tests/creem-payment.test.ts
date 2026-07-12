@@ -98,6 +98,38 @@ describe("Creem payment provider", () => {
     expect(fetchMock).toHaveBeenCalledOnce();
   });
 
+  it("keeps zh language on Creem success URLs", async () => {
+    const reading = await createReading({
+      birthDate: "1992-08-14",
+      birthTime: "09:30",
+      birthTimeUnknown: false,
+      language: "zh",
+      gender: "female"
+    });
+    const fetchMock = vi.fn(async (_url: string | URL | Request, init?: RequestInit) => {
+      const body = JSON.parse(String(init?.body));
+      expect(body.success_url).toBe(`https://www.fountersaying.com/reading/${reading.id}/full?lang=zh`);
+      expect(body.metadata).toMatchObject({ language: "zh" });
+      return new Response(JSON.stringify({ id: "ch_created_zh", checkout_url: "https://checkout.creem.io/ch_created_zh" }), {
+        status: 200,
+        headers: { "content-type": "application/json" }
+      });
+    });
+    vi.stubGlobal("fetch", fetchMock);
+
+    const response = await checkoutRoute(
+      new Request("https://www.fountersaying.com/api/checkout", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ readingId: reading.id })
+      })
+    );
+    const data = await response.json();
+
+    expect(response.status).toBe(200);
+    expect(data).toEqual({ url: "https://checkout.creem.io/ch_created_zh", provider: "creem" });
+  });
+
   it("keeps the Creem-specific checkout route on Creem even when Stripe fallback is active", async () => {
     process.env.PAYMENT_PROVIDER = "stripe";
     const reading = await createReading({
